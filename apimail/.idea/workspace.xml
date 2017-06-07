@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c96e72b9-e038-43ff-b120-0ab927621a27" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/App.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/App.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Model/Usuario.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Model/Usuario.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,12 +34,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControlUsuarios.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Mensaje.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControlUsuarios.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-660">
               <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Usuario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Model/Usuario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="140" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#3521#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,12 +91,12 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Model/Usuario.java" />
-        <option value="$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
-        <option value="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" />
+        <option value="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java" />
       </list>
     </option>
   </component>
@@ -553,7 +572,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
+          <folding>
+            <element signature="e#0#3521#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -581,28 +602,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Model/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -648,6 +651,26 @@
         <state relative-caret-position="-660">
           <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Model/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="140" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#3521#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

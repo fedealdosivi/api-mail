@@ -5,7 +5,6 @@
  */
 package apimail.Control;
 
-import apimail.Model.Mensaje;
 import apimail.Dao.DaoMensajes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
