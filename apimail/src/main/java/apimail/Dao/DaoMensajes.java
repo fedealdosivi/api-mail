@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package apimail.Dao;
+import apimail.Model.Mensaje;
 import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 
