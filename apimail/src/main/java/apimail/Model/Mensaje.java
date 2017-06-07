@@ -1,73 +1,67 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.mensajeria.api.avanzada.Model;
+package apimail.Model;
 
 import java.util.ArrayList;
-
+import apimail.Model.Usuario;
 /**
- *
- * @author fefe
+ * Created by fefe on 7/6/2017.
  */
-public class Mensaje {
-    
-    
-    private int id;
-    private static int nextid = 0;
-    String asunto;
-    Usuario remitente;
-    ArrayList<Usuario> destinatarios;
-    String body;
-    
-    public Mensaje()
-    {
-        id = nextid++;
-        asunto="";
-        remitente = new Usuario();
-        destinatarios= new ArrayList<Usuario>();
-        body="";
-    }
-    
-    public int getId() {
-        return id;
-    }
+    public class Mensaje {
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getAsunto() {
-        return asunto;
-    }
+        private int id;
+        private static int nextid = 0;
+        String asunto;
+        Usuario remitente;
+        ArrayList<Usuario> destinatarios;
+        String body;
 
-    public void setAsunto(String asunto) {
-        this.asunto = asunto;
-    }
+        public Mensaje()
+        {
+            id = nextid++;
+            asunto="";
+            remitente = new Usuario();
+            destinatarios= new ArrayList<Usuario>();
+            body="";
+        }
 
-    public Usuario getRemitente() {
-        return remitente;
-    }
+        public int getId() {
+            return id;
+        }
 
-    public void setRemitente(Usuario remitente) {
-        this.remitente = remitente;
-    }
+        public void setId(int id) {
+            this.id = id;
+        }
 
-    public ArrayList<Usuario> getDestinatarios() {
-        return destinatarios;
-    }
+        public String getAsunto() {
+            return asunto;
+        }
 
-    public void setDestinatarios(ArrayList<Usuario> destinatarios) {
-        this.destinatarios = destinatarios;
-    }
+        public void setAsunto(String asunto) {
+            this.asunto = asunto;
+        }
 
-    public String getBody() {
-        return body;
-    }
+        public Usuario getRemitente() {
+            return remitente;
+        }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
+        public void setRemitente(Usuario remitente) {
+            this.remitente = remitente;
+        }
 
-}
+        public ArrayList<Usuario> getDestinatarios() {
+            return destinatarios;
+        }
+
+        public void setDestinatarios(ArrayList<Usuario> destinatarios) {
+            this.destinatarios = destinatarios;
+        }
+
+        public String getBody() {
+            return body;
+        }
+
+        public void setBody(String body) {
+            this.body = body;
+        }
+
+    }

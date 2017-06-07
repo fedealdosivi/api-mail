@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mensajeria.api.avanzada.Control;
+package apimail.Control;
 
-import com.mycompany.mensajeria.api.avanzada.Dao.DaoUsuarios;
-import com.mycompany.mensajeria.api.avanzada.Model.Usuario;
+import apimail.Dao.DaoUsuarios;
+import apimail.Model.Usuario;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
