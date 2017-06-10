@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package apimail.Model;
 
 /**
@@ -17,39 +13,85 @@ public class Usuario {
     private String apellido;
     private String email;
     private String password;
-    private String nickName;
+    private String direccion;
+    private int telefono;
+    private String pais;
+    private String provincia;
+    private String ciudad;
     
     public Usuario() {
-        id = nextid++;
-        nombre = "";
-        apellido="";
-        email="";
-        password="";
-        nickName="";
+        setId(nextid++);
+        setNombre("");
+        setApellido("");
+        setEmail("");
+        setPassword("");
+        setTelefono(0);
+        setDireccion("");
+        setPais("");
+        setProvincia("");
+        setCiudad("");
     }
     
-    public Usuario(String nombre,String apellido,String email,String password,String nickName){
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.email=email;
-        this.password=password;
-        this.nickName=nickName;
+    public Usuario(String nombre,String apellido,String email,String password,String direccion, int telefono,String pais, String provincia, String ciudad){
+        this.setNombre(nombre);
+        this.setApellido(apellido);
+        this.setEmail(email);
+        this.setPassword(password);
+        this.setCiudad(ciudad);
+        this.setDireccion(direccion);
+        this.setTelefono(telefono);
+        this.setPais(pais);
+        this.setProvincia(provincia);
     }
     
+
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public static int getNextid() {
-        return nextid;
-    }
-
-    public static void setNextid(int nextid) {
-        Usuario.nextid = nextid;
     }
 
     public String getNombre() {
@@ -84,57 +126,38 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getNickName() {
-        return nickName;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Usuario usuario = (Usuario) o;
+
+        if (id != usuario.id) return false;
+        if (telefono != usuario.telefono) return false;
+        if (!nombre.equals(usuario.nombre)) return false;
+        if (!apellido.equals(usuario.apellido)) return false;
+        if (!email.equals(usuario.email)) return false;
+        if (!password.equals(usuario.password)) return false;
+        if (!direccion.equals(usuario.direccion)) return false;
+        if (!pais.equals(usuario.pais)) return false;
+        if (!provincia.equals(usuario.provincia)) return false;
+        return ciudad.equals(usuario.ciudad);
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-    
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + this.id;
-        hash = 17 * hash + (this.nombre != null ? this.nombre.hashCode() : 0);
-        hash = 17 * hash + (this.apellido != null ? this.apellido.hashCode() : 0);
-        hash = 17 * hash + (this.email != null ? this.email.hashCode() : 0);
-        hash = 17 * hash + (this.password != null ? this.password.hashCode() : 0);
-        hash = 17 * hash + (this.nickName != null ? this.nickName.hashCode() : 0);
-        return hash;
+        int result = id;
+        result = 31 * result + nombre.hashCode();
+        result = 31 * result + apellido.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + direccion.hashCode();
+        result = 31 * result + telefono;
+        result = 31 * result + pais.hashCode();
+        result = 31 * result + provincia.hashCode();
+        result = 31 * result + ciudad.hashCode();
+        return result;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if ((this.nombre == null) ? (other.nombre != null) : !this.nombre.equals(other.nombre)) {
-            return false;
-        }
-        if ((this.apellido == null) ? (other.apellido != null) : !this.apellido.equals(other.apellido)) {
-            return false;
-        }
-        if ((this.email == null) ? (other.email != null) : !this.email.equals(other.email)) {
-            return false;
-        }
-        if ((this.password == null) ? (other.password != null) : !this.password.equals(other.password)) {
-            return false;
-        }
-        if ((this.nickName == null) ? (other.nickName != null) : !this.nickName.equals(other.nickName)) {
-            return false;
-        }
-        return true;
-    }
-    
 }

@@ -29,15 +29,19 @@ public class DaoUsuarios {
     public void cargarUsuario(Usuario user)
     {
         try{
-            String query = "insert into USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,NICKNAME,IDUSUARIO) values (?,?,?,?,?,?)";
+            String query = "insert into USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,IDUSUARIO,DIRECCION,TELEFONO,PAIS,PROVINCIA,CIUDAD) values (?,?,?,?,?,?,?,?,?,?)";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setString(1,user.getNombre());
             st.setString(2,user.getApellido());
             st.setString(3,user.getEmail());
             st.setString(4,user.getPassword());
-            st.setString(5,user.getNickName());
-            st.setInt(6,user.getId());
+            st.setInt(5,user.getId());
+            st.setString(6,user.getDireccion());
+            st.setInt(7,user.getTelefono());
+            st.setString(8,user.getPais());
+            st.setString(9,user.getProvincia());
+            st.setString(10,user.getCiudad());
             st.execute();
         }
         
@@ -78,8 +82,12 @@ public class DaoUsuarios {
                     usuarios.setNombre(rs.getString("NOMBRE"));
                     usuarios.setApellido(rs.getString("APELLIDO"));
                     usuarios.setPassword(rs.getString("PASSWORD"));
-                    usuarios.setNickName(rs.getString("NICKNAME"));
                     usuarios.setEmail(rs.getString("EMAIL"));
+                    usuarios.setDireccion(rs.getString("DIRECCION"));
+                    usuarios.setTelefono(rs.getInt("TELEFONO"));
+                    usuarios.setPais(rs.getString("PAIS"));
+                    usuarios.setProvincia(rs.getString("PROVINCIA"));
+                    usuarios.setCiudad(rs.getString("CIUDAD"));
                     lista.add(usuarios);
                 }
             }
@@ -107,19 +115,108 @@ public class DaoUsuarios {
     
     public void eliminarUsuario(Usuario user)
     {
-        //TODO
+        try {
+            String sq = "delete from USUARIOS where IDUSUARIO=?";
+            conn.conectar();
+            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            st.setInt(1, user.getId());
+            st.execute();
+        } catch (SQLException es) {
+            es.printStackTrace();
+        } finally {
+            try {
+                conn.desconectar();
+            } catch (Exception s) {
+                s.printStackTrace();
+            }
+        }
     }
     
     public Usuario traerUsuarioPorId(int id)
     {
-        //TODO
-        return null;
+        Usuario user=null;
+
+        try{
+            String sq = "select * from USUARIOS where IDUSUARIO=?";
+            conn.conectar();
+            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+            if(rs.next())
+            {
+                user=new Usuario();
+                user.setId(rs.getInt("IDUSUARIO"));
+                user.setNombre(rs.getString("NOMBRE"));
+                user.setApellido(rs.getString("APELLIDO"));
+                user.setPassword(rs.getString("PASSWORD"));
+                user.setEmail(rs.getString("EMAIL"));
+                user.setDireccion(rs.getString("DIRECCION"));
+                user.setTelefono(rs.getInt("TELEFONO"));
+                user.setPais(rs.getString("PAIS"));
+                user.setProvincia(rs.getString("PROVINCIA"));
+                user.setCiudad(rs.getString("CIUDAD"));
+            }
+        }
+
+        catch(SQLException e)
+        {
+            e.getStackTrace();
+        }
+
+        finally {
+            try {
+                conn.desconectar();
+            } catch (Exception s) {
+                s.printStackTrace();
+            }
+        }
+
+        return user;
     }
     
-    public Usuario traerUsuarioIdentico(Usuario u)
+    public Usuario validarUsuario(String email,String password)
     {
-        //TODO
-        return null;
+        Usuario user=null;
+
+        try{
+            String sq = "select * from USUARIOS where EMAIL=? and PASSWORD=?";
+            conn.conectar();
+            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            st.setString(1, email);
+            st.setString(2, password);
+            ResultSet rs = st.executeQuery();
+
+            if(rs.next())
+            {
+                user=new Usuario();
+                user.setId(rs.getInt("IDUSUARIO"));
+                user.setNombre(rs.getString("NOMBRE"));
+                user.setApellido(rs.getString("APELLIDO"));
+                user.setPassword(rs.getString("PASSWORD"));
+                user.setEmail(rs.getString("EMAIL"));
+                user.setDireccion(rs.getString("DIRECCION"));
+                user.setTelefono(rs.getInt("TELEFONO"));
+                user.setPais(rs.getString("PAIS"));
+                user.setProvincia(rs.getString("PROVINCIA"));
+                user.setCiudad(rs.getString("CIUDAD"));
+            }
+        }
+
+        catch(SQLException e)
+        {
+            e.getStackTrace();
+        }
+
+        finally {
+            try {
+                conn.desconectar();
+            } catch (Exception s) {
+                s.printStackTrace();
+            }
+        }
+
+        return user;
     }
     
 }
