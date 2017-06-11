@@ -10,8 +10,6 @@ import apimail.Model.Usuario;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +26,7 @@ public class ControlUsuarios {
     @Autowired
     private DaoUsuarios acceso;
     
-      @RequestMapping(value = "/",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+      @RequestMapping(value = "/traerUsuarios",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ArrayList<Usuario> traerTodos()
     {

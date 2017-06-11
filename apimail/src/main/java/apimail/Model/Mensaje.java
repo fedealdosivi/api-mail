@@ -24,6 +24,11 @@ public class Mensaje {
         body="";
     }
 
+    public void agregarDestinatario(Usuario destinatario)
+    {
+        destinatarios.add(destinatario);
+    }
+
     public int getId() {
         return id;
     }

@@ -107,7 +107,7 @@ public class DaoUsuarios {
             } 
             catch (Exception x) 
             {
-                x.printStackTrace();
+                x.getStackTrace();
             }
         }
         return lista;
@@ -122,12 +122,12 @@ public class DaoUsuarios {
             st.setInt(1, user.getId());
             st.execute();
         } catch (SQLException es) {
-            es.printStackTrace();
+            es.getStackTrace();
         } finally {
             try {
                 conn.desconectar();
             } catch (Exception s) {
-                s.printStackTrace();
+                s.getStackTrace();
             }
         }
     }
@@ -168,7 +168,7 @@ public class DaoUsuarios {
             try {
                 conn.desconectar();
             } catch (Exception s) {
-                s.printStackTrace();
+                s.getStackTrace();
             }
         }
 
@@ -212,7 +212,7 @@ public class DaoUsuarios {
             try {
                 conn.desconectar();
             } catch (Exception s) {
-                s.printStackTrace();
+                s.getStackTrace();
             }
         }
 
