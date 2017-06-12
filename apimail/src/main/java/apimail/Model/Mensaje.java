@@ -10,10 +10,10 @@ public class Mensaje {
 
     private int id;
     private static int nextid = 0;
-    String asunto;
-    Usuario remitente;
-    ArrayList<Usuario> destinatarios;
-    String body;
+    private String asunto;
+    private Usuario remitente;
+    private ArrayList<Usuario> destinatarios;
+    private String body;
 
     public Mensaje()
     {

@@ -32,7 +32,8 @@ public class Usuario {
         setCiudad("");
     }
     
-    public Usuario(String nombre,String apellido,String email,String password,String direccion, int telefono,String pais, String provincia, String ciudad){
+    public Usuario(int id,String nombre,String apellido,String email,String password,String direccion, int telefono,String pais, String provincia, String ciudad){
+        this.setId(id);
         this.setNombre(nombre);
         this.setApellido(apellido);
         this.setEmail(email);

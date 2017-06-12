@@ -5,9 +5,14 @@
  */
 package apimail.Control;
 
+import apimail.Converter.UsuarioConverter;
 import apimail.Dao.DaoUsuarios;
 import apimail.Model.Usuario;
 import java.util.ArrayList;
+import java.util.List;
+
+import apimail.Response.UsuarioResponse;
+import apimail.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpStatus;
@@ -24,8 +29,31 @@ import org.springframework.web.bind.annotation.*;
 public class ControlUsuarios {
     
     @Autowired
-    private DaoUsuarios acceso;
-    
+    UserService userService;
+
+    @Autowired
+    UsuarioConverter converter;
+
+
+    @RequestMapping("/traerUsuarios")
+    public @ResponseBody ResponseEntity<List<UsuarioResponse>> getAll(){
+        List<Usuario> listaAutos = userService.traerTodos();
+        if(listaAutos.size() > 0){
+            return new ResponseEntity<List<UsuarioResponse>>(this.convertList(listaAutos), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<List<UsuarioResponse>>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    public List<UsuarioResponse> convertList(List<Usuario> listaUsuarios){
+        List<UsuarioResponse> lista = new ArrayList<UsuarioResponse>();
+        for(Usuario usuario: listaUsuarios){
+            lista.add(converter.convert(usuario));
+        }
+        return lista;
+    }
+
+    /*
       @RequestMapping(value = "/traerUsuarios",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ArrayList<Usuario> traerTodos()
@@ -57,5 +85,5 @@ public class ControlUsuarios {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-    }
+    }*/
 }

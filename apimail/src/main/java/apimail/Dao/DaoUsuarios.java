@@ -6,6 +6,8 @@
 package apimail.Dao;
 import apimail.Model.Usuario;
 import java.util.ArrayList;
+
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import java.util.ResourceBundle;
 import java.sql.ResultSet;
@@ -16,9 +18,9 @@ import java.sql.SQLException;
  *
  * @author fefe
  */
-@Service
+@Repository
 public class DaoUsuarios {
-    
+
     private Conexion conn;
     
     public DaoUsuarios()
