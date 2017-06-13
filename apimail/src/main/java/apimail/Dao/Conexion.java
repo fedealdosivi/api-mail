@@ -33,7 +33,6 @@ public class Conexion {
     //Verifica los drivers en la conexion
     public Conexion() {
         try {
-
             this.verificarDriver();
 
         } catch (ClassNotFoundException e) {

@@ -23,10 +23,10 @@ public class DaoMensajes {
 
     private Conexion conn;
 
-    public DaoMensajes()
+    /*public DaoMensajes()
     {
         conn = Conexion.getInstancia();
-    }
+    }*/
 
     public void cargarMensaje(Mensaje mensaje)
     {

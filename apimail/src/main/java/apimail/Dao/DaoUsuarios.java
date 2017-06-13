@@ -7,6 +7,7 @@ package apimail.Dao;
 import apimail.Model.Usuario;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import java.util.ResourceBundle;
@@ -21,12 +22,13 @@ import java.sql.SQLException;
 @Repository
 public class DaoUsuarios {
 
-    private Conexion conn;
+    @Autowired
+    Conexion conn;
     
-    public DaoUsuarios()
+    /*public DaoUsuarios()
     {
         conn = Conexion.getInstancia();
-    }
+    }*/
     
     public void cargarUsuario(Usuario user)
     {
