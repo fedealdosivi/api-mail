@@ -8,6 +8,7 @@ import apimail.Model.Mensaje;
 import java.util.ArrayList;
 
 import apimail.Model.Usuario;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -17,7 +18,7 @@ import java.sql.SQLException;
  *
  * @author fefe
  */
-@Service
+@Repository
 public class DaoMensajes {
 
     private Conexion conn;

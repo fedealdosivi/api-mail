@@ -67,8 +67,8 @@ public class ControlUsuarios {
     }
 
 
-    @RequestMapping(value = "/autos/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity addAuto(@RequestBody UsuarioRequest userRequest){
+    @RequestMapping(value = "/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity addUsuario(@RequestBody UsuarioRequest userRequest){
         try{
             userService.agregarUsuario(userRequest.getId(),userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());
             return new ResponseEntity(HttpStatus.CREATED);
