@@ -5,6 +5,9 @@
  */
 package apimail.Dao;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,17 +15,20 @@ import java.sql.SQLException;
  *
  * @author fefe
  */
+@Repository
 public class Conexion {
     private Connection conn;
-    private static Conexion instancia;
+    //private static Conexion instancia;
+
 
     //Patron Singleton
+    /*
     public static Conexion getInstancia() {
         if (instancia == null) {
             instancia = new Conexion();
         }
         return instancia;
-    }
+    }*/
     
     //Verifica los drivers en la conexion
     public Conexion() {
@@ -38,7 +44,7 @@ public class Conexion {
     //Conecta la base de datos con getConnection y los datos de nuestra base de datos, en caso de no poder ejectura la Excepcion
     public void conectar() throws SQLException {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mail", "root", "123456");
+            conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/mail", "root", "123456");
         } catch (SQLException e) {
             System.err.println("SQLexception: " + e.getMessage());
             throw e;
