@@ -1,5 +1,6 @@
 package apimail;
 
+import apimail.Dao.DaoUsuarios;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -9,10 +10,11 @@ import junit.framework.TestSuite;
  */
 public class UsuarioDaoTest extends TestCase{
 
+    DaoUsuarios dao;
 
     public void setUp() throws Exception {
         super.setUp();
-
+        dao=new DaoUsuarios();
     }
 
     public void testName() throws Exception {

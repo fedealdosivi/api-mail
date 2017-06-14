@@ -1,5 +1,6 @@
 package apimail;
 
+import apimail.Model.Mensaje;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -9,10 +10,11 @@ import junit.framework.TestSuite;
  */
 public class MensajeTest extends TestCase {
 
+    Mensaje mensaje;
 
     public void setUp() throws Exception {
         super.setUp();
-
+        mensaje=new Mensaje();
     }
 
     public void testName() throws Exception {

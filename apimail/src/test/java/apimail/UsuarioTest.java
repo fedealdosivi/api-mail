@@ -1,5 +1,6 @@
 package apimail;
 
+import apimail.Model.Usuario;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -9,8 +10,11 @@ import junit.framework.TestSuite;
  */
 public class UsuarioTest extends TestCase{
 
+    Usuario usuario;
+
     public void setUp() throws Exception {
         super.setUp();
+        usuario=new Usuario();
     }
 
     public void testName() throws Exception {
