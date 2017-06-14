@@ -32,4 +32,9 @@ public class UserService {
         return daoUsuarios.traerUsuarioPorId(id);
     }
 
+    public Usuario login(String email, String password)
+    {
+        return daoUsuarios.validarUsuario(email,password);
+    }
+
 }
