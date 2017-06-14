@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apimail.Request.UsuarioRequest;
+import apimail.Response.LoginResponse;
 import apimail.Response.UsuarioResponse;
 import apimail.Services.UserService;
+import apimail.Session.SessionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpStatus;
@@ -25,8 +27,11 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author fefe
  */
-@Controller
-
+@RestController
+@RequestMapping(
+        value = "/api",
+        produces = MediaType.APPLICATION_JSON_VALUE
+)
 public class ControlUsuarios {
     
     @Autowired
@@ -35,8 +40,7 @@ public class ControlUsuarios {
     @Autowired
     UsuarioConverter converter;
 
-
-    @RequestMapping("/traerUsuarios")
+    @RequestMapping("Usuario/traerUsuarios")
     public @ResponseBody ResponseEntity<List<UsuarioResponse>> getAll(){
         List<Usuario> lista = userService.traerTodos();
         if(lista.size() > 0){
@@ -66,8 +70,7 @@ public class ControlUsuarios {
         }
     }
 
-
-    @RequestMapping(value = "/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "Usuario/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUsuario(@RequestBody UsuarioRequest userRequest){
         try{
             userService.agregarUsuario(userRequest.getId(),userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());
@@ -76,6 +79,8 @@ public class ControlUsuarios {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
     /*
       @RequestMapping(value = "/traerUsuarios",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

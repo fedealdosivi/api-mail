@@ -25,8 +25,11 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author fefe
  */
-@Controller
-
+@RestController
+@RequestMapping(
+        value = "/api",
+        produces = MediaType.APPLICATION_JSON_VALUE
+)
 public class ControlMensajes {
     
     @Autowired
@@ -37,7 +40,7 @@ public class ControlMensajes {
 
 
 
-    @RequestMapping("/traerMensajes")
+    @RequestMapping("Mensaje/traerMensajes")
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getAll(){
         List<Mensaje> lista = mensajeService.traerTodos();
         if(lista.size() > 0){
@@ -68,7 +71,7 @@ public class ControlMensajes {
     }
 
 
-    @RequestMapping(value = "/cargarMensaje", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "Mensaje/cargarMensaje", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addMensaje(@RequestBody MensajeRequest mensajeRequest){
         try{
             mensajeService.agregarMensaje(mensajeRequest.getId(),mensajeRequest.getAsunto(),mensajeRequest.getBody(),mensajeRequest.getRemitente(),mensajeRequest.getDestinatarios());
