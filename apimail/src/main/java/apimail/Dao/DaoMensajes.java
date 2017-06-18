@@ -32,7 +32,7 @@ public class DaoMensajes {
     {
         try {
 
-            String query = "INSERT INTO MENSAJES(IDMENSAJE,IDREMITENTE,ASUNTO,BODY) values (?,?,?,?);";
+            String query = "INSERT INTO MENSAJES(IDMENSAJE,IDREMITENTE,ASUNTO,BODY) values (?,?,?,?)";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setInt(1,mensaje.getId());
@@ -41,12 +41,12 @@ public class DaoMensajes {
             st.setString(4,mensaje.getBody());
             st.execute();
 
-            if(mensaje.getDestinatarios().size()>=1)
+            if(mensaje.getDestinatarios().size()>0)
             {
                 for (Usuario u: mensaje.getDestinatarios())
                 {
                     String qr="INSERT INTO DESTINATARIOXMENSAJE(IDMENSAJE,IDDESTINATARIO) values(?,?)";
-                    PreparedStatement st2 = conn.getConn().prepareStatement(query);
+                    PreparedStatement st2 = conn.getConn().prepareStatement(qr);
                     st2.setInt(1,mensaje.getId());
                     st2.setInt(2,u.getId());
                     st2.execute();
@@ -102,12 +102,14 @@ public class DaoMensajes {
         try{
             //TRAIGO TODOS LOS MENSAJES
 
+            lista=new ArrayList<Mensaje>();
             String traerMensajes = "select * from MENSAJES";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(traerMensajes);
             ResultSet rs = st.executeQuery();
 
             //POR CADA MENSAJE QUE TRAJE, BUSCO SU REMITENTE Y SUS DESTINATARIOS
+
             while (rs.next())
             {
                 Mensaje m=new Mensaje();
@@ -186,6 +188,7 @@ public class DaoMensajes {
         Mensaje m=null;
 
         try{
+            m=new Mensaje();
             String sq = "select * from MENSAJES where IDMENSAJE=?";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(sq);
@@ -193,7 +196,6 @@ public class DaoMensajes {
             ResultSet rs = st.executeQuery();
             if(rs.next())
             {
-                    m=new Mensaje();
                     m.setId(rs.getInt("IDMENSAJE"));
                     m.setAsunto(rs.getString("ASUNTO"));
                     m.setBody(rs.getString("BODY"));
@@ -227,16 +229,16 @@ public class DaoMensajes {
                     while (rsDestinatarios.next())
                     {
                         Usuario destinatario=new Usuario();
-                        destinatario.setId(rsRemitente.getInt("IDUSUARIO"));
-                        destinatario.setNombre(rsRemitente.getString("NOMBRE"));
-                        destinatario.setApellido(rsRemitente.getString("APELLIDO"));
-                        destinatario.setPassword(rsRemitente.getString("PASSWORD"));
-                        destinatario.setEmail(rsRemitente.getString("EMAIL"));
-                        destinatario.setDireccion(rsRemitente.getString("DIRECCION"));
-                        destinatario.setTelefono(rsRemitente.getInt("TELEFONO"));
-                        destinatario.setPais(rsRemitente.getString("PAIS"));
-                        destinatario.setProvincia(rsRemitente.getString("PROVINCIA"));
-                        destinatario.setCiudad(rsRemitente.getString("CIUDAD"));
+                        destinatario.setId(rsDestinatarios.getInt("IDUSUARIO"));
+                        destinatario.setNombre(rsDestinatarios.getString("NOMBRE"));
+                        destinatario.setApellido(rsDestinatarios.getString("APELLIDO"));
+                        destinatario.setPassword(rsDestinatarios.getString("PASSWORD"));
+                        destinatario.setEmail(rsDestinatarios.getString("EMAIL"));
+                        destinatario.setDireccion(rsDestinatarios.getString("DIRECCION"));
+                        destinatario.setTelefono(rsDestinatarios.getInt("TELEFONO"));
+                        destinatario.setPais(rsDestinatarios.getString("PAIS"));
+                        destinatario.setProvincia(rsDestinatarios.getString("PROVINCIA"));
+                        destinatario.setCiudad(rsDestinatarios.getString("CIUDAD"));
 
                         m.agregarDestinatario(destinatario);
                     }
