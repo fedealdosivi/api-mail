@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(
-        value = "/api",
+        value = "/api/Usuario",
         produces = MediaType.APPLICATION_JSON_VALUE
 )
 public class ControlUsuarios {
@@ -40,7 +40,7 @@ public class ControlUsuarios {
     @Autowired
     UsuarioConverter converter;
 
-    @RequestMapping("Usuario/traerUsuarios")
+    @RequestMapping("/traerUsuarios")
     public @ResponseBody ResponseEntity<List<UsuarioResponse>> getAll(){
         List<Usuario> lista = userService.traerTodos();
         if(lista.size() > 0){
@@ -59,7 +59,7 @@ public class ControlUsuarios {
     }
 
 
-    @RequestMapping("/Usuario/{id}")
+    @RequestMapping("/{id}")
     public @ResponseBody ResponseEntity<UsuarioResponse> getById(@PathVariable("id") int id){
         Usuario user= userService.traerPodId(id);
         if(user != null){
@@ -70,7 +70,7 @@ public class ControlUsuarios {
         }
     }
 
-    @RequestMapping(value = "Usuario/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUsuario(@RequestBody UsuarioRequest userRequest){
         try{
             userService.agregarUsuario(userRequest.getId(),userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());

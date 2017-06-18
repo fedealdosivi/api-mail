@@ -82,14 +82,20 @@ public class ControlMensajes {
     }
 
 
-    /*
-    @RequestMapping(value = "/traerMensajes",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ArrayList<Mensaje> traerTodos()
-    {
-        return acceso.traerTodos();
-    }
+    //TRAER SIN WRAPPER SOLO PARA PROBAR
 
+    @RequestMapping(value = "/bandeja",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ArrayList<Mensaje> traerTodos() {
+        try {
+            return mensajeService.traerArrayTodos();
+        } catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
+    }
+/*
     @RequestMapping(value = "/Mensaje/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Mensaje mensajePorId(@PathVariable("id") Integer id){

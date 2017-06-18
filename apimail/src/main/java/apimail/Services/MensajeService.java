@@ -39,6 +39,11 @@ public class MensajeService {
         daoMensajes.cargarMensaje(mensaje);
     }
 
+    public ArrayList<Mensaje> traerArrayTodos()
+    {
+        return daoMensajes.traerTodos();
+    }
+
     public void eliminarMensaje(Mensaje mensaje)
     {
         daoMensajes.eliminarMensaje(mensaje);
