@@ -73,9 +73,22 @@ public class ControlUsuarios {
     @RequestMapping(value = "/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUsuario(@RequestBody UsuarioRequest userRequest){
         try{
-            userService.agregarUsuario(userRequest.getId(),userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());
+            userService.agregarUsuario(userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());
             return new ResponseEntity(HttpStatus.CREATED);
         }catch(Exception e){
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value="/eliminar/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity removeUsuario(@PathVariable ("id") int id)
+    {
+        try{
+            userService.eliminarUsuario(id);
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }
+        catch(Exception e)
+        {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

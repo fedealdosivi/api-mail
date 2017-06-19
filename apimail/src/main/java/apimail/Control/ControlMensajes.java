@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(
-        value = "/api",
+        value = "/api/Mensaje",
         produces = MediaType.APPLICATION_JSON_VALUE
 )
 public class ControlMensajes {
@@ -40,7 +40,7 @@ public class ControlMensajes {
 
 
 
-    @RequestMapping("Mensaje/traerMensajes")
+    @RequestMapping("/traerMensajes")
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getAll(){
         List<Mensaje> lista = mensajeService.traerTodos();
         if(lista.size() > 0){
@@ -59,7 +59,7 @@ public class ControlMensajes {
     }
 
 
-    @RequestMapping("/Mensaje/{id}")
+    @RequestMapping("/{id}")
     public @ResponseBody ResponseEntity<MensajeResponse> getById(@PathVariable("id") int id){
         Mensaje mensaje= mensajeService.traerPorId(id);
         if(mensaje != null){
@@ -71,30 +71,29 @@ public class ControlMensajes {
     }
 
 
-    @RequestMapping(value = "Mensaje/cargarMensaje", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/cargarMensaje", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addMensaje(@RequestBody MensajeRequest mensajeRequest){
         try{
-            mensajeService.agregarMensaje(mensajeRequest.getId(),mensajeRequest.getAsunto(),mensajeRequest.getBody(),mensajeRequest.getRemitente(),mensajeRequest.getDestinatarios());
+            mensajeService.agregarMensaje(mensajeRequest.getId(),mensajeRequest.getAsunto(),mensajeRequest.getBody(),mensajeRequest.getRemitente(),mensajeRequest.getDestinatario());
             return new ResponseEntity(HttpStatus.CREATED);
         }catch(Exception e){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-
-    //TRAER SIN WRAPPER SOLO PARA PROBAR
-
-    @RequestMapping(value = "/bandeja",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ArrayList<Mensaje> traerTodos() {
-        try {
-            return mensajeService.traerArrayTodos();
-        } catch (Exception e)
+    @RequestMapping(value="/eliminar/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity removeMensaje(@PathVariable ("id") int id)
+    {
+        try{
+            mensajeService.eliminarMensaje(id);
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }
+        catch(Exception e)
         {
-            e.getStackTrace();
-            return null;
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 /*
     @RequestMapping(value = "/Mensaje/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

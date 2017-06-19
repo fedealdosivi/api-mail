@@ -8,7 +8,6 @@ package apimail.Model;
 public class Usuario {
     
     private int id;
-    private static int nextid = 0;
     private String nombre;
     private String apellido;
     private String email;
@@ -20,7 +19,7 @@ public class Usuario {
     private String ciudad;
     
     public Usuario() {
-        setId(nextid++);
+        setId(0);
         setNombre("");
         setApellido("");
         setEmail("");
@@ -32,8 +31,8 @@ public class Usuario {
         setCiudad("");
     }
     
-    public Usuario(int id,String nombre,String apellido,String email,String password,String direccion, int telefono,String pais, String provincia, String ciudad){
-        this.setId(id);
+    public Usuario(String nombre,String apellido,String email,String password,String direccion, int telefono,String pais, String provincia, String ciudad){
+        this.setId(0);
         this.setNombre(nombre);
         this.setApellido(apellido);
         this.setEmail(email);
@@ -160,5 +159,21 @@ public class Usuario {
         result = 31 * result + provincia.hashCode();
         result = 31 * result + ciudad.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono=" + telefono +
+                ", pais='" + pais + '\'' +
+                ", provincia='" + provincia + '\'' +
+                ", ciudad='" + ciudad + '\'' +
+                '}';
     }
 }

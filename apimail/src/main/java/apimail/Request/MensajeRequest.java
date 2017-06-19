@@ -15,8 +15,8 @@ public class MensajeRequest {
     private String asunto;
     @JsonProperty("remitente")
     private Usuario remitente;
-    @JsonProperty("destinatarios")
-    private ArrayList<Usuario> destinatarios;
+    @JsonProperty("destinatario")
+    private Usuario destinatario;
     @JsonProperty("body")
     private String body;
 
@@ -45,12 +45,12 @@ public class MensajeRequest {
         this.remitente = remitente;
     }
 
-    public ArrayList<Usuario> getDestinatarios() {
-        return destinatarios;
+    public Usuario getDestinatario() {
+        return destinatario;
     }
 
-    public void setDestinatarios(ArrayList<Usuario> destinatarios) {
-        this.destinatarios = destinatarios;
+    public void setDestinatario(Usuario destinatario) {
+        this.destinatario = destinatario;
     }
 
     public String getBody() {

@@ -16,9 +16,9 @@ public class UserService {
     @Autowired
     DaoUsuarios daoUsuarios;
 
-    public void agregarUsuario(int id, String nombre, String apellido, String direccion, int telefono, String password, String email, String pais, String provincia, String ciudad)
+    public void agregarUsuario(String nombre, String apellido, String direccion, int telefono, String password, String email, String pais, String provincia, String ciudad)
     {
-        Usuario user=new Usuario(id,nombre,apellido,email,password,direccion,telefono,pais,provincia,ciudad);
+        Usuario user=new Usuario(nombre,apellido,email,password,direccion,telefono,pais,provincia,ciudad);
         daoUsuarios.cargarUsuario(user);
     }
 
@@ -37,4 +37,9 @@ public class UserService {
         return daoUsuarios.validarUsuario(email,password);
     }
 
+
+    public void eliminarUsuario(int id)
+    {
+        daoUsuarios.eliminarUsuario(id);
+    }
 }

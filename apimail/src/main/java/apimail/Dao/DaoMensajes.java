@@ -23,35 +23,23 @@ public class DaoMensajes {
 
     private Conexion conn;
 
-    /*public DaoMensajes()
+    public DaoMensajes()
     {
         conn = Conexion.getInstancia();
-    }*/
+    }
 
     public void cargarMensaje(Mensaje mensaje)
     {
         try {
 
-            String query = "INSERT INTO MENSAJES(IDMENSAJE,IDREMITENTE,ASUNTO,BODY) values (?,?,?,?)";
+            String query = "INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (?,?,?,?)";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(query);
-            st.setInt(1,mensaje.getId());
-            st.setInt(2,mensaje.getRemitente().getId());
+            st.setInt(1,mensaje.getRemitente().getId());
+            st.setInt(1,mensaje.getDestinatario().getId());
             st.setString(3,mensaje.getAsunto());
             st.setString(4,mensaje.getBody());
             st.execute();
-
-            if(mensaje.getDestinatarios().size()>0)
-            {
-                for (Usuario u: mensaje.getDestinatarios())
-                {
-                    String qr="INSERT INTO DESTINATARIOXMENSAJE(IDMENSAJE,IDDESTINATARIO) values(?,?)";
-                    PreparedStatement st2 = conn.getConn().prepareStatement(qr);
-                    st2.setInt(1,mensaje.getId());
-                    st2.setInt(2,u.getId());
-                    st2.execute();
-                }
-            }
 
         }
         catch(Exception e)
@@ -70,13 +58,13 @@ public class DaoMensajes {
         }
     }
 
-    public void eliminarMensaje(Mensaje mensaje)
+    public void eliminarMensaje(int idMensaje)
     {
         try{
             String sq = "delete from MENSAJES where IDMENSAJE=?";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(sq);
-            st.setInt(1, mensaje.getId());
+            st.setInt(1, idMensaje);
             st.execute();
         }
 
@@ -102,11 +90,11 @@ public class DaoMensajes {
         try{
             //TRAIGO TODOS LOS MENSAJES
 
-            lista=new ArrayList<Mensaje>();
             String traerMensajes = "select * from MENSAJES";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(traerMensajes);
             ResultSet rs = st.executeQuery();
+            lista=new ArrayList<Mensaje>();
 
             //POR CADA MENSAJE QUE TRAJE, BUSCO SU REMITENTE Y SUS DESTINATARIOS
 
@@ -116,10 +104,15 @@ public class DaoMensajes {
                 m.setId(rs.getInt("IDMENSAJE"));
                 m.setAsunto(rs.getString("ASUNTO"));
                 m.setBody(rs.getString("BODY"));
+                int idRemitente=rs.getInt("IDREMITENTE");
+                int idDestinatario=rs.getInt("IDDESTINATARIO");
+
+
+                //TRAIGO EL REMITENTE CON LA ID DEL RESULT SET.
 
                 String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
                 PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
-                statementRemitente.setInt(1,rs.getInt("IDREMITENTE"));
+                statementRemitente.setInt(1,idRemitente);
                 ResultSet rsRemitente=statementRemitente.executeQuery();
 
                 if(rsRemitente.next())
@@ -138,27 +131,29 @@ public class DaoMensajes {
                     m.setRemitente(remitente);
                 }
 
-                String traerDestinatarios="SELECT U.IDUSUARIO,U.NOMBRE,U.APELLIDO,U.EMAIL,U.PASSWORD,U.DIRECCION,U.TELEFONO,U.PAIS,U.PROVINCIA,U.CIUDAD FROM USUARIOS AS U JOIN DESTINATARIOXMENSAJE AS D WHERE D.IDMENSAJE=? AND D.IDDESTINATARIO=U.IDUSUARIO";
-                PreparedStatement stDestinatarios = conn.getConn().prepareStatement(traerDestinatarios);
-                stDestinatarios.setInt(1,m.getId());
-                ResultSet rsDestinatarios=stDestinatarios.executeQuery();
+                //TRAIGO EL DESTINATARIO CON EL ID DEL RESULT SET
 
-                while (rsDestinatarios.next())
+                String traerDestinatario = "select * from USUARIOS where IDUSUARIO=?";
+                PreparedStatement statementDestinatario = conn.getConn().prepareStatement(traerRemitente);
+                statementDestinatario.setInt(1,idDestinatario);
+                ResultSet rsDest=statementDestinatario.executeQuery();
+
+                if(rsDest.next())
                 {
-                    Usuario destinatario=new Usuario();
-                    destinatario.setId(rsRemitente.getInt("IDUSUARIO"));
-                    destinatario.setNombre(rsRemitente.getString("NOMBRE"));
-                    destinatario.setApellido(rsRemitente.getString("APELLIDO"));
-                    destinatario.setPassword(rsRemitente.getString("PASSWORD"));
-                    destinatario.setEmail(rsRemitente.getString("EMAIL"));
-                    destinatario.setDireccion(rsRemitente.getString("DIRECCION"));
-                    destinatario.setTelefono(rsRemitente.getInt("TELEFONO"));
-                    destinatario.setPais(rsRemitente.getString("PAIS"));
-                    destinatario.setProvincia(rsRemitente.getString("PROVINCIA"));
-                    destinatario.setCiudad(rsRemitente.getString("CIUDAD"));
-
-                    m.agregarDestinatario(destinatario);
+                    Usuario dest=new Usuario();
+                    dest.setId(rsDest.getInt("IDUSUARIO"));
+                    dest.setNombre(rsDest.getString("NOMBRE"));
+                    dest.setApellido(rsDest.getString("APELLIDO"));
+                    dest.setPassword(rsDest.getString("PASSWORD"));
+                    dest.setEmail(rsDest.getString("EMAIL"));
+                    dest.setDireccion(rsDest.getString("DIRECCION"));
+                    dest.setTelefono(rsDest.getInt("TELEFONO"));
+                    dest.setPais(rsDest.getString("PAIS"));
+                    dest.setProvincia(rsDest.getString("PROVINCIA"));
+                    dest.setCiudad(rsDest.getString("CIUDAD"));
+                    m.setDestinatario(dest);
                 }
+
 
                 //UNA VEZ TRAIDOS TODOS LOS DATOS AGREGO A LA LISTA
 
@@ -194,54 +189,61 @@ public class DaoMensajes {
             PreparedStatement st = conn.getConn().prepareStatement(sq);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
+
             if(rs.next())
             {
-                    m.setId(rs.getInt("IDMENSAJE"));
-                    m.setAsunto(rs.getString("ASUNTO"));
-                    m.setBody(rs.getString("BODY"));
+                m.setId(rs.getInt("IDMENSAJE"));
+                m.setAsunto(rs.getString("ASUNTO"));
+                m.setBody(rs.getString("BODY"));
+                int idRemitente=rs.getInt("IDREMITENTE");
+                int idDestinatario=rs.getInt("IDDESTINATARIO");
 
-                    String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
-                    PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
-                    statementRemitente.setInt(1,rs.getInt("IDREMITENTE"));
-                    ResultSet rsRemitente=statementRemitente.executeQuery();
 
-                    if(rsRemitente.next())
-                    {
-                        Usuario remitente=new Usuario();
-                        remitente.setId(rsRemitente.getInt("IDUSUARIO"));
-                        remitente.setNombre(rsRemitente.getString("NOMBRE"));
-                        remitente.setApellido(rsRemitente.getString("APELLIDO"));
-                        remitente.setPassword(rsRemitente.getString("PASSWORD"));
-                        remitente.setEmail(rsRemitente.getString("EMAIL"));
-                        remitente.setDireccion(rsRemitente.getString("DIRECCION"));
-                        remitente.setTelefono(rsRemitente.getInt("TELEFONO"));
-                        remitente.setPais(rsRemitente.getString("PAIS"));
-                        remitente.setProvincia(rsRemitente.getString("PROVINCIA"));
-                        remitente.setCiudad(rsRemitente.getString("CIUDAD"));
-                        m.setRemitente(remitente);
-                    }
+                //TRAIGO EL REMITENTE CON LA ID DEL RESULT SET.
 
-                    String traerDestinatarios="SELECT U.IDUSUARIO,U.NOMBRE,U.APELLIDO,U.EMAIL,U.PASSWORD,U.DIRECCION,U.TELEFONO,U.PAIS,U.PROVINCIA,U.CIUDAD FROM USUARIOS AS U JOIN DESTINATARIOXMENSAJE AS D WHERE D.IDMENSAJE=? AND D.IDDESTINATARIO=U.IDUSUARIO";
-                    PreparedStatement stDestinatarios = conn.getConn().prepareStatement(traerDestinatarios);
-                    stDestinatarios.setInt(1,m.getId());
-                    ResultSet rsDestinatarios=stDestinatarios.executeQuery();
+                String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
+                PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
+                statementRemitente.setInt(1,idRemitente);
+                ResultSet rsRemitente=statementRemitente.executeQuery();
 
-                    while (rsDestinatarios.next())
-                    {
-                        Usuario destinatario=new Usuario();
-                        destinatario.setId(rsDestinatarios.getInt("IDUSUARIO"));
-                        destinatario.setNombre(rsDestinatarios.getString("NOMBRE"));
-                        destinatario.setApellido(rsDestinatarios.getString("APELLIDO"));
-                        destinatario.setPassword(rsDestinatarios.getString("PASSWORD"));
-                        destinatario.setEmail(rsDestinatarios.getString("EMAIL"));
-                        destinatario.setDireccion(rsDestinatarios.getString("DIRECCION"));
-                        destinatario.setTelefono(rsDestinatarios.getInt("TELEFONO"));
-                        destinatario.setPais(rsDestinatarios.getString("PAIS"));
-                        destinatario.setProvincia(rsDestinatarios.getString("PROVINCIA"));
-                        destinatario.setCiudad(rsDestinatarios.getString("CIUDAD"));
+                if(rsRemitente.next())
+                {
+                    Usuario remitente=new Usuario();
+                    remitente.setId(rsRemitente.getInt("IDUSUARIO"));
+                    remitente.setNombre(rsRemitente.getString("NOMBRE"));
+                    remitente.setApellido(rsRemitente.getString("APELLIDO"));
+                    remitente.setPassword(rsRemitente.getString("PASSWORD"));
+                    remitente.setEmail(rsRemitente.getString("EMAIL"));
+                    remitente.setDireccion(rsRemitente.getString("DIRECCION"));
+                    remitente.setTelefono(rsRemitente.getInt("TELEFONO"));
+                    remitente.setPais(rsRemitente.getString("PAIS"));
+                    remitente.setProvincia(rsRemitente.getString("PROVINCIA"));
+                    remitente.setCiudad(rsRemitente.getString("CIUDAD"));
+                    m.setRemitente(remitente);
+                }
 
-                        m.agregarDestinatario(destinatario);
-                    }
+                //TRAIGO EL DESTINATARIO CON EL ID DEL RESULT SET
+
+                String traerDestinatario = "select * from USUARIOS where IDUSUARIO=?";
+                PreparedStatement statementDestinatario = conn.getConn().prepareStatement(traerRemitente);
+                statementDestinatario.setInt(1,idDestinatario);
+                ResultSet rsDest=statementDestinatario.executeQuery();
+
+                if(rsDest.next())
+                {
+                    Usuario dest=new Usuario();
+                    dest.setId(rsDest.getInt("IDUSUARIO"));
+                    dest.setNombre(rsDest.getString("NOMBRE"));
+                    dest.setApellido(rsDest.getString("APELLIDO"));
+                    dest.setPassword(rsDest.getString("PASSWORD"));
+                    dest.setEmail(rsDest.getString("EMAIL"));
+                    dest.setDireccion(rsDest.getString("DIRECCION"));
+                    dest.setTelefono(rsDest.getInt("TELEFONO"));
+                    dest.setPais(rsDest.getString("PAIS"));
+                    dest.setProvincia(rsDest.getString("PROVINCIA"));
+                    dest.setCiudad(rsDest.getString("CIUDAD"));
+                    m.setDestinatario(dest);
+                }
             }
         }
 

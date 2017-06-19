@@ -25,27 +25,26 @@ public class DaoUsuarios {
     @Autowired
     Conexion conn;
     
-    /*public DaoUsuarios()
+    public DaoUsuarios()
     {
         conn = Conexion.getInstancia();
-    }*/
+    }
     
     public void cargarUsuario(Usuario user)
     {
         try{
-            String query = "insert into USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,IDUSUARIO,DIRECCION,TELEFONO,PAIS,PROVINCIA,CIUDAD) values (?,?,?,?,?,?,?,?,?,?)";
+            String query = "insert into USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,DIRECCION,TELEFONO,PAIS,PROVINCIA,CIUDAD) values (?,?,?,?,?,?,?,?,?)";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setString(1,user.getNombre());
             st.setString(2,user.getApellido());
             st.setString(3,user.getEmail());
             st.setString(4,user.getPassword());
-            st.setInt(5,user.getId());
-            st.setString(6,user.getDireccion());
-            st.setInt(7,user.getTelefono());
-            st.setString(8,user.getPais());
-            st.setString(9,user.getProvincia());
-            st.setString(10,user.getCiudad());
+            st.setString(5,user.getDireccion());
+            st.setInt(6,user.getTelefono());
+            st.setString(7,user.getPais());
+            st.setString(8,user.getProvincia());
+            st.setString(9,user.getCiudad());
             st.execute();
         }
         
@@ -117,13 +116,13 @@ public class DaoUsuarios {
         return lista;
     }
     
-    public void eliminarUsuario(Usuario user)
+    public void eliminarUsuario(int id)
     {
         try {
             String sq = "delete from USUARIOS where IDUSUARIO=?";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(sq);
-            st.setInt(1, user.getId());
+            st.setInt(1, id);
             st.execute();
         } catch (SQLException es) {
             es.getStackTrace();

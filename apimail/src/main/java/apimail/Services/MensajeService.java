@@ -28,14 +28,14 @@ public class MensajeService {
         return daoMensajes.traerMensajePorId(id);
     }
 
-    public void agregarMensaje(int id, String asunto, String body, Usuario remitente, ArrayList<Usuario> destinataros)
+    public void agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario)
     {
         Mensaje mensaje=new Mensaje();
         mensaje.setId(id);
         mensaje.setRemitente(remitente);
         mensaje.setBody(body);
         mensaje.setAsunto(asunto);
-        mensaje.setDestinatarios(destinataros);
+        mensaje.setDestinatario(destinatario);
         daoMensajes.cargarMensaje(mensaje);
     }
 
@@ -44,9 +44,9 @@ public class MensajeService {
         return daoMensajes.traerTodos();
     }
 
-    public void eliminarMensaje(Mensaje mensaje)
+    public void eliminarMensaje(int id)
     {
-        daoMensajes.eliminarMensaje(mensaje);
+        daoMensajes.eliminarMensaje(id);
     }
 
 }
