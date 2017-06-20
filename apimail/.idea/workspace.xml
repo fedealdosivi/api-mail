@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c96e72b9-e038-43ff-b120-0ab927621a27" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MailQuery.sql" afterPath="$PROJECT_DIR$/../MailQuery.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Services/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Session/Authentication.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Session/Authentication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
