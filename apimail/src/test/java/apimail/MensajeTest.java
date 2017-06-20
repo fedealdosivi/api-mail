@@ -45,7 +45,7 @@ public class MensajeTest extends TestCase {
     @Test
     public void testBody()
     {
-        assertEquals("probando body",mensaje.getBody(),"pruebando body");
+        assertEquals("probando body",mensaje.getBody(),"probando body");
     }
 
 
