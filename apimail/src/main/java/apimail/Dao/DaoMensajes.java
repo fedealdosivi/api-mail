@@ -183,7 +183,6 @@ public class DaoMensajes {
         Mensaje m=null;
 
         try{
-            m=new Mensaje();
             String sq = "select * from MENSAJES where IDMENSAJE=?";
             conn.conectar();
             PreparedStatement st = conn.getConn().prepareStatement(sq);
@@ -192,6 +191,7 @@ public class DaoMensajes {
 
             if(rs.next())
             {
+                m=new Mensaje();
                 m.setId(rs.getInt("IDMENSAJE"));
                 m.setAsunto(rs.getString("ASUNTO"));
                 m.setBody(rs.getString("BODY"));
