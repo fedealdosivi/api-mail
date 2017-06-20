@@ -16,30 +16,66 @@ public class UserService {
     @Autowired
     DaoUsuarios daoUsuarios;
 
-    public void agregarUsuario(String nombre, String apellido, String direccion, int telefono, String password, String email, String pais, String provincia, String ciudad)
+    public boolean agregarUsuario(String nombre, String apellido, String direccion, int telefono, String password, String email, String pais, String provincia, String ciudad)
     {
-        Usuario user=new Usuario(nombre,apellido,email,password,direccion,telefono,pais,provincia,ciudad);
-        daoUsuarios.cargarUsuario(user);
+        try {
+            Usuario user = new Usuario(nombre, apellido, email, password, direccion, telefono, pais, provincia, ciudad);
+            daoUsuarios.cargarUsuario(user);
+            return true;
+        }
+        catch(Exception e)
+        {
+            e.getStackTrace();
+            return false;
+        }
     }
 
     public List<Usuario> traerTodos()
     {
-        return daoUsuarios.traerTodos();
+        try {
+            return daoUsuarios.traerTodos();
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return  null;
+        }
     }
 
     public Usuario traerPodId(int id)
     {
-        return daoUsuarios.traerUsuarioPorId(id);
+        try {
+            return daoUsuarios.traerUsuarioPorId(id);
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
     }
 
     public Usuario login(String email, String password)
     {
-        return daoUsuarios.validarUsuario(email,password);
+        try {
+            return daoUsuarios.validarUsuario(email, password);
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return  null;
+        }
     }
 
 
     public void eliminarUsuario(int id)
     {
-        daoUsuarios.eliminarUsuario(id);
+        try {
+            daoUsuarios.eliminarUsuario(id);
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
+
     }
 }

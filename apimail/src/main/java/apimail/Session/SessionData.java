@@ -28,42 +28,75 @@ public class SessionData {
 
 
     public SessionData() {
-        this.sessionData = new HashMap<String, Authentication>();
+        try {
+            this.sessionData = new HashMap<String, Authentication>();
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 
     public String addSession(Usuario usuario) {
-        String sessionId = UUID.randomUUID().toString();
-        Authentication aData = new Authentication();
-        aData.setUsuario(usuario);
-        aData.setLastAction(new DateTime());
-        this.sessionData.put(sessionId, aData);
-        return sessionId;
+        try {
+            String sessionId = UUID.randomUUID().toString();
+            Authentication aData = new Authentication();
+            aData.setUsuario(usuario);
+            aData.setLastAction(new DateTime());
+            this.sessionData.put(sessionId, aData);
+            return sessionId;
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
     }
 
 
     public void removeSession(String sessionId) {
-        sessionData.remove(sessionId);
+        try {
+            sessionData.remove(sessionId);
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 
     public Authentication getSession(String sessionId) {
-        Authentication aData = this.sessionData.get(sessionId);
-        if (aData != null) {
-            return aData;
-        } else {
+        try {
+            Authentication aData = this.sessionData.get(sessionId);
+            if (aData != null) {
+                return aData;
+            } else {
+                return null;
+            }
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
             return null;
         }
     }
 
     @Scheduled(fixedRate = 5000)
-    public void checkSessions() {
-        System.out.println("Checking sessions");
-        Set<String> sessionsId = this.sessionData.keySet();
-        for (String sessionId : sessionsId) {
-            Authentication aData = this.sessionData.get(sessionId);
-            if (aData.getLastAction().plusSeconds(expirationTime).isBefore(System.currentTimeMillis())) {
-                System.out.println("Deleting sessionId = " + sessionId);
-                this.sessionData.remove(sessionId);
+    public void checkSessions()
+    {
+        try {
+            System.out.println("Checking sessions");
+            Set<String> sessionsId = this.sessionData.keySet();
+            for (String sessionId : sessionsId) {
+                Authentication aData = this.sessionData.get(sessionId);
+                if (aData.getLastAction().plusSeconds(expirationTime).isBefore(System.currentTimeMillis())) {
+                    System.out.println("Deleting sessionId = " + sessionId);
+                    this.sessionData.remove(sessionId);
+                }
             }
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
         }
     }
 

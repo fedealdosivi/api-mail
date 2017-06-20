@@ -12,18 +12,44 @@ public class Authentication {
     private DateTime lastAction;
 
     public DateTime getLastAction() {
-        return lastAction;
+        try {
+            return lastAction;
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
     }
 
     public void setLastAction(DateTime lastAction) {
-        this.lastAction = lastAction;
+        try {
+            this.lastAction = lastAction;
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 
     public Usuario getUsuario() {
-        return usuario;
+        try {
+            return usuario;
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
     }
 
     public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        try {
+            this.usuario = usuario;
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
     }
 }
