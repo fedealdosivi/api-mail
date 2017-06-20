@@ -18,17 +18,17 @@ import java.sql.SQLException;
 @Repository
 public class Conexion {
     private Connection conn;
-    private static Conexion instancia;
+//    private static Conexion instancia;
 
 
     //Patron Singleton
-
+/*
     public static Conexion getInstancia() {
         if (instancia == null) {
             instancia = new Conexion();
         }
         return instancia;
-    }
+    }*/
     
     //Verifica los drivers en la conexion
     public Conexion() {

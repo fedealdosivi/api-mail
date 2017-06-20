@@ -8,6 +8,7 @@ import apimail.Model.Mensaje;
 import java.util.ArrayList;
 
 import apimail.Model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import java.sql.ResultSet;
@@ -21,13 +22,15 @@ import java.sql.SQLException;
 @Repository
 public class DaoMensajes {
 
+    @Autowired
     private Conexion conn;
 
+    /*
     public DaoMensajes()
     {
         conn = Conexion.getInstancia();
     }
-
+*/
     public void cargarMensaje(Mensaje mensaje)
     {
         try {

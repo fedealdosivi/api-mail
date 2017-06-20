@@ -24,12 +24,13 @@ public class DaoUsuarios {
 
     @Autowired
     Conexion conn;
-    
+
+/*
     public DaoUsuarios()
     {
         conn = Conexion.getInstancia();
     }
-    
+    */
     public void cargarUsuario(Usuario user)
     {
         try{

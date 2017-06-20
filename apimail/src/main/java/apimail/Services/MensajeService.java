@@ -6,6 +6,7 @@ import apimail.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Executable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,33 +21,70 @@ public class MensajeService {
 
     public List<Mensaje> traerTodos()
     {
-        return daoMensajes.traerTodos();
+        try {
+            return daoMensajes.traerTodos();
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
     }
 
     public Mensaje traerPorId(int id)
     {
-        return daoMensajes.traerMensajePorId(id);
+        try {
+            return daoMensajes.traerMensajePorId(id);
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
     }
 
-    public void agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario)
+    public boolean agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario)
     {
-        Mensaje mensaje=new Mensaje();
-        mensaje.setId(id);
-        mensaje.setRemitente(remitente);
-        mensaje.setBody(body);
-        mensaje.setAsunto(asunto);
-        mensaje.setDestinatario(destinatario);
-        daoMensajes.cargarMensaje(mensaje);
+        try {
+            Mensaje mensaje = new Mensaje();
+            mensaje.setId(id);
+            mensaje.setRemitente(remitente);
+            mensaje.setBody(body);
+            mensaje.setAsunto(asunto);
+            mensaje.setDestinatario(destinatario);
+            daoMensajes.cargarMensaje(mensaje);
+            return true;
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return false;
+        }
     }
 
     public ArrayList<Mensaje> traerArrayTodos()
     {
-        return daoMensajes.traerTodos();
+        try {
+            return daoMensajes.traerTodos();
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
     }
 
-    public void eliminarMensaje(int id)
+    public boolean eliminarMensaje(int id)
     {
-        daoMensajes.eliminarMensaje(id);
+        try {
+            daoMensajes.eliminarMensaje(id);
+            return true;
+        }
+        catch(Exception e)
+        {
+            e.getStackTrace();
+            return false;
+        }
     }
 
 }
