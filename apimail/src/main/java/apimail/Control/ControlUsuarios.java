@@ -40,6 +40,9 @@ public class ControlUsuarios {
     @Autowired
     UsuarioConverter converter;
 
+    @Autowired
+    SessionData sessionData;
+
     @RequestMapping("/traerUsuarios")
     public @ResponseBody ResponseEntity<List<UsuarioResponse>> getAll(){
         List<Usuario> lista = userService.traerTodos();
@@ -63,7 +66,7 @@ public class ControlUsuarios {
     public @ResponseBody ResponseEntity<UsuarioResponse> getById(@PathVariable("id") int id){
         Usuario user= userService.traerPodId(id);
         if(user != null){
-            UsuarioResponse wrapper = converter.convert(user); //Convierte de JSON a objeto
+            UsuarioResponse wrapper = converter.convert(user);
             return new ResponseEntity<UsuarioResponse>(wrapper,HttpStatus.OK);
         }else{
             return new ResponseEntity<UsuarioResponse>(HttpStatus.NOT_FOUND);
@@ -88,6 +91,29 @@ public class ControlUsuarios {
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }
         catch(Exception e)
+        {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value="/traerPorNombre")
+    public  ResponseEntity traerUserPorNombre(@RequestHeader String nombre)
+    {
+        try{
+            Usuario user=userService.traerPorNombre(nombre);
+
+            if(user!=null)
+            {
+                UsuarioResponse wrapper = converter.convert(user);
+                return new ResponseEntity<UsuarioResponse>(wrapper,HttpStatus.OK);
+            }
+            else
+            {
+                return new ResponseEntity<UsuarioResponse>(HttpStatus.NOT_FOUND);
+            }
+        }
+
+        catch (Exception e)
         {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }

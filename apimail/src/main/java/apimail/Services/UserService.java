@@ -54,6 +54,18 @@ public class UserService {
         }
     }
 
+    public Usuario traerPorNombre(String nombre)
+    {
+        try{
+            return daoUsuarios.traerUserPorNombre(nombre);
+        }
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
+    }
+
     public Usuario login(String email, String password)
     {
         try {

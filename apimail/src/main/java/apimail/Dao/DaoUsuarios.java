@@ -222,5 +222,49 @@ public class DaoUsuarios {
 
         return user;
     }
+
+    public Usuario traerUserPorNombre(String nombre)
+    {
+        Usuario user=null;
+        try{
+
+            String sq = "select * from USUARIOS where NOMBRE=?";
+            conn.conectar();
+            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            st.setString(1, nombre);
+            ResultSet rs = st.executeQuery();
+
+            if(rs.next())
+            {
+                user=new Usuario();
+                user.setId(rs.getInt("IDUSUARIO"));
+                user.setNombre(rs.getString("NOMBRE"));
+                user.setApellido(rs.getString("APELLIDO"));
+                user.setPassword(rs.getString("PASSWORD"));
+                user.setEmail(rs.getString("EMAIL"));
+                user.setDireccion(rs.getString("DIRECCION"));
+                user.setTelefono(rs.getInt("TELEFONO"));
+                user.setPais(rs.getString("PAIS"));
+                user.setProvincia(rs.getString("PROVINCIA"));
+                user.setCiudad(rs.getString("CIUDAD"));
+            }
+        }
+
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
+
+        finally {
+            try{
+                conn.desconectar();
+            }
+            catch(Exception ex)
+            {
+                ex.getStackTrace();
+            }
+        }
+        return user;
+    }
     
 }

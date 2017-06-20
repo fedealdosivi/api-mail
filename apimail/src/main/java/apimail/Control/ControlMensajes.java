@@ -10,6 +10,7 @@ import apimail.Dao.DaoMensajes;
 import apimail.Request.MensajeRequest;
 import apimail.Response.MensajeResponse;
 import apimail.Services.MensajeService;
+import apimail.Session.SessionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import apimail.Model.Mensaje;
@@ -38,7 +39,8 @@ public class ControlMensajes {
     @Autowired
     MensajeConverter converter;
 
-
+    @Autowired
+    SessionData sessionData;
 
     @RequestMapping("/traerMensajes")
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getAll(){

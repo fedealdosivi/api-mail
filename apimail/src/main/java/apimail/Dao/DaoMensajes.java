@@ -266,5 +266,99 @@ public class DaoMensajes {
         }
         return m;
     }
+
+    public void cambiarLeido(int idMensaje)
+    {
+        try{
+
+        }
+
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
+
+        finally {
+            try{
+                conn.desconectar();
+            }
+            catch(Exception ex)
+            {
+                ex.getStackTrace();
+            }
+        }
+    }
+
+    public void cambiarEliminado(int id)
+    {
+        try{
+
+        }
+
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
+
+        finally {
+            try{
+                conn.desconectar();
+            }
+            catch(Exception ex)
+            {
+                ex.getStackTrace();
+            }
+        }
+    }
+
+    public ArrayList<Mensaje> traerMensajesEnviados(int idUsuario)
+    {
+        ArrayList<Mensaje> lista=null;
+
+        try{
+
+        }
+
+        catch (Exception e)
+        {
+            e.getStackTrace();
+            return null;
+        }
+
+        finally {
+            try{
+                conn.desconectar();
+            }
+            catch(Exception ex)
+            {
+                ex.getStackTrace();
+            }
+        }
+        return lista;
+    }
+
+    public ArrayList<Mensaje> traerMensajesEliminados(int idUsuario)
+    {
+        ArrayList<Mensaje> lista=null;
+        try{
+
+        }
+
+        catch (Exception e)
+        {
+            e.getStackTrace();
+        }
+
+        finally {
+            try{
+                conn.desconectar();
+            }
+            catch(Exception ex)
+            {
+                ex.getStackTrace();
+            }
+        }
+        return lista;
+    }
     
 }
