@@ -97,7 +97,7 @@ public class ControlUsuarios {
     }
 
     @RequestMapping(value="/traerPorNombre")
-    public  ResponseEntity traerUserPorNombre(@RequestHeader String nombre)
+    public  ResponseEntity traerUserPorNombre(@RequestHeader("nombre") String nombre)
     {
         try{
             Usuario user=userService.traerPorNombre(nombre);

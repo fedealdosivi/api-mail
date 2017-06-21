@@ -42,7 +42,7 @@ public class ControlMensajes {
     @Autowired
     SessionData sessionData;
 
-    @RequestMapping("/traerMensajes")
+    @RequestMapping(value= "/traerMensajes",method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getAll(){
         List<Mensaje> lista = mensajeService.traerTodos();
         if(lista.size() > 0){
@@ -88,6 +88,62 @@ public class ControlMensajes {
     {
         try{
             mensajeService.eliminarMensaje(id);
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value="/traerRecibidos",method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<List<MensajeResponse>> getRecibidos(@RequestHeader("idUsuario") int id){
+        List<Mensaje> lista = mensajeService.traerRecibidos(id);
+        if(lista.size() > 0){
+            return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value="/traerEliminados",method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<List<MensajeResponse>> getEliminados(@RequestHeader("idUsuario") int id){
+        List<Mensaje> lista = mensajeService.traerEliminados(id);
+        if(lista.size() > 0){
+            return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value="/traerEnviados",method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<List<MensajeResponse>> getEnviados(@RequestHeader("idUsuario") int id){
+        List<Mensaje> lista = mensajeService.traerEnviados(id);
+        if(lista.size() > 0){
+            return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value="/papelera/{id}", method = RequestMethod.PATCH)
+    public ResponseEntity mandarPapelera(@PathVariable ("id") int id)
+    {
+        try{
+            mensajeService.cambiarAEliminado(id);
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value="/leidos/{id}", method = RequestMethod.PATCH)
+    public ResponseEntity marcarLeido(@PathVariable ("id") int id)
+    {
+        try{
+            mensajeService.cambiarALeido(id);
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }
         catch(Exception e)

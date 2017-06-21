@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c96e72b9-e038-43ff-b120-0ab927621a27" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../MailQuery.sql" afterPath="$PROJECT_DIR$/../MailQuery.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Services/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,24 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="DaoMensajes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java">
+      <file leaf-file-name="ControlMensajes.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4890">
-              <caret line="343" column="0" lean-forward="true" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
-              <folding>
-                <marker date="1497999670674" expanded="false" signature="689:704" ph=" { " />
-                <marker date="1497999670674" expanded="false" signature="735:741" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DaoUsuarios.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3204">
-              <caret line="230" column="64" lean-forward="true" selection-start-line="230" selection-start-column="64" selection-end-line="230" selection-end-column="64" />
+            <state relative-caret-position="2133">
+              <caret line="145" column="45" lean-forward="false" selection-start-line="145" selection-start-column="45" selection-end-line="145" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -64,28 +49,8 @@
       <file leaf-file-name="ControlUsuarios.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControlMensajes.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+            <state relative-caret-position="352">
+              <caret line="105" column="13" lean-forward="true" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -94,7 +59,7 @@
       <file leaf-file-name="ControlSession.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlSession.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
+            <state relative-caret-position="220">
               <caret line="28" column="94" lean-forward="false" selection-start-line="28" selection-start-column="94" selection-end-line="28" selection-end-column="94" />
               <folding />
             </state>
@@ -148,15 +113,15 @@
         <option value="$PROJECT_DIR$/src/test/java/apimail/UsuarioTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/UsuarioServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Session/Authentication.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Services/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" />
       </list>
@@ -1235,14 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="76" column="18" lean-forward="false" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1310,22 +1267,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlSession.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="28" column="94" lean-forward="false" selection-start-line="28" selection-start-column="94" selection-end-line="28" selection-end-column="94" />
+        <state relative-caret-position="473">
+          <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4890">
-          <caret line="343" column="0" lean-forward="true" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
-          <folding>
-            <marker date="1497999670674" expanded="false" signature="689:704" ph=" { " />
-            <marker date="1497999670674" expanded="false" signature="735:741" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1337,26 +1283,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+        <state relative-caret-position="-1650">
+          <caret line="516" column="99" lean-forward="false" selection-start-line="516" selection-start-column="99" selection-end-line="516" selection-end-column="99" />
+          <folding>
+            <marker date="1498004621404" expanded="false" signature="689:704" ph=" { " />
+            <marker date="1498004621404" expanded="false" signature="735:741" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="119" column="65" lean-forward="true" selection-start-line="119" selection-start-column="65" selection-end-line="119" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="28" column="94" lean-forward="false" selection-start-line="28" selection-start-column="94" selection-end-line="28" selection-end-column="94" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+        <state relative-caret-position="352">
+          <caret line="105" column="13" lean-forward="true" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+        <state relative-caret-position="2133">
+          <caret line="145" column="45" lean-forward="false" selection-start-line="145" selection-start-column="45" selection-end-line="145" selection-end-column="45" />
           <folding />
         </state>
       </provider>

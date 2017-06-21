@@ -19,32 +19,25 @@ public class MensajeService {
     @Autowired
     DaoMensajes daoMensajes;
 
-    public List<Mensaje> traerTodos()
-    {
+    public List<Mensaje> traerTodos() {
         try {
             return daoMensajes.traerTodos();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
-    public Mensaje traerPorId(int id)
-    {
+    public Mensaje traerPorId(int id) {
         try {
             return daoMensajes.traerMensajePorId(id);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
-    public boolean agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario)
-    {
+    public boolean agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario) {
         try {
             Mensaje mensaje = new Mensaje();
             mensaje.setId(id);
@@ -54,18 +47,65 @@ public class MensajeService {
             mensaje.setDestinatario(destinatario);
             daoMensajes.cargarMensaje(mensaje);
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return false;
         }
     }
 
-    public ArrayList<Mensaje> traerArrayTodos()
-    {
+    public ArrayList<Mensaje> traerArrayTodos() {
         try {
             return daoMensajes.traerTodos();
+        } catch (Exception e) {
+            e.getStackTrace();
+            return null;
+        }
+    }
+
+    public boolean eliminarMensaje(int id) {
+        try {
+            daoMensajes.eliminarMensaje(id);
+            return true;
+        } catch (Exception e) {
+            e.getStackTrace();
+            return false;
+        }
+    }
+
+    public boolean cambiarALeido(int idMensaje) {
+        try {
+            daoMensajes.cambiarLeido(idMensaje);
+            return true;
+        } catch (Exception e) {
+            e.getStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean cambiarAEliminado(int idMensaje) {
+        try {
+            daoMensajes.cambiarEliminado(idMensaje);
+            return true;
+        } catch (Exception e) {
+            e.getStackTrace();
+            return false;
+        }
+    }
+
+    public ArrayList<Mensaje> traerEliminados(int idUsuario) {
+        try {
+            return daoMensajes.traerMensajesEliminados(idUsuario);
+        } catch (Exception e) {
+            e.getStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Mensaje> traerEnviados(int idUsuario)
+    {
+        try {
+            return daoMensajes.traerMensajesEnviados(idUsuario);
         }
         catch (Exception e)
         {
@@ -74,17 +114,16 @@ public class MensajeService {
         }
     }
 
-    public boolean eliminarMensaje(int id)
+    public ArrayList<Mensaje> traerRecibidos(int idUsuario)
     {
         try {
-            daoMensajes.eliminarMensaje(id);
-            return true;
+            return daoMensajes.traerMensajesRecibidos(idUsuario);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             e.getStackTrace();
-            return false;
+            return null;
         }
     }
-
 }
+
