@@ -13,6 +13,7 @@ public class MensajeResponse {
 
     @JsonProperty
     private int id;
+    @JsonProperty
     private String asunto;
     @JsonProperty
     private Usuario remitente;

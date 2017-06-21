@@ -13,6 +13,7 @@ import org.junit.Test;
 public class UsuarioTest extends TestCase{
 
     Usuario usuario;
+    Usuario usuario1;
 
     @Before
     public void setUp() throws Exception {
@@ -28,6 +29,19 @@ public class UsuarioTest extends TestCase{
         usuario.setNombre("AAA");
         usuario.setPassword("123456");
         usuario.setTelefono(123456);
+
+
+        usuario1=new Usuario();
+        usuario1.setDireccion("JBjusto");
+        usuario1.setId(1);
+        usuario1.setCiudad("Mar del Plata");
+        usuario1.setPais("Argentina");
+        usuario1.setProvincia("Buenos Aires");
+        usuario1.setEmail("hola@hola");
+        usuario1.setApellido("AAA");
+        usuario1.setNombre("AAA");
+        usuario1.setPassword("123456");
+        usuario1.setTelefono(123456);
     }
 
 
@@ -98,5 +112,23 @@ public class UsuarioTest extends TestCase{
     public void testCiudad()
     {
         assertEquals("probando Ciudad",usuario.getCiudad(),"Mar del Plata");
+    }
+
+    @Test
+    public void testEquals()
+    {
+        assertTrue(usuario.equals(usuario1));
+    }
+
+    @Test
+    public void testTostring()
+    {
+        assertEquals(usuario.toString(),usuario1.toString());
+    }
+
+    @Test
+    public void testHashcode()
+    {
+        assertEquals(usuario.hashCode(),usuario1.hashCode());
     }
 }
