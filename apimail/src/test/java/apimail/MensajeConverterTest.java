@@ -3,6 +3,7 @@ package apimail;
 import apimail.Converter.MensajeConverter;
 import apimail.Model.Mensaje;
 import apimail.Model.Usuario;
+import apimail.Request.MensajeRequest;
 import apimail.Response.MensajeResponse;
 import junit.framework.TestCase;
 import org.junit.Before;
@@ -36,6 +37,8 @@ public class MensajeConverterTest extends TestCase {
 
     MensajeResponse wrapper;
 
+    MensajeRequest request;
+
     @Autowired
     private WebApplicationContext webApplicationContext;
 
@@ -43,19 +46,20 @@ public class MensajeConverterTest extends TestCase {
     public void setup()
     {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
+
         mensaje=new Mensaje();
         mensaje.setAsunto("prueba asunto");
         mensaje.setId(1);
         mensaje.setBody("probando body");
         mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
         mensaje.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+
         wrapper=converter.convert(mensaje);
     }
 
     @Test
-    public void testConvert()
+    public void testConvertWrapper()
     {
         assertFalse(wrapper.equals(null));
     }
-
 }
