@@ -2,11 +2,10 @@
 package apimail.Model;
 
 /**
- *
  * @author fefe
  */
 public class Usuario {
-    
+
     private int id;
     private String nombre;
     private String apellido;
@@ -17,7 +16,7 @@ public class Usuario {
     private String pais;
     private String provincia;
     private String ciudad;
-    
+
     public Usuario() {
         setId(0);
         setNombre("");
@@ -30,8 +29,8 @@ public class Usuario {
         setProvincia("");
         setCiudad("");
     }
-    
-    public Usuario(String nombre,String apellido,String email,String password,String direccion, int telefono,String pais, String provincia, String ciudad){
+
+    public Usuario(String nombre, String apellido, String email, String password, String direccion, int telefono, String pais, String provincia, String ciudad) {
         this.setId(0);
         this.setNombre(nombre);
         this.setApellido(apellido);
@@ -43,7 +42,6 @@ public class Usuario {
         this.setPais(pais);
         this.setProvincia(provincia);
     }
-    
 
 
     public String getDireccion() {

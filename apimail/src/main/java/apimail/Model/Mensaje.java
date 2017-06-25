@@ -12,8 +12,7 @@ public class Mensaje {
     private Usuario destinatario;
     private String body;
 
-    public Mensaje()
-    {
+    public Mensaje() {
         setAsunto("");
         setRemitente(new Usuario());
         setDestinatario(new Usuario());

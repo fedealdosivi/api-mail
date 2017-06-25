@@ -102,25 +102,19 @@ public class MensajeService {
         }
     }
 
-    public ArrayList<Mensaje> traerEnviados(int idUsuario)
-    {
+    public ArrayList<Mensaje> traerEnviados(int idUsuario) {
         try {
             return daoMensajes.traerMensajesEnviados(idUsuario);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
-    public ArrayList<Mensaje> traerRecibidos(int idUsuario)
-    {
+    public ArrayList<Mensaje> traerRecibidos(int idUsuario) {
         try {
             return daoMensajes.traerMensajesRecibidos(idUsuario);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }

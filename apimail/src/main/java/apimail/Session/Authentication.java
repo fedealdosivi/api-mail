@@ -14,9 +14,7 @@ public class Authentication {
     public DateTime getLastAction() {
         try {
             return lastAction;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
@@ -25,9 +23,7 @@ public class Authentication {
     public void setLastAction(DateTime lastAction) {
         try {
             this.lastAction = lastAction;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }
@@ -35,9 +31,7 @@ public class Authentication {
     public Usuario getUsuario() {
         try {
             return usuario;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
@@ -46,9 +40,7 @@ public class Authentication {
     public void setUsuario(Usuario usuario) {
         try {
             this.usuario = usuario;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }

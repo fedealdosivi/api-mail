@@ -118,40 +118,4 @@ public class ControlUsuarios {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
-
-    /*
-      @RequestMapping(value = "/traerUsuarios",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ArrayList<Usuario> traerTodos()
-    {
-        return acceso.traerTodos();
-    }
-
-    @RequestMapping(value = "/Usuario/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Usuario userPorId(@PathVariable("id") Integer id){
-        try{
-        return acceso.traerUsuarioPorId(id);
-        }
-        catch(Exception e)
-        {
-            e.getStackTrace();
-            return null;
-        }
-    }
-
-    @RequestMapping(value="/Usuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity agregarUsuario(@RequestBody Usuario usuario)
-    {
-        try {
-            acceso.cargarUsuario(usuario);
-            return new ResponseEntity(HttpStatus.CREATED);
-        }catch (Exception e)
-        {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }*/
 }

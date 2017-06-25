@@ -8,11 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class LoginResponse {
 
     @JsonProperty
-    String sessionId ;
-
+    String sessionId;
 
     public LoginResponse() {
-
     }
 
     public LoginResponse(String sessionId) {

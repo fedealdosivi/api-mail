@@ -151,32 +151,4 @@ public class ControlMensajes {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-/*
-    @RequestMapping(value = "/Mensaje/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Mensaje mensajePorId(@PathVariable("id") Integer id){
-        try{
-            return acceso.traerMensajePorId(id);
-        }
-        catch(Exception e)
-        {
-            e.getStackTrace();
-            return null;
-        }
-    }
-
-    @RequestMapping(value="/Mensaje", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity agregarMensaje(@RequestBody Mensaje mensaje)
-    {
-        try {
-            acceso.cargarMensaje(mensaje);
-            return new ResponseEntity(HttpStatus.CREATED);
-        }catch (Exception e)
-        {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }
-    */
 }

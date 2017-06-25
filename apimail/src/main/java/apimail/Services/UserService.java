@@ -16,76 +16,58 @@ public class UserService {
     @Autowired
     DaoUsuarios daoUsuarios;
 
-    public boolean agregarUsuario(String nombre, String apellido, String direccion, int telefono, String password, String email, String pais, String provincia, String ciudad)
-    {
+    public boolean agregarUsuario(String nombre, String apellido, String direccion, int telefono, String password, String email, String pais, String provincia, String ciudad) {
         try {
             Usuario user = new Usuario(nombre, apellido, email, password, direccion, telefono, pais, provincia, ciudad);
             daoUsuarios.cargarUsuario(user);
             return true;
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return false;
         }
     }
 
-    public List<Usuario> traerTodos()
-    {
+    public List<Usuario> traerTodos() {
         try {
             return daoUsuarios.traerTodos();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
-            return  null;
+            return null;
         }
     }
 
-    public Usuario traerPodId(int id)
-    {
+    public Usuario traerPodId(int id) {
         try {
             return daoUsuarios.traerUsuarioPorId(id);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
-    public Usuario traerPorNombre(String nombre)
-    {
-        try{
+    public Usuario traerPorNombre(String nombre) {
+        try {
             return daoUsuarios.traerUserPorNombre(nombre);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
-    public Usuario login(String email, String password)
-    {
+    public Usuario login(String email, String password) {
         try {
             return daoUsuarios.validarUsuario(email, password);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
-            return  null;
+            return null;
         }
     }
 
 
-    public void eliminarUsuario(int id)
-    {
+    public void eliminarUsuario(int id) {
         try {
             daoUsuarios.eliminarUsuario(id);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
         }
 

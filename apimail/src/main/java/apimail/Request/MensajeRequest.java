@@ -1,7 +1,9 @@
 package apimail.Request;
+
 import apimail.Model.Usuario;
 
 import java.util.ArrayList;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**

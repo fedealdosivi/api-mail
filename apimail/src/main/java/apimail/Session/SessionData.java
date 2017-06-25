@@ -24,15 +24,13 @@ public class SessionData {
     HashMap<String, Authentication> sessionData;
 
     //@Value("${session.expiration}")
-    int expirationTime=300000;
+    int expirationTime = 300000;
 
 
     public SessionData() {
         try {
             this.sessionData = new HashMap<String, Authentication>();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }
@@ -45,9 +43,7 @@ public class SessionData {
             aData.setLastAction(new DateTime());
             this.sessionData.put(sessionId, aData);
             return sessionId;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
@@ -57,9 +53,7 @@ public class SessionData {
     public void removeSession(String sessionId) {
         try {
             sessionData.remove(sessionId);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }
@@ -72,17 +66,14 @@ public class SessionData {
             } else {
                 return null;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
     @Scheduled(fixedRate = 5000)
-    public void checkSessions()
-    {
+    public void checkSessions() {
         try {
             System.out.println("Checking sessions");
             Set<String> sessionsId = this.sessionData.keySet();
@@ -93,9 +84,7 @@ public class SessionData {
                     this.sessionData.remove(sessionId);
                 }
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.getStackTrace();
         }
     }

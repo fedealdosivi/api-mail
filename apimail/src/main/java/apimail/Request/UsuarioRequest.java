@@ -1,4 +1,5 @@
 package apimail.Request;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**

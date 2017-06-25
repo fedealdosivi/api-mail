@@ -1,4 +1,5 @@
 package apimail.Response;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
