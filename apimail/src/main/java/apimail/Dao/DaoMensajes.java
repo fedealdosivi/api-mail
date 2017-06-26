@@ -29,6 +29,9 @@ public class DaoMensajes extends Conexion{
         super(dbUserName,dbName,dbPassword,dbPort,dbHost);
     }
 
+    @Autowired
+    Authentication authentication;
+
 
     public void cargarMensaje(Mensaje mensaje) {
         try {

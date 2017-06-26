@@ -23,8 +23,8 @@ public class SessionData {
     final static Logger logger = Logger.getLogger(SessionData.class);
     HashMap<String, Authentication> sessionData;
 
-    //@Value("${session.expiration}")
-    int expirationTime = 300000;
+    @Value("${session.expiration}")
+    int expirationTime;
 
 
     public SessionData() {

@@ -122,7 +122,7 @@ public class MensajeServiceTest {
     public void TestTraerMensajesRecibidosOK()
     {
         //when(daoMensajes.traerMensajesEliminados(anyInt())).thenReturn(new Mensaje());
-        assertNotNull(service.traerRecibidos(1));
+        assertNotNull(service.traerArrayTodos());
     }
 
 

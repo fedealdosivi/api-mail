@@ -59,7 +59,7 @@ public class MensajeDaoTest{
         try {
             when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
-            when(rs.next()).thenReturn(false);
+            when(rs.next()).thenReturn(null);
             Mensaje m = daoMensajes.traerMensajePorId(1);
             assertNotNull(m);
 

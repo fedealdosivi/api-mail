@@ -111,9 +111,9 @@ public class MensajeService {
         }
     }
 
-    public ArrayList<Mensaje> traerRecibidos(int idUsuario) {
+    public ArrayList<Mensaje> traerRecibidos(int id) {
         try {
-            return daoMensajes.traerMensajesRecibidos(idUsuario);
+            return daoMensajes.traerMensajesRecibidos(id);
         } catch (Exception e) {
             e.getStackTrace();
             return null;

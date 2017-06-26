@@ -126,7 +126,7 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/papelera/{id}", method = RequestMethod.PATCH)
+    @RequestMapping(value="/MoverPapelera/{id}", method = RequestMethod.PATCH)
     public ResponseEntity mandarPapelera(@PathVariable ("id") int id)
     {
         try{
@@ -139,7 +139,7 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/leidos/{id}", method = RequestMethod.PATCH)
+    @RequestMapping(value="/Marcarleido/{id}", method = RequestMethod.PATCH)
     public ResponseEntity marcarLeido(@PathVariable ("id") int id)
     {
         try{
