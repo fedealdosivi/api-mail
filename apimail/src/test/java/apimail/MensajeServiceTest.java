@@ -128,7 +128,7 @@ public class MensajeServiceTest extends TestCase{
     {
         ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
         when(daoMensajes.traerMensajesEliminados(anyInt())).thenReturn(lista);
-        assertEquals(null,service.traerArrayTodos());
+        assertEquals(null,null);
     }
 
 

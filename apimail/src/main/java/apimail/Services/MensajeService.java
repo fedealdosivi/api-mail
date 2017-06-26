@@ -19,15 +19,6 @@ public class MensajeService {
     @Autowired
     DaoMensajes daoMensajes;
 
-    public List<Mensaje> traerTodos() {
-        try {
-            return daoMensajes.traerTodos();
-        } catch (Exception e) {
-            e.getStackTrace();
-            return null;
-        }
-    }
-
     public Mensaje traerPorId(int id) {
         try {
             return daoMensajes.traerMensajePorId(id);
@@ -53,15 +44,6 @@ public class MensajeService {
         }
     }
 
-    public ArrayList<Mensaje> traerArrayTodos() {
-        try {
-            return daoMensajes.traerTodos();
-        } catch (Exception e) {
-            e.getStackTrace();
-            return null;
-        }
-    }
-
     public boolean eliminarMensaje(int id) {
         try {
             daoMensajes.eliminarMensaje(id);
@@ -71,17 +53,6 @@ public class MensajeService {
             return false;
         }
     }
-
-    public boolean cambiarALeido(int idMensaje) {
-        try {
-            daoMensajes.cambiarLeido(idMensaje);
-            return true;
-        } catch (Exception e) {
-            e.getStackTrace();
-            return false;
-        }
-    }
-
 
     public boolean cambiarAEliminado(int idMensaje) {
         try {

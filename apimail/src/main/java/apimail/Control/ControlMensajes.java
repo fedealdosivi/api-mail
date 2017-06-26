@@ -45,30 +45,14 @@ public class ControlMensajes {
 
 /// estas trabajando las peticiones como si fuera un servicio SOAP
 
-    @RequestMapping(value= "/traerMensajes",method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<List<MensajeResponse>> getAll(){
-        List<Mensaje> lista = mensajeService.traerTodos();
-        if(lista.size() > 0){
-            return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NOT_FOUND);
-        }
-    }
 
-    public List<MensajeResponse> convertList(List<Mensaje> listaMensajes){
-        List<MensajeResponse> lista = new ArrayList<MensajeResponse>();
-        for(Mensaje mensaje: listaMensajes){
-            lista.add(converter.convert(mensaje));
-        }
-        return lista;
-    }
 
 
     @RequestMapping("/{id}")
     public @ResponseBody ResponseEntity<MensajeResponse> getById(@PathVariable("id") int id){
         Mensaje mensaje= mensajeService.traerPorId(id);
         if(mensaje != null){
-            MensajeResponse wrapper = converter.convert(mensaje); //Convierte de JSON a objeto
+            MensajeResponse wrapper = converter.convert(mensaje);
             return new ResponseEntity<MensajeResponse>(wrapper,HttpStatus.OK);
         }else{
             return new ResponseEntity<MensajeResponse>(HttpStatus.NOT_FOUND);
@@ -108,7 +92,7 @@ public class ControlMensajes {
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
-            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NO_CONTENT);
         }
     }
 
@@ -121,7 +105,7 @@ public class ControlMensajes {
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
-            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NO_CONTENT);
         }
     }
 
@@ -134,12 +118,12 @@ public class ControlMensajes {
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
-            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<MensajeResponse>>(HttpStatus.NO_CONTENT);
         }
     }
 
-    @RequestMapping(value="/MoverPapelera/{id}", method = RequestMethod.PATCH)
-    public ResponseEntity mandarPapelera(@PathVariable ("id") int id)
+    @RequestMapping(value="/MoverPapelera", method = RequestMethod.PATCH)
+    public ResponseEntity mandarPapelera(@RequestHeader("idMensaje") int id)
     {
         try{
             mensajeService.cambiarAEliminado(id);
@@ -151,16 +135,11 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/Marcarleido/{id}", method = RequestMethod.PATCH)
-    public ResponseEntity marcarLeido(@PathVariable ("id") int id)
-    {
-        try{
-            mensajeService.cambiarALeido(id);
-            return new ResponseEntity(HttpStatus.ACCEPTED);
+    public List<MensajeResponse> convertList(List<Mensaje> listaMensajes){
+        List<MensajeResponse> lista = new ArrayList<MensajeResponse>();
+        for(Mensaje mensaje: listaMensajes){
+            lista.add(converter.convert(mensaje));
         }
-        catch(Exception e)
-        {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return lista;
     }
 }

@@ -37,7 +37,7 @@ public class MensajeDaoTest{
     @Test
     public void testTraerPorIdOk() {
         try {
-            when(conn.prepareStatement("select * from MENSAJES where IDMENSAJE=1")).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.getInt("IDMENSAJE")).thenReturn(1);
             when(rs.getString("ASUNTO")).thenReturn("jaja");
