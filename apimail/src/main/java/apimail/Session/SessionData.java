@@ -62,7 +62,7 @@ public class SessionData {
 
     public Authentication getSession(String sessionId) {
         try {
-            Authentication aData = this.sessionData.get(sessionId);
+            aData = this.sessionData.get(sessionId);
             if (aData != null) {
                 return aData;
             } else {
@@ -80,7 +80,7 @@ public class SessionData {
             System.out.println("Checking sessions");
             Set<String> sessionsId = this.sessionData.keySet();
             for (String sessionId : sessionsId) {
-                Authentication aData = this.sessionData.get(sessionId);
+                aData = this.sessionData.get(sessionId);
                 if (aData.getLastAction().plusSeconds(expirationTime).isBefore(System.currentTimeMillis())) {
                     System.out.println("Deleting sessionId = " + sessionId);
                     this.sessionData.remove(sessionId);

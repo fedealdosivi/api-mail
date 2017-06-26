@@ -10,6 +10,7 @@ import apimail.Model.Mensaje;
 import apimail.Model.Usuario;
 import apimail.Response.MensajeResponse;
 import apimail.Session.SessionData;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +38,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 @SpringBootTest(classes = Main.class)
 @ActiveProfiles("default")
 @WebAppConfiguration
-public class SessionTestIT {
+public class SessionTestIT extends TestCase{
 
     private MockMvc mockMvc;
 
@@ -70,13 +71,13 @@ public class SessionTestIT {
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
 
-        user = new Usuario("fede","fede","fede","fede","fede",123456,"fede","fede","fede");
-        daoUsuarios.cargarUsuario(user);
+        //user = new Usuario("fede","fede","fede","fede","fede",123456,"fede","fede","fede");
+        //daoUsuarios.cargarUsuario(user);
     }
 
     @After
-    public void after() throws Exception {
-        daoUsuarios.eliminarUsuario(user.getId());
+    public void tearDown() throws Exception {
+        //daoUsuarios.eliminarUsuario(user.getId());
     }
 
     @Test

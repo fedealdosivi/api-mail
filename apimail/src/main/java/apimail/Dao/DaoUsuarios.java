@@ -24,8 +24,6 @@ import java.util.ResourceBundle;
 @Repository
 public class DaoUsuarios extends Conexion{
 
-    @Autowired
-    private Authentication authentication;
 
     @Autowired
     public DaoUsuarios(@Value("${db.username}") String dbUserName, @Value("${db.name}") String dbName, @Value("${db.password}") String dbPassword, @Value("${db.port}") String dbPort, @Value("${db.host}") String dbHost) {
@@ -155,7 +153,7 @@ public class DaoUsuarios extends Conexion{
         Usuario user = null;
         try {
 
-            String sq = "select * from USUARIOS where NOMBRE=?";
+            String sq = "select * from USUARIOS where NOMBRE LIKE ?";
             PreparedStatement st = conn.prepareStatement(sq);
             st.setString(1, nombre);
             ResultSet rs = st.executeQuery();

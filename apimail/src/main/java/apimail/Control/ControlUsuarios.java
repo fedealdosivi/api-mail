@@ -118,4 +118,28 @@ public class ControlUsuarios {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /*
+    @RequestMapping(value="/validarLogin")
+    public  ResponseEntity traerUserLog(@RequestHeader("email") String nombre,@RequestHeader("password") String email)
+    {
+        try{
+            Usuario user=userService.login(email,nombre);
+
+            if(user!=null)
+            {
+                UsuarioResponse wrapper = converter.convert(user);
+                return new ResponseEntity<UsuarioResponse>(wrapper,HttpStatus.OK);
+            }
+            else
+            {
+                return new ResponseEntity<UsuarioResponse>(HttpStatus.NOT_FOUND);
+            }
+        }
+
+        catch (Exception e)
+        {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }*/
 }

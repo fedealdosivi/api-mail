@@ -41,9 +41,6 @@ public class ControlMensajes {
     MensajeConverter converter;
 
     @Autowired
-    SessionData sessionData;
-
-    @Autowired
     Authentication aData;
 
     @RequestMapping(value= "/traerMensajes",method = RequestMethod.GET)

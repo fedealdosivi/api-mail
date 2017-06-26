@@ -43,7 +43,7 @@ public class MensajeDaoTest{
             when(rs.getString("ASUNTO")).thenReturn("jaja");
             when(rs.getString("BODY")).thenReturn("body");
             when(rs.next()).thenReturn(true);
-            Mensaje m = daoMensajes.traerMensajePorId(1);
+            Mensaje m = daoMensajes.traerMensajePorId(8000);
             assertTrue(m.getAsunto().equals("jaja"));
             assertTrue(m.getBody().equals("body"));
         } catch(Exception e) {
@@ -60,8 +60,8 @@ public class MensajeDaoTest{
             when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenReturn(null);
-            Mensaje m = daoMensajes.traerMensajePorId(1);
-            assertNotNull(m);
+            Mensaje m = daoMensajes.traerMensajePorId(8000);
+            assertNull(m);
 
         } catch(Exception e){
             //fail();
@@ -74,11 +74,17 @@ public class MensajeDaoTest{
     public void testTraerException() {
         try {
             when(conn.prepareStatement(anyString())).thenThrow(new Exception());
-            Mensaje mensaje= daoMensajes.traerMensajePorId(1);
+            Mensaje mensaje= daoMensajes.traerMensajePorId(8000);
             fail();
         } catch(Exception e){
             assertTrue(true);
         }
+    }
+
+    @Test
+    public void testTraerRecibidos()
+    {
 
     }
+
 }

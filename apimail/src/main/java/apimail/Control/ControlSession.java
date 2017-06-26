@@ -21,7 +21,7 @@ public class ControlSession {
     UserService userService;
 
     @Autowired
-    private SessionData sessionData;
+    SessionData sessionData;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public

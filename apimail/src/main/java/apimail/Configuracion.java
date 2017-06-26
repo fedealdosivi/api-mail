@@ -19,9 +19,6 @@ public class Configuracion {
     @Autowired
     AuthFilter authFilter;
 
-    @Value("dd/MM/yyyy")
-    String dateFormat;
-
     @Bean
     public FilterRegistrationBean myFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
