@@ -1,6 +1,7 @@
 package apimail.Session;
 
 import apimail.Model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
@@ -26,6 +27,8 @@ public class SessionData {
     @Value("${session.expiration}")
     int expirationTime;
 
+    @Autowired
+    Authentication aData;
 
     public SessionData() {
         try {
@@ -38,7 +41,6 @@ public class SessionData {
     public String addSession(Usuario usuario) {
         try {
             String sessionId = UUID.randomUUID().toString();
-            Authentication aData = new Authentication();
             aData.setUsuario(usuario);
             aData.setLastAction(new DateTime());
             this.sessionData.put(sessionId, aData);

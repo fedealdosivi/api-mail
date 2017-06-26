@@ -10,6 +10,7 @@ import apimail.Dao.DaoMensajes;
 import apimail.Request.MensajeRequest;
 import apimail.Response.MensajeResponse;
 import apimail.Services.MensajeService;
+import apimail.Session.Authentication;
 import apimail.Session.SessionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,9 @@ public class ControlMensajes {
 
     @Autowired
     SessionData sessionData;
+
+    @Autowired
+    Authentication aData;
 
     @RequestMapping(value= "/traerMensajes",method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getAll(){
@@ -96,9 +100,12 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/traerRecibidos",method = RequestMethod.GET)
+    @RequestMapping(value="/traerRecibidos",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getRecibidos(@RequestHeader("idUsuario") int id){
         List<Mensaje> lista = mensajeService.traerRecibidos(id);
+
+        //List<Mensaje> lista = mensajeService.traerRecibidos(aData.getUsuario().getId());//NO ANDA USER LOGEADO
+
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
@@ -106,9 +113,12 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/traerEliminados",method = RequestMethod.GET)
+    @RequestMapping(value="/traerEliminados",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getEliminados(@RequestHeader("idUsuario") int id){
+
         List<Mensaje> lista = mensajeService.traerEliminados(id);
+        //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
+
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
@@ -116,9 +126,12 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/traerEnviados",method = RequestMethod.GET)
+    @RequestMapping(value="/traerEnviados",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getEnviados(@RequestHeader("idUsuario") int id){
+
         List<Mensaje> lista = mensajeService.traerEnviados(id);
+        //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
+
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
