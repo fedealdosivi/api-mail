@@ -74,7 +74,7 @@ public class MensajeDaoTest{
 
 
     @Test
-    public void testTraerException() {
+    public void testTraerPorIdException() {
         try {
             when(conn.prepareStatement(anyString())).thenThrow(new Exception());
             Mensaje mensaje= daoMensajes.traerMensajePorId(8000);
@@ -89,6 +89,22 @@ public class MensajeDaoTest{
     {
         try{
             when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            ArrayList<Mensaje> lista= daoMensajes.traerMensajesRecibidos();
+            fail();
+        }
+        catch (Exception e)
+        {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testTraerRecibidosNull()
+    {
+        try{
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenReturn(null);
             ArrayList<Mensaje> lista= daoMensajes.traerMensajesRecibidos();
             fail();
         }

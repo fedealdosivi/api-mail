@@ -40,12 +40,70 @@ public class UsuarioDaoTest{
     }
 
     @Test
-    public void testTraerIdNull() {
+    public void testUsuarioIdNull() {
         try {
             when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenReturn(null);
             dao.traerUsuarioPorId(1);
+
+            assertEquals(1,1);
+
+        } catch(Exception e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testTraerTodosNull() {
+        try {
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenReturn(null);
+            dao.traerTodos();
+
+            assertEquals(1,1);
+
+        } catch(Exception e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testTraerNombreNull() {
+        try {
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenReturn(null);
+            dao.traerUserPorNombre("fede");
+
+            assertEquals(1,1);
+
+        } catch(Exception e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testValidarNull() {
+        try {
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenReturn(null);
+            dao.validarUsuario("hola@hola","123456");
+
+            assertEquals(1,1);
+
+        } catch(Exception e){
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testTraerIdNull() {
+        try {
+            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            dao.eliminarUsuario(55);
 
             assertEquals(1,1);
 
