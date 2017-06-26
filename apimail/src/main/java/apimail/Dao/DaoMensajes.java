@@ -72,6 +72,8 @@ public class DaoMensajes extends Conexion{
 
             //POR CADA MENSAJE QUE TRAJE, BUSCO SU REMITENTE Y SUS DESTINATARIOS
 
+            /// No podes hacer la consulta de esta forma... hacer la consulta relacionando tablas ( JOIN...)
+            
             while (rs.next()) {
                 Mensaje m = new Mensaje();
                 m.setId(rs.getInt("IDMENSAJE"));
