@@ -46,6 +46,8 @@ public class ControlMensajes {
     @Autowired
     Authentication aData;
 
+/// estas trabajando las peticiones como si fuera un servicio SOAP
+
     @RequestMapping(value= "/traerMensajes",method = RequestMethod.GET)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getAll(){
         List<Mensaje> lista = mensajeService.traerTodos();
