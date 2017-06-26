@@ -7,37 +7,35 @@ package apimail.Dao;
 
 import apimail.Model.Usuario;
 
+import java.sql.*;
 import java.util.ArrayList;
 
+import apimail.Session.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.ResourceBundle;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  * @author fefe
  */
 @Repository
-public class DaoUsuarios {
+public class DaoUsuarios extends Conexion{
 
     @Autowired
-    Conexion conn;
+    private Authentication authentication;
 
-    /*
-        public DaoUsuarios()
-        {
-            conn = Conexion.getInstancia();
-        }
-        */
+    @Autowired
+    public DaoUsuarios(@Value("${db.username}") String dbUserName, @Value("${db.name}") String dbName, @Value("${db.password}") String dbPassword, @Value("${db.port}") String dbPort, @Value("${db.host}") String dbHost) {
+        super(dbUserName,dbName,dbPassword,dbPort,dbHost);
+    }
+
     public void cargarUsuario(Usuario user) {
         try {
             String query = "insert into USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,DIRECCION,TELEFONO,PAIS,PROVINCIA,CIUDAD) values (?,?,?,?,?,?,?,?,?)";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = conn.prepareStatement(query);
             st.setString(1, user.getNombre());
             st.setString(2, user.getApellido());
             st.setString(3, user.getEmail());
@@ -50,12 +48,6 @@ public class DaoUsuarios {
             st.execute();
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception x) {
-                x.printStackTrace();
-            }
         }
     }
 
@@ -63,8 +55,7 @@ public class DaoUsuarios {
         ArrayList<Usuario> lista = new ArrayList();
         try {
             String sq = "select * from USUARIOS";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = conn.prepareStatement(sq);
             ResultSet rs = st.executeQuery();
             if (rs == null) {
                 System.out.println(" No hay registros en la base de datos");
@@ -88,12 +79,6 @@ public class DaoUsuarios {
         } catch (Exception e) {
             e.getStackTrace();
             return null;
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception x) {
-                x.getStackTrace();
-            }
         }
         return lista;
     }
@@ -101,18 +86,11 @@ public class DaoUsuarios {
     public void eliminarUsuario(int id) {
         try {
             String sq = "delete from USUARIOS where IDUSUARIO=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = conn.prepareStatement(sq);
             st.setInt(1, id);
             st.execute();
         } catch (SQLException es) {
             es.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception s) {
-                s.getStackTrace();
-            }
         }
     }
 
@@ -121,8 +99,7 @@ public class DaoUsuarios {
 
         try {
             String sq = "select * from USUARIOS where IDUSUARIO=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = conn.prepareStatement(sq);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
 
@@ -141,14 +118,7 @@ public class DaoUsuarios {
             }
         } catch (SQLException e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception s) {
-                s.getStackTrace();
-            }
         }
-
         return user;
     }
 
@@ -157,8 +127,7 @@ public class DaoUsuarios {
 
         try {
             String sq = "select * from USUARIOS where EMAIL=? and PASSWORD=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = conn.prepareStatement(sq);
             st.setString(1, email);
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
@@ -178,14 +147,7 @@ public class DaoUsuarios {
             }
         } catch (SQLException e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception s) {
-                s.getStackTrace();
-            }
         }
-
         return user;
     }
 
@@ -194,8 +156,7 @@ public class DaoUsuarios {
         try {
 
             String sq = "select * from USUARIOS where NOMBRE=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = conn.prepareStatement(sq);
             st.setString(1, nombre);
             ResultSet rs = st.executeQuery();
 
@@ -214,14 +175,7 @@ public class DaoUsuarios {
             }
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
         return user;
     }
-
 }

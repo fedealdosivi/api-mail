@@ -9,6 +9,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.sql.ResultSet;
 
@@ -34,7 +35,6 @@ public class UsuarioDaoTest{
     public void setUp() throws Exception {
 
         conn=mock(Connection.class);
-        dao=new DaoUsuarios();
         ps = mock(PreparedStatement.class);
         rs = mock(ResultSet.class);
     }

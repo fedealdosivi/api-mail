@@ -2,10 +2,12 @@ package apimail.Session;
 
 import apimail.Model.Usuario;
 import org.joda.time.DateTime;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by fefe on 14/6/2017.
  */
+@Service
 public class Authentication {
 
     private Usuario usuario;

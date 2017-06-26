@@ -7,38 +7,34 @@ package apimail.Dao;
 
 import apimail.Model.Mensaje;
 
+import java.sql.*;
 import java.util.ArrayList;
 
 import apimail.Model.Usuario;
+import apimail.Session.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  * @author fefe
  */
 @Repository
-public class DaoMensajes {
+public class DaoMensajes extends Conexion{
+
 
     @Autowired
-    private Conexion conn;
-
-    /*
-    public DaoMensajes()
-    {
-        conn = Conexion.getInstancia();
+    public DaoMensajes(@Value("${db.username}") String dbUserName, @Value("${db.name}") String dbName, @Value("${db.password}") String dbPassword, @Value("${db.port}") String dbPort, @Value("${db.host}") String dbHost) {
+        super(dbUserName,dbName,dbPassword,dbPort,dbHost);
     }
-*/
+
+
     public void cargarMensaje(Mensaje mensaje) {
         try {
 
             String query = "INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (?,?,?,?)";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = conn.prepareStatement(query);
             st.setInt(1, mensaje.getRemitente().getId());
             st.setInt(1, mensaje.getDestinatario().getId());
             st.setString(3, mensaje.getAsunto());
@@ -47,30 +43,17 @@ public class DaoMensajes {
 
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
     }
 
     public void eliminarMensaje(int idMensaje) {
         try {
             String sq = "delete from MENSAJES where IDMENSAJE=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = conn.prepareStatement(sq);
             st.setInt(1, idMensaje);
             st.execute();
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
     }
 
@@ -80,8 +63,7 @@ public class DaoMensajes {
             //TRAIGO TODOS LOS MENSAJES
 
             String traerMensajes = "select * from MENSAJES";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(traerMensajes);
+            PreparedStatement st = conn.prepareStatement(traerMensajes);
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
 
@@ -99,7 +81,7 @@ public class DaoMensajes {
                 //TRAIGO EL REMITENTE CON LA ID DEL RESULT SET.
 
                 String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementRemitente = conn.prepareStatement(traerRemitente);
                 statementRemitente.setInt(1, idRemitente);
                 ResultSet rsRemitente = statementRemitente.executeQuery();
 
@@ -121,7 +103,7 @@ public class DaoMensajes {
                 //TRAIGO EL DESTINATARIO CON EL ID DEL RESULT SET
 
                 String traerDestinatario = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementDestinatario = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementDestinatario = conn.prepareStatement(traerRemitente);
                 statementDestinatario.setInt(1, idDestinatario);
                 ResultSet rsDest = statementDestinatario.executeQuery();
 
@@ -147,12 +129,6 @@ public class DaoMensajes {
             }
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
         return lista;
     }
@@ -162,8 +138,7 @@ public class DaoMensajes {
 
         try {
             String sq = "select * from MENSAJES where IDMENSAJE=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = conn.prepareStatement(sq);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
 
@@ -179,7 +154,7 @@ public class DaoMensajes {
                 //TRAIGO EL REMITENTE CON LA ID DEL RESULT SET.
 
                 String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementRemitente = conn.prepareStatement(traerRemitente);
                 statementRemitente.setInt(1, idRemitente);
                 ResultSet rsRemitente = statementRemitente.executeQuery();
 
@@ -201,7 +176,7 @@ public class DaoMensajes {
                 //TRAIGO EL DESTINATARIO CON EL ID DEL RESULT SET
 
                 String traerDestinatario = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementDestinatario = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementDestinatario = conn.prepareStatement(traerRemitente);
                 statementDestinatario.setInt(1, idDestinatario);
                 ResultSet rsDest = statementDestinatario.executeQuery();
 
@@ -222,12 +197,6 @@ public class DaoMensajes {
             }
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
         return m;
     }
@@ -235,36 +204,22 @@ public class DaoMensajes {
     public void cambiarLeido(int idMensaje) {
         try {
             String query = "update MENSAJES set LEIDO = TRUE WHERE IDMENSAJE = ?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = conn.prepareStatement(query);
             st.setInt(1, idMensaje);
             st.executeQuery();
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
     }
 
     public void cambiarEliminado(int idMensaje) {
         try {
             String query = "update MENSAJES set ELIMINADO = TRUE WHERE IDMENSAJE = ?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = conn.prepareStatement(query);
             st.setInt(1, idMensaje);
             st.executeQuery();
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
     }
 
@@ -273,8 +228,7 @@ public class DaoMensajes {
 
         try {
             String traerMensajes = "select * from MENSAJES where IDREMITENTE=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(traerMensajes);
+            PreparedStatement st = conn.prepareStatement(traerMensajes);
             st.setInt(1, idUsuario);
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -293,7 +247,7 @@ public class DaoMensajes {
                 //TRAIGO EL REMITENTE CON LA ID DEL RESULT SET.
 
                 String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementRemitente = conn.prepareStatement(traerRemitente);
                 statementRemitente.setInt(1, idRemitente);
                 ResultSet rsRemitente = statementRemitente.executeQuery();
 
@@ -315,7 +269,7 @@ public class DaoMensajes {
                 //TRAIGO EL DESTINATARIO CON EL ID DEL RESULT SET
 
                 String traerDestinatario = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementDestinatario = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementDestinatario = conn.prepareStatement(traerRemitente);
                 statementDestinatario.setInt(1, idDestinatario);
                 ResultSet rsDest = statementDestinatario.executeQuery();
 
@@ -343,12 +297,6 @@ public class DaoMensajes {
         } catch (Exception e) {
             e.getStackTrace();
             return null;
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
         return lista;
     }
@@ -356,10 +304,8 @@ public class DaoMensajes {
     public ArrayList<Mensaje> traerMensajesEliminados(int idUsuario) {
         ArrayList<Mensaje> lista = null;
         try {
-
             String traerMensajes = "select * from MENSAJES where ELIMINADO=TRUE and IDREMITENTE=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(traerMensajes);
+            PreparedStatement st = conn.prepareStatement(traerMensajes);
             st.setInt(1, idUsuario);
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -378,7 +324,7 @@ public class DaoMensajes {
                 //TRAIGO EL REMITENTE CON LA ID DEL RESULT SET.
 
                 String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementRemitente = conn.prepareStatement(traerRemitente);
                 statementRemitente.setInt(1, idRemitente);
                 ResultSet rsRemitente = statementRemitente.executeQuery();
 
@@ -400,7 +346,7 @@ public class DaoMensajes {
                 //TRAIGO EL DESTINATARIO CON EL ID DEL RESULT SET
 
                 String traerDestinatario = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementDestinatario = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementDestinatario = conn.prepareStatement(traerRemitente);
                 statementDestinatario.setInt(1, idDestinatario);
                 ResultSet rsDest = statementDestinatario.executeQuery();
 
@@ -426,12 +372,6 @@ public class DaoMensajes {
             }
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
         return lista;
     }
@@ -441,8 +381,7 @@ public class DaoMensajes {
         try {
 
             String traerMensajes = "select * from MENSAJES where ELIMINADO=FALSE and IDDESTINATARIO=?";
-            conn.conectar();
-            PreparedStatement st = conn.getConn().prepareStatement(traerMensajes);
+            PreparedStatement st = conn.prepareStatement(traerMensajes);
             st.setInt(1, idUsuario);
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -461,7 +400,7 @@ public class DaoMensajes {
                 //TRAIGO EL REMITENTE CON LA ID DEL RESULT SET.
 
                 String traerRemitente = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementRemitente = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementRemitente = conn.prepareStatement(traerRemitente);
                 statementRemitente.setInt(1, idRemitente);
                 ResultSet rsRemitente = statementRemitente.executeQuery();
 
@@ -483,7 +422,7 @@ public class DaoMensajes {
                 //TRAIGO EL DESTINATARIO CON EL ID DEL RESULT SET
 
                 String traerDestinatario = "select * from USUARIOS where IDUSUARIO=?";
-                PreparedStatement statementDestinatario = conn.getConn().prepareStatement(traerRemitente);
+                PreparedStatement statementDestinatario = conn.prepareStatement(traerRemitente);
                 statementDestinatario.setInt(1, idDestinatario);
                 ResultSet rsDest = statementDestinatario.executeQuery();
 
@@ -509,12 +448,6 @@ public class DaoMensajes {
             }
         } catch (Exception e) {
             e.getStackTrace();
-        } finally {
-            try {
-                conn.desconectar();
-            } catch (Exception ex) {
-                ex.getStackTrace();
-            }
         }
         return lista;
     }

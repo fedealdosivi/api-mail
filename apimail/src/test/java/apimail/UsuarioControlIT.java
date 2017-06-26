@@ -1,5 +1,7 @@
 package apimail;
 
+import apimail.Session.Authentication;
+import apimail.Session.SessionData;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +31,18 @@ public class UsuarioControlIT {
     @Autowired
     private WebApplicationContext webApplicationContext;
 
+    @Autowired
+    private SessionData sessionData;
+
+    @Autowired
+    Authentication authentication;
+
     @Before
     public void setup()
     {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
+
+
     }
 
     @Test
