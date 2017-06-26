@@ -6,8 +6,11 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.*;
@@ -82,9 +85,45 @@ public class MensajeDaoTest{
     }
 
     @Test
-    public void testTraerRecibidos()
+    public void testTraerRecibidosException()
     {
+        try{
+            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            ArrayList<Mensaje> lista= daoMensajes.traerMensajesRecibidos();
+            fail();
+        }
+        catch (Exception e)
+        {
+            assertTrue(true);
+        }
+    }
 
+    @Test
+    public void testTraerEliminadosException()
+    {
+        try{
+            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            ArrayList<Mensaje> lista= daoMensajes.traerMensajesEliminados();
+            fail();
+        }
+        catch (Exception e)
+        {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testTraerEnviadosException()
+    {
+        try{
+            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            ArrayList<Mensaje> lista= daoMensajes.traerMensajesEnviados();
+            fail();
+        }
+        catch (Exception e)
+        {
+            assertTrue(true);
+        }
     }
 
 }

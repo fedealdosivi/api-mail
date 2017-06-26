@@ -84,8 +84,8 @@ public class ControlMensajes {
     }
 
     @RequestMapping(value="/traerRecibidos",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<List<MensajeResponse>> getRecibidos(@RequestHeader("idUsuario") int id){
-        List<Mensaje> lista = mensajeService.traerRecibidos(id);
+    public @ResponseBody ResponseEntity<List<MensajeResponse>> getRecibidos(){
+        List<Mensaje> lista = mensajeService.traerRecibidos();
 
         //List<Mensaje> lista = mensajeService.traerRecibidos(aData.getUsuario().getId());//NO ANDA USER LOGEADO
 
@@ -97,9 +97,9 @@ public class ControlMensajes {
     }
 
     @RequestMapping(value="/traerEliminados",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<List<MensajeResponse>> getEliminados(@RequestHeader("idUsuario") int id){
+    public @ResponseBody ResponseEntity<List<MensajeResponse>> getEliminados(){
 
-        List<Mensaje> lista = mensajeService.traerEliminados(id);
+        List<Mensaje> lista = mensajeService.traerEliminados();
         //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
 
         if(lista.size() > 0){
@@ -110,9 +110,9 @@ public class ControlMensajes {
     }
 
     @RequestMapping(value="/traerEnviados",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<List<MensajeResponse>> getEnviados(@RequestHeader("idUsuario") int id){
+    public @ResponseBody ResponseEntity<List<MensajeResponse>> getEnviados(){
 
-        List<Mensaje> lista = mensajeService.traerEnviados(id);
+        List<Mensaje> lista = mensajeService.traerEnviados();
         //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
 
         if(lista.size() > 0){

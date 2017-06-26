@@ -39,6 +39,7 @@ public class DaoMensajes extends Conexion {
             String query = "INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(query);
             st.setInt(1, mensaje.getRemitente().getId());
+            //st.setInt(1, authentication.getUsuario().getId());
             st.setInt(1, mensaje.getDestinatario().getId());
             st.setString(3, mensaje.getAsunto());
             st.setString(4, mensaje.getBody());
@@ -112,7 +113,7 @@ public class DaoMensajes extends Conexion {
         return m;
     }
 
-    public ArrayList<Mensaje> traerMensajesEnviados(int idUsuario) {
+    public ArrayList<Mensaje> traerMensajesEnviados() {
         ArrayList<Mensaje> lista = null;
 
         try {
@@ -123,7 +124,7 @@ public class DaoMensajes extends Conexion {
                     + " WHERE m.IDREMITENTE=?";
 
             PreparedStatement st = conn.prepareStatement(query);
-            st.setInt(1, idUsuario);
+            st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
 
@@ -170,7 +171,7 @@ public class DaoMensajes extends Conexion {
         return lista;
     }
 
-    public ArrayList<Mensaje> traerMensajesEliminados(int idUsuario) {
+    public ArrayList<Mensaje> traerMensajesEliminados() {
         ArrayList<Mensaje> lista = null;
         try {
             String query = "Select m.IDMENSAJE, m.ASUNTO,m.BODY"
@@ -180,7 +181,7 @@ public class DaoMensajes extends Conexion {
                     + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=TRUE";
 
             PreparedStatement st = conn.prepareStatement(query);
-            st.setInt(1, idUsuario);
+            st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
 
@@ -225,7 +226,7 @@ public class DaoMensajes extends Conexion {
         return lista;
     }
 
-    public ArrayList<Mensaje> traerMensajesRecibidos(int idUsuario) {
+    public ArrayList<Mensaje> traerMensajesRecibidos() {
         ArrayList<Mensaje> lista = null;
         try {
 
@@ -236,7 +237,7 @@ public class DaoMensajes extends Conexion {
                     + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=FALSE";
 
             PreparedStatement st = conn.prepareStatement(query);
-            st.setInt(1, idUsuario);
+            st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
 

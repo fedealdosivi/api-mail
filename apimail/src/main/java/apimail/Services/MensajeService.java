@@ -64,27 +64,27 @@ public class MensajeService {
         }
     }
 
-    public ArrayList<Mensaje> traerEliminados(int idUsuario) {
+    public ArrayList<Mensaje> traerEliminados() {
         try {
-            return daoMensajes.traerMensajesEliminados(idUsuario);
+            return daoMensajes.traerMensajesEliminados();
         } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
-    public ArrayList<Mensaje> traerEnviados(int idUsuario) {
+    public ArrayList<Mensaje> traerEnviados() {
         try {
-            return daoMensajes.traerMensajesEnviados(idUsuario);
+            return daoMensajes.traerMensajesEnviados();
         } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
     }
 
-    public ArrayList<Mensaje> traerRecibidos(int id) {
+    public ArrayList<Mensaje> traerRecibidos() {
         try {
-            return daoMensajes.traerMensajesRecibidos(id);
+            return daoMensajes.traerMensajesRecibidos();
         } catch (Exception e) {
             e.getStackTrace();
             return null;

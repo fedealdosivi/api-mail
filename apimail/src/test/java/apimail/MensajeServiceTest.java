@@ -110,8 +110,8 @@ public class MensajeServiceTest extends TestCase{
     public void TestTraerMensajesEliminadosOK()
     {
         ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
-        when(daoMensajes.traerMensajesEliminados(anyInt())).thenReturn(lista);
-        assertEquals(null,service.traerEliminados(1));
+        when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
+        assertEquals(null,service.traerEliminados());
     }
 
 
@@ -119,15 +119,15 @@ public class MensajeServiceTest extends TestCase{
     public void TestTraerMensajesEnviadosOK()
     {
         ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
-        when(daoMensajes.traerMensajesEnviados(anyInt())).thenReturn(lista);
-        assertEquals(null,service.traerEnviados(1));
+        when(daoMensajes.traerMensajesEnviados()).thenReturn(lista);
+        assertEquals(null,service.traerEnviados());
     }
 
     @Test
     public void TestTraerMensajesRecibidosOK()
     {
         ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
-        when(daoMensajes.traerMensajesEliminados(anyInt())).thenReturn(lista);
+        when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
         assertEquals(null,null);
     }
 
