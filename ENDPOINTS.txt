@@ -1,0 +1,15 @@
+/login
+/logout
+/api/Usuario/traerUsuarios
+/api/Usuario/{id}
+/api/Usuario/cargarUsuario
+/api/Usuario/eliminar/{id}
+/api/Usuario/traerPorNombre
+/api/Mensaje/{id}
+/api/Mensaje/cargarMensaje
+/api/Mensaje/eliminar/{id}
+/api/Mensaje/traerRecibidos
+/api/Mensaje/traerEliminados
+/api/Mensaje/traerEnviados
+/api/Mensaje/MoverPapelera
+

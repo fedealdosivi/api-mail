@@ -6,14 +6,11 @@
 package apimail.Control;
 
 import apimail.Converter.MensajeConverter;
-import apimail.Dao.DaoMensajes;
 import apimail.Request.MensajeRequest;
 import apimail.Response.MensajeResponse;
 import apimail.Services.MensajeService;
 import apimail.Session.Authentication;
-import apimail.Session.SessionData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import apimail.Model.Mensaje;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +32,11 @@ import org.springframework.web.bind.annotation.*;
 public class ControlMensajes {
     
     @Autowired
+    private
     MensajeService mensajeService;
 
     @Autowired
+    private
     MensajeConverter converter;
 
     @Autowired
@@ -48,11 +47,11 @@ public class ControlMensajes {
 
 
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value="/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<MensajeResponse> getById(@PathVariable("id") int id){
-        Mensaje mensaje= mensajeService.traerPorId(id);
+        Mensaje mensaje= getMensajeService().traerPorId(id);
         if(mensaje != null){
-            MensajeResponse wrapper = converter.convert(mensaje);
+            MensajeResponse wrapper = getConverter().convert(mensaje);
             return new ResponseEntity<MensajeResponse>(wrapper,HttpStatus.OK);
         }else{
             return new ResponseEntity<MensajeResponse>(HttpStatus.NOT_FOUND);
@@ -63,7 +62,7 @@ public class ControlMensajes {
     @RequestMapping(value = "/cargarMensaje", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addMensaje(@RequestBody MensajeRequest mensajeRequest){
         try{
-            mensajeService.agregarMensaje(mensajeRequest.getId(),mensajeRequest.getAsunto(),mensajeRequest.getBody(),mensajeRequest.getRemitente(),mensajeRequest.getDestinatario());
+            getMensajeService().agregarMensaje(mensajeRequest.getId(),mensajeRequest.getAsunto(),mensajeRequest.getBody(),mensajeRequest.getRemitente(),mensajeRequest.getDestinatario());
             return new ResponseEntity(HttpStatus.CREATED);
         }catch(Exception e){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -74,7 +73,7 @@ public class ControlMensajes {
     public ResponseEntity removeMensaje(@PathVariable ("id") int id)
     {
         try{
-            mensajeService.eliminarMensaje(id);
+            getMensajeService().eliminarMensaje(id);
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }
         catch(Exception e)
@@ -85,7 +84,7 @@ public class ControlMensajes {
 
     @RequestMapping(value="/traerRecibidos",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getRecibidos(){
-        List<Mensaje> lista = mensajeService.traerRecibidos();
+        List<Mensaje> lista = getMensajeService().traerRecibidos();
 
         //List<Mensaje> lista = mensajeService.traerRecibidos(aData.getUsuario().getId());//NO ANDA USER LOGEADO
 
@@ -99,7 +98,7 @@ public class ControlMensajes {
     @RequestMapping(value="/traerEliminados",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getEliminados(){
 
-        List<Mensaje> lista = mensajeService.traerEliminados();
+        List<Mensaje> lista = getMensajeService().traerEliminados();
         //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
 
         if(lista.size() > 0){
@@ -112,7 +111,7 @@ public class ControlMensajes {
     @RequestMapping(value="/traerEnviados",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getEnviados(){
 
-        List<Mensaje> lista = mensajeService.traerEnviados();
+        List<Mensaje> lista = getMensajeService().traerEnviados();
         //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
 
         if(lista.size() > 0){
@@ -126,7 +125,7 @@ public class ControlMensajes {
     public ResponseEntity mandarPapelera(@RequestHeader("idMensaje") int id)
     {
         try{
-            mensajeService.cambiarAEliminado(id);
+            getMensajeService().cambiarAEliminado(id);
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }
         catch(Exception e)
@@ -138,8 +137,24 @@ public class ControlMensajes {
     public List<MensajeResponse> convertList(List<Mensaje> listaMensajes){
         List<MensajeResponse> lista = new ArrayList<MensajeResponse>();
         for(Mensaje mensaje: listaMensajes){
-            lista.add(converter.convert(mensaje));
+            lista.add(getConverter().convert(mensaje));
         }
         return lista;
+    }
+
+    public MensajeService getMensajeService() {
+        return mensajeService;
+    }
+
+    public void setMensajeService(MensajeService mensajeService) {
+        this.mensajeService = mensajeService;
+    }
+
+    public MensajeConverter getConverter() {
+        return converter;
+    }
+
+    public void setConverter(MensajeConverter converter) {
+        this.converter = converter;
     }
 }

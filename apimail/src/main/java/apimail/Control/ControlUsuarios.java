@@ -36,12 +36,13 @@ public class ControlUsuarios {
     UserService userService;
 
     @Autowired
+    private
     UsuarioConverter converter;
 
     @Autowired
     SessionData sessionData;
 
-    @RequestMapping("/traerUsuarios")
+    @RequestMapping(value="/traerUsuarios",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<UsuarioResponse>> getAll(){
         List<Usuario> lista = getUserService().traerTodos();
         if(lista.size() > 0){
@@ -54,17 +55,17 @@ public class ControlUsuarios {
     public List<UsuarioResponse> convertList(List<Usuario> listaUsuarios){
         List<UsuarioResponse> lista = new ArrayList<UsuarioResponse>();
         for(Usuario usuario: listaUsuarios){
-            lista.add(converter.convert(usuario));
+            lista.add(getConverter().convert(usuario));
         }
         return lista;
     }
 
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value="/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<UsuarioResponse> getById(@PathVariable("id") int id){
         Usuario user= getUserService().traerPodId(id);
         if(user != null){
-            UsuarioResponse wrapper = converter.convert(user);
+            UsuarioResponse wrapper = getConverter().convert(user);
             return new ResponseEntity<UsuarioResponse>(wrapper,HttpStatus.OK);
         }else{
             return new ResponseEntity<UsuarioResponse>(HttpStatus.NOT_FOUND);
@@ -94,7 +95,7 @@ public class ControlUsuarios {
         }
     }
 
-    @RequestMapping(value="/traerPorNombre")
+    @RequestMapping(value="/traerPorNombre",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity traerUserPorNombre(@RequestHeader("nombre") String nombre)
     {
         try{
@@ -102,7 +103,7 @@ public class ControlUsuarios {
 
             if(user!=null)
             {
-                UsuarioResponse wrapper = converter.convert(user);
+                UsuarioResponse wrapper = getConverter().convert(user);
                 return new ResponseEntity<UsuarioResponse>(wrapper,HttpStatus.OK);
             }
             else
@@ -123,5 +124,13 @@ public class ControlUsuarios {
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public UsuarioConverter getConverter() {
+        return converter;
+    }
+
+    public void setConverter(UsuarioConverter converter) {
+        this.converter = converter;
     }
 }
