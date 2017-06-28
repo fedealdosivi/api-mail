@@ -122,7 +122,7 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/MoverPapelera", method = RequestMethod.PATCH)
+    @RequestMapping(value="/MoverPapelera", method = RequestMethod.PUT)
     public ResponseEntity mandarPapelera(@RequestHeader("idMensaje") int id)
     {
         try{

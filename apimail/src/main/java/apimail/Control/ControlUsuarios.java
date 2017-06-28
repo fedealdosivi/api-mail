@@ -6,18 +6,15 @@
 package apimail.Control;
 
 import apimail.Converter.UsuarioConverter;
-import apimail.Dao.DaoUsuarios;
 import apimail.Model.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
 import apimail.Request.UsuarioRequest;
-import apimail.Response.LoginResponse;
 import apimail.Response.UsuarioResponse;
 import apimail.Services.UserService;
 import apimail.Session.SessionData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +32,7 @@ import org.springframework.web.bind.annotation.*;
 public class ControlUsuarios {
     
     @Autowired
+    private
     UserService userService;
 
     @Autowired
@@ -45,7 +43,7 @@ public class ControlUsuarios {
 
     @RequestMapping("/traerUsuarios")
     public @ResponseBody ResponseEntity<List<UsuarioResponse>> getAll(){
-        List<Usuario> lista = userService.traerTodos();
+        List<Usuario> lista = getUserService().traerTodos();
         if(lista.size() > 0){
             return new ResponseEntity<List<UsuarioResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
@@ -64,7 +62,7 @@ public class ControlUsuarios {
 
     @RequestMapping("/{id}")
     public @ResponseBody ResponseEntity<UsuarioResponse> getById(@PathVariable("id") int id){
-        Usuario user= userService.traerPodId(id);
+        Usuario user= getUserService().traerPodId(id);
         if(user != null){
             UsuarioResponse wrapper = converter.convert(user);
             return new ResponseEntity<UsuarioResponse>(wrapper,HttpStatus.OK);
@@ -76,7 +74,7 @@ public class ControlUsuarios {
     @RequestMapping(value = "/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUsuario(@RequestBody UsuarioRequest userRequest){
         try{
-            userService.agregarUsuario(userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());
+            getUserService().agregarUsuario(userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());
             return new ResponseEntity(HttpStatus.CREATED);
         }catch(Exception e){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -87,7 +85,7 @@ public class ControlUsuarios {
     public ResponseEntity removeUsuario(@PathVariable ("id") int id)
     {
         try{
-            userService.eliminarUsuario(id);
+            getUserService().eliminarUsuario(id);
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }
         catch(Exception e)
@@ -100,7 +98,7 @@ public class ControlUsuarios {
     public  ResponseEntity traerUserPorNombre(@RequestHeader("nombre") String nombre)
     {
         try{
-            Usuario user=userService.traerPorNombre(nombre);
+            Usuario user= getUserService().traerPorNombre(nombre);
 
             if(user!=null)
             {
@@ -119,27 +117,11 @@ public class ControlUsuarios {
         }
     }
 
-    /*
-    @RequestMapping(value="/validarLogin")
-    public  ResponseEntity traerUserLog(@RequestHeader("email") String nombre,@RequestHeader("password") String email)
-    {
-        try{
-            Usuario user=userService.login(email,nombre);
+    public UserService getUserService() {
+        return userService;
+    }
 
-            if(user!=null)
-            {
-                UsuarioResponse wrapper = converter.convert(user);
-                return new ResponseEntity<UsuarioResponse>(wrapper,HttpStatus.OK);
-            }
-            else
-            {
-                return new ResponseEntity<UsuarioResponse>(HttpStatus.NOT_FOUND);
-            }
-        }
-
-        catch (Exception e)
-        {
-            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }*/
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 }

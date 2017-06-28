@@ -30,7 +30,6 @@ public class MensajeDaoTest{
 
     @Before
     public void setUp(){
-
         conn=mock(Connection.class);
         ps = mock(PreparedStatement.class);
         rs = mock(ResultSet.class);
