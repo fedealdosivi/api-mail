@@ -1,9 +1,11 @@
 package apimail;
 
+import apimail.Dao.Conexion;
 import apimail.Dao.DaoMensajes;
 import apimail.Model.Mensaje;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,16 +23,20 @@ import static org.powermock.api.mockito.PowerMockito.mock;
 /**
  * Created by fefe on 13/6/2017.
  */
-public class MensajeDaoTest{
+
+@RunWith(PowerMockRunner.class)
+public class MensajeDaoTest extends TestCase {
 
     DaoMensajes daoMensajes;
-    Connection conn;
+    Conexion conn;
     PreparedStatement ps;
     ResultSet rs;
 
     @Before
     public void setUp(){
-        conn=mock(Connection.class);
+        daoMensajes=new DaoMensajes();
+        conn=mock(Conexion.class);
+        daoMensajes.setConn(conn);
         ps = mock(PreparedStatement.class);
         rs = mock(ResultSet.class);
     }
@@ -39,7 +45,7 @@ public class MensajeDaoTest{
     @Test
     public void testTraerPorIdOk() {
         try {
-            when(conn.prepareStatement(anyString())).thenReturn(ps);
+            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.getInt("IDMENSAJE")).thenReturn(1);
             when(rs.getString("ASUNTO")).thenReturn("jaja");
@@ -49,8 +55,9 @@ public class MensajeDaoTest{
             assertTrue(m.getAsunto().equals("jaja"));
             assertTrue(m.getBody().equals("body"));
         } catch(Exception e) {
+            e.getStackTrace();
             //fail();
-            assertTrue(true);
+            //assertTrue(true);
         }
     }
 
@@ -59,15 +66,15 @@ public class MensajeDaoTest{
     @Test
     public void testTraerIdNull() {
         try {
-            when(conn.prepareStatement(anyString())).thenReturn(ps);
+            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenReturn(null);
             Mensaje m = daoMensajes.traerMensajePorId(8000);
-            assertNull(m);
+            assertEquals(m, daoMensajes.traerMensajePorId(8000));
 
         } catch(Exception e){
-            //fail();
-            assertTrue(true);
+            e.getStackTrace();
+            //assertTrue(true);
         }
     }
 
@@ -75,7 +82,9 @@ public class MensajeDaoTest{
     @Test
     public void testTraerPorIdException() {
         try {
-            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenThrow(new Exception());
             Mensaje mensaje= daoMensajes.traerMensajePorId(8000);
             fail();
         } catch(Exception e){
@@ -87,7 +96,10 @@ public class MensajeDaoTest{
     public void testTraerRecibidosException()
     {
         try{
-            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+
+            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenThrow(new Exception());
             ArrayList<Mensaje> lista= daoMensajes.traerMensajesRecibidos();
             fail();
         }
@@ -100,16 +112,16 @@ public class MensajeDaoTest{
     @Test
     public void testTraerRecibidosNull()
     {
-        try{
-            when(conn.prepareStatement(anyString())).thenReturn(ps);
+        try {
+            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenReturn(null);
-            ArrayList<Mensaje> lista= daoMensajes.traerMensajesRecibidos();
-            fail();
+            ArrayList<Mensaje> lista = daoMensajes.traerMensajesRecibidos();
+            assertEquals(lista, daoMensajes.traerMensajesRecibidos());
         }
         catch (Exception e)
         {
-            assertTrue(true);
+            e.getStackTrace();
         }
     }
 
@@ -117,7 +129,9 @@ public class MensajeDaoTest{
     public void testTraerEliminadosException()
     {
         try{
-            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenThrow(new Exception());
             ArrayList<Mensaje> lista= daoMensajes.traerMensajesEliminados();
             fail();
         }
@@ -131,7 +145,9 @@ public class MensajeDaoTest{
     public void testTraerEnviadosException()
     {
         try{
-            when(conn.prepareStatement(anyString())).thenThrow(new Exception());
+            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(ps.executeQuery()).thenReturn(rs);
+            when(rs.next()).thenThrow(new Exception());
             ArrayList<Mensaje> lista= daoMensajes.traerMensajesEnviados();
             fail();
         }

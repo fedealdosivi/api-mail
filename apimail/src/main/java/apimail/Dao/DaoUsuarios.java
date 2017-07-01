@@ -11,7 +11,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -21,12 +20,13 @@ import org.springframework.stereotype.Repository;
 public class DaoUsuarios{
 
     @Autowired
+    private
     Conexion conn;
 
     public void cargarUsuario(Usuario user) {
         try {
             String query = "insert into USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,DIRECCION,TELEFONO,PAIS,PROVINCIA,CIUDAD) values (?,?,?,?,?,?,?,?,?)";
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = getConn().getConn().prepareStatement(query);
             st.setString(1, user.getNombre());
             st.setString(2, user.getApellido());
             st.setString(3, user.getEmail());
@@ -46,7 +46,7 @@ public class DaoUsuarios{
         ArrayList<Usuario> lista = new ArrayList();
         try {
             String sq = "select * from USUARIOS";
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = getConn().getConn().prepareStatement(sq);
             ResultSet rs = st.executeQuery();
             if (rs == null) {
                 System.out.println(" No hay registros en la base de datos");
@@ -77,7 +77,7 @@ public class DaoUsuarios{
     public void eliminarUsuario(int id) {
         try {
             String sq = "delete from USUARIOS where IDUSUARIO=?";
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = getConn().getConn().prepareStatement(sq);
             st.setInt(1, id);
             st.execute();
         } catch (SQLException es) {
@@ -90,7 +90,7 @@ public class DaoUsuarios{
 
         try {
             String sq = "select * from USUARIOS where IDUSUARIO=?";
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = getConn().getConn().prepareStatement(sq);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
 
@@ -118,7 +118,7 @@ public class DaoUsuarios{
 
         try {
             String sq = "select * from USUARIOS where EMAIL=? and PASSWORD=?";
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = getConn().getConn().prepareStatement(sq);
             st.setString(1, email);
             st.setString(2, password);
             ResultSet rs = st.executeQuery();
@@ -147,7 +147,7 @@ public class DaoUsuarios{
         try {
 
             String sq = "select * from USUARIOS where NOMBRE LIKE ?";
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = getConn().getConn().prepareStatement(sq);
             st.setString(1, nombre);
             ResultSet rs = st.executeQuery();
 
@@ -168,5 +168,13 @@ public class DaoUsuarios{
             e.getStackTrace();
         }
         return user;
+    }
+
+    public Conexion getConn() {
+        return conn;
+    }
+
+    public void setConn(Conexion conn) {
+        this.conn = conn;
     }
 }

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import apimail.Model.Usuario;
 import apimail.Session.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -23,6 +22,7 @@ import org.springframework.stereotype.Repository;
 public class DaoMensajes{
 
     @Autowired
+    private
     Conexion conn;
 
     @Autowired
@@ -33,7 +33,7 @@ public class DaoMensajes{
         try {
 
             String query = "INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (?,?,?,?)";
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = getConn().getConn().prepareStatement(query);
             st.setInt(1, mensaje.getRemitente().getId());
             //st.setInt(1, authentication.getUsuario().getId());
             st.setInt(2, mensaje.getDestinatario().getId());
@@ -49,7 +49,7 @@ public class DaoMensajes{
     public void eliminarMensaje(int idMensaje) {
         try {
             String sq = "delete from MENSAJES where IDMENSAJE=?";
-            PreparedStatement st = conn.getConn().prepareStatement(sq);
+            PreparedStatement st = getConn().getConn().prepareStatement(sq);
             st.setInt(1, idMensaje);
             st.execute();
         } catch (Exception e) {
@@ -67,7 +67,7 @@ public class DaoMensajes{
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDMENSAJE=?";
 
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = getConn().getConn().prepareStatement(query);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
 
@@ -119,7 +119,7 @@ public class DaoMensajes{
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDREMITENTE=?";
 
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = getConn().getConn().prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -176,7 +176,7 @@ public class DaoMensajes{
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=TRUE";
 
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = getConn().getConn().prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -232,7 +232,7 @@ public class DaoMensajes{
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=FALSE";
 
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = getConn().getConn().prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -282,7 +282,7 @@ public class DaoMensajes{
     public void cambiarEliminado(int idMensaje) {
         try {
             String query = "update MENSAJES set ELIMINADO = TRUE WHERE IDMENSAJE = ?";
-            PreparedStatement st = conn.getConn().prepareStatement(query);
+            PreparedStatement st = getConn().getConn().prepareStatement(query);
             st.setInt(1, idMensaje);
             st.executeQuery();
         } catch (Exception e) {
@@ -290,4 +290,11 @@ public class DaoMensajes{
         }
     }
 
+    public Conexion getConn() {
+        return conn;
+    }
+
+    public void setConn(Conexion conn) {
+        this.conn = conn;
+    }
 }
