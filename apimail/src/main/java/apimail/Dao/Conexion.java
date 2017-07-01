@@ -16,17 +16,13 @@ import java.sql.SQLException;
  * @author fefe
  */
 @Repository
-public abstract class Conexion<T> {
-    protected Connection conn;
+public class Conexion<T> {
+    private Connection conn;
 
-    public Conexion() {
-
-    }
-
-    public Conexion(String dbUsername, String dbName,String dbPassword, String dbPort, String dbHost) {
+    public Conexion(@Value("${db.username}") String dbUserName, @Value("${db.name}") String dbName, @Value("${db.password}") String dbPassword, @Value("${db.port}") String dbPort, @Value("${db.host}") String dbHost) {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName,  dbUsername, dbPassword);
+            setConn((Connection) DriverManager.getConnection("jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName,  dbUserName, dbPassword));
         }catch(SQLException e){
             e.getStackTrace();
         } catch (ClassNotFoundException e) {
@@ -34,4 +30,11 @@ public abstract class Conexion<T> {
         }
     }
 
+    public Connection getConn() {
+        return conn;
+    }
+
+    public void setConn(Connection conn) {
+        this.conn = conn;
+    }
 }

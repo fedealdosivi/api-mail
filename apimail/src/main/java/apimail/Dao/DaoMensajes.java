@@ -15,19 +15,15 @@ import apimail.Session.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 /**
  * @author fefe
  */
 @Repository
-public class DaoMensajes extends Conexion {
-
+public class DaoMensajes{
 
     @Autowired
-    public DaoMensajes(@Value("${db.username}") String dbUserName, @Value("${db.name}") String dbName, @Value("${db.password}") String dbPassword, @Value("${db.port}") String dbPort, @Value("${db.host}") String dbHost) {
-        super(dbUserName, dbName, dbPassword, dbPort, dbHost);
-    }
+    Conexion conn;
 
     @Autowired
     Authentication authentication;
@@ -37,10 +33,10 @@ public class DaoMensajes extends Conexion {
         try {
 
             String query = "INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (?,?,?,?)";
-            PreparedStatement st = conn.prepareStatement(query);
+            PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setInt(1, mensaje.getRemitente().getId());
             //st.setInt(1, authentication.getUsuario().getId());
-            st.setInt(1, mensaje.getDestinatario().getId());
+            st.setInt(2, mensaje.getDestinatario().getId());
             st.setString(3, mensaje.getAsunto());
             st.setString(4, mensaje.getBody());
             st.execute();
@@ -53,7 +49,7 @@ public class DaoMensajes extends Conexion {
     public void eliminarMensaje(int idMensaje) {
         try {
             String sq = "delete from MENSAJES where IDMENSAJE=?";
-            PreparedStatement st = conn.prepareStatement(sq);
+            PreparedStatement st = conn.getConn().prepareStatement(sq);
             st.setInt(1, idMensaje);
             st.execute();
         } catch (Exception e) {
@@ -71,7 +67,7 @@ public class DaoMensajes extends Conexion {
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDMENSAJE=?";
 
-            PreparedStatement st = conn.prepareStatement(query);
+            PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
 
@@ -123,7 +119,7 @@ public class DaoMensajes extends Conexion {
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDREMITENTE=?";
 
-            PreparedStatement st = conn.prepareStatement(query);
+            PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -180,7 +176,7 @@ public class DaoMensajes extends Conexion {
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=TRUE";
 
-            PreparedStatement st = conn.prepareStatement(query);
+            PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -236,7 +232,7 @@ public class DaoMensajes extends Conexion {
                     + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
                     + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=FALSE";
 
-            PreparedStatement st = conn.prepareStatement(query);
+            PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
             ResultSet rs = st.executeQuery();
             lista = new ArrayList<Mensaje>();
@@ -286,7 +282,7 @@ public class DaoMensajes extends Conexion {
     public void cambiarEliminado(int idMensaje) {
         try {
             String query = "update MENSAJES set ELIMINADO = TRUE WHERE IDMENSAJE = ?";
-            PreparedStatement st = conn.prepareStatement(query);
+            PreparedStatement st = conn.getConn().prepareStatement(query);
             st.setInt(1, idMensaje);
             st.executeQuery();
         } catch (Exception e) {
