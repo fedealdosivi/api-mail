@@ -33,7 +33,7 @@ public class UsuarioServiceTest extends TestCase {
 
     UserService service;
 
-    DaoUsuarios dao = Mockito.mock(DaoUsuarios.class);
+    DaoUsuarios dao;
 
     Usuario usuario;
 
@@ -41,6 +41,9 @@ public class UsuarioServiceTest extends TestCase {
     public void setUp() throws Exception{
         super.setUp();
         service = new UserService();
+        dao=Mockito.mock(DaoUsuarios.class);
+
+        service.setDaoUsuarios(dao);
 
         usuario=new Usuario();
         usuario.setDireccion("JBjusto");
@@ -53,21 +56,13 @@ public class UsuarioServiceTest extends TestCase {
         usuario.setNombre("AAA");
         usuario.setPassword("123456");
         usuario.setTelefono(123456);
-
-        dao.cargarUsuario(usuario);
-    }
-
-    @After
-    public void tearDown()
-    {
-        dao.eliminarUsuario(usuario.getId());
     }
 
     @Test
-    public void traerPorIdnull()
+    public void traerPorId()
     {
-        when(dao.traerUsuarioPorId(8000)).thenReturn(null);
-        assertNull(service.traerPodId(8000));
+        when(dao.traerUsuarioPorId(8000)).thenReturn(usuario);
+        assertNotNull(service.traerPodId(8000));
     }
 
 }

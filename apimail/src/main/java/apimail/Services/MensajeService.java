@@ -6,9 +6,7 @@ import apimail.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Executable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by fefe on 8/6/2017.
@@ -17,11 +15,12 @@ import java.util.List;
 public class MensajeService {
 
     @Autowired
+    private
     DaoMensajes daoMensajes;
 
     public Mensaje traerPorId(int id) {
         try {
-            return daoMensajes.traerMensajePorId(id);
+            return getDaoMensajes().traerMensajePorId(id);
         } catch (Exception e) {
             e.getStackTrace();
             return null;
@@ -36,7 +35,7 @@ public class MensajeService {
             mensaje.setBody(body);
             mensaje.setAsunto(asunto);
             mensaje.setDestinatario(destinatario);
-            daoMensajes.cargarMensaje(mensaje);
+            getDaoMensajes().cargarMensaje(mensaje);
             return true;
         } catch (Exception e) {
             e.getStackTrace();
@@ -46,7 +45,7 @@ public class MensajeService {
 
     public boolean eliminarMensaje(int id) {
         try {
-            daoMensajes.eliminarMensaje(id);
+            getDaoMensajes().eliminarMensaje(id);
             return true;
         } catch (Exception e) {
             e.getStackTrace();
@@ -56,7 +55,7 @@ public class MensajeService {
 
     public boolean cambiarAEliminado(int idMensaje) {
         try {
-            daoMensajes.cambiarEliminado(idMensaje);
+            getDaoMensajes().cambiarEliminado(idMensaje);
             return true;
         } catch (Exception e) {
             e.getStackTrace();
@@ -66,7 +65,7 @@ public class MensajeService {
 
     public ArrayList<Mensaje> traerEliminados() {
         try {
-            return daoMensajes.traerMensajesEliminados();
+            return getDaoMensajes().traerMensajesEliminados();
         } catch (Exception e) {
             e.getStackTrace();
             return null;
@@ -75,7 +74,7 @@ public class MensajeService {
 
     public ArrayList<Mensaje> traerEnviados() {
         try {
-            return daoMensajes.traerMensajesEnviados();
+            return getDaoMensajes().traerMensajesEnviados();
         } catch (Exception e) {
             e.getStackTrace();
             return null;
@@ -84,11 +83,19 @@ public class MensajeService {
 
     public ArrayList<Mensaje> traerRecibidos() {
         try {
-            return daoMensajes.traerMensajesRecibidos();
+            return getDaoMensajes().traerMensajesRecibidos();
         } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
+    }
+
+    public DaoMensajes getDaoMensajes() {
+        return daoMensajes;
+    }
+
+    public void setDaoMensajes(DaoMensajes daoMensajes) {
+        this.daoMensajes = daoMensajes;
     }
 }
 

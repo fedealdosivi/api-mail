@@ -45,8 +45,6 @@ public class ControlMensajes {
 /// estas trabajando las peticiones como si fuera un servicio SOAP
 
 
-
-
     @RequestMapping(value="/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<MensajeResponse> getById(@PathVariable("id") int id){
         Mensaje mensaje= getMensajeService().traerPorId(id);
@@ -59,7 +57,7 @@ public class ControlMensajes {
     }
 
 
-    @RequestMapping(value = "/cargarMensaje", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addMensaje(@RequestBody MensajeRequest mensajeRequest){
         try{
             getMensajeService().agregarMensaje(mensajeRequest.getId(),mensajeRequest.getAsunto(),mensajeRequest.getBody(),mensajeRequest.getRemitente(),mensajeRequest.getDestinatario());
@@ -69,7 +67,7 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/eliminar/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
     public ResponseEntity removeMensaje(@PathVariable ("id") int id)
     {
         try{
@@ -82,12 +80,9 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/traerRecibidos",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/inbox",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getRecibidos(){
         List<Mensaje> lista = getMensajeService().traerRecibidos();
-
-        //List<Mensaje> lista = mensajeService.traerRecibidos(aData.getUsuario().getId());//NO ANDA USER LOGEADO
-
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
@@ -95,12 +90,10 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/traerEliminados",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/trash",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getEliminados(){
 
         List<Mensaje> lista = getMensajeService().traerEliminados();
-        //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
-
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
@@ -108,12 +101,10 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/traerEnviados",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/sent",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<MensajeResponse>> getEnviados(){
 
         List<Mensaje> lista = getMensajeService().traerEnviados();
-        //List<Mensaje> lista = mensajeService.traerEnviados(aData.getUsuario().getId());//NO ANDA USER LOGEADO
-
         if(lista.size() > 0){
             return new ResponseEntity<List<MensajeResponse>>(this.convertList(lista), HttpStatus.OK);
         }else{
@@ -121,8 +112,8 @@ public class ControlMensajes {
         }
     }
 
-    @RequestMapping(value="/MoverPapelera", method = RequestMethod.PUT)
-    public ResponseEntity mandarPapelera(@RequestHeader("idMensaje") int id)
+    @RequestMapping(value="/{id}",method = RequestMethod.PUT)
+    public ResponseEntity mandarPapelera(@PathVariable ("id") int id)
     {
         try{
             getMensajeService().cambiarAEliminado(id);

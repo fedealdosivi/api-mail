@@ -42,7 +42,7 @@ public class ControlUsuarios {
     @Autowired
     SessionData sessionData;
 
-    @RequestMapping(value="/traerUsuarios",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody ResponseEntity<List<UsuarioResponse>> getAll(){
         List<Usuario> lista = getUserService().traerTodos();
         if(lista.size() > 0){
@@ -72,7 +72,7 @@ public class ControlUsuarios {
         }
     }
 
-    @RequestMapping(value = "/cargarUsuario", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addUsuario(@RequestBody UsuarioRequest userRequest){
         try{
             getUserService().agregarUsuario(userRequest.getNombre(),userRequest.getApellido(),userRequest.getDireccion(),userRequest.getTelefono(),userRequest.getPassword(),userRequest.getEmail(),userRequest.getPais(),userRequest.getProvincia(),userRequest.getCiudad());
@@ -82,7 +82,7 @@ public class ControlUsuarios {
         }
     }
 
-    @RequestMapping(value="/eliminar/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
     public ResponseEntity removeUsuario(@PathVariable ("id") int id)
     {
         try{

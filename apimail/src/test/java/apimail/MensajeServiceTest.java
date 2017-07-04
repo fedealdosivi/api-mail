@@ -17,6 +17,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,16 +45,12 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * Created by fefe on 19/6/2017.
  */
-//@ActiveProfiles("default")
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringBootTest(classes = Main.class)
 @RunWith(PowerMockRunner.class)
 public class MensajeServiceTest extends TestCase{
 
     MensajeService service;
 
-
-    DaoMensajes daoMensajes= Mockito.mock(DaoMensajes.class);
+    DaoMensajes daoMensajes;
 
     Mensaje mensaje;
 
@@ -62,6 +59,9 @@ public class MensajeServiceTest extends TestCase{
     public void setUp()
     {
         service=new MensajeService();
+        daoMensajes= Mockito.mock(DaoMensajes.class);
+
+        service.setDaoMensajes(daoMensajes);
 
         mensaje=new Mensaje();
         mensaje.setAsunto("prueba asunto");
@@ -71,34 +71,29 @@ public class MensajeServiceTest extends TestCase{
         mensaje.setDestinatario(null);
 
         when(daoMensajes.traerMensajePorId(anyInt())).thenReturn(mensaje);
-        daoMensajes.cargarMensaje(mensaje);
-    }
-
-    @After
-    public void tearDown()
-    {
-        daoMensajes.eliminarMensaje(mensaje.getId());
     }
 
     @Test
     public void TestTraerMensajeId()
     {
-        assertNull(service.traerPorId(8000));
+        when(daoMensajes.traerMensajePorId(8000)).thenReturn(mensaje);
+        assertNotNull(service.traerPorId(8000));
     }
 
     @Test
     public void TestTraerMensajeNullId()
     {
-        when(daoMensajes.traerMensajePorId(anyInt())).thenReturn(null);
-        assertEquals(null,service.traerPorId(1));
+        when(daoMensajes.traerMensajePorId(8000)).thenReturn(null);
+        assertEquals(null,service.traerPorId(8000));
     }
 
     @Test
     public void TestTraerMensajeExceptionId()
     {
         try {
-            when(daoMensajes.traerMensajePorId(anyInt())).thenReturn(null);
-            assertEquals(1, 1);
+            when(daoMensajes.traerMensajePorId(8000)).thenThrow(new Exception());
+            service.traerPorId(8000);
+            fail();
         }
         catch (Exception e)
         {
@@ -111,7 +106,7 @@ public class MensajeServiceTest extends TestCase{
     {
         ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
         when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
-        assertEquals(null,service.traerEliminados());
+        assertEquals(lista,service.traerEliminados());
     }
 
 
@@ -120,7 +115,7 @@ public class MensajeServiceTest extends TestCase{
     {
         ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
         when(daoMensajes.traerMensajesEnviados()).thenReturn(lista);
-        assertEquals(null,service.traerEnviados());
+        assertEquals(lista,service.traerEnviados());
     }
 
     @Test
@@ -128,7 +123,7 @@ public class MensajeServiceTest extends TestCase{
     {
         ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
         when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
-        assertEquals(null,null);
+        assertEquals(lista,service.traerRecibidos());
     }
 
 

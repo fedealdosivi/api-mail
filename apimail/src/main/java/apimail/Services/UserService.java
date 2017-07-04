@@ -14,12 +14,13 @@ import java.util.List;
 public class UserService {
 
     @Autowired
+    private
     DaoUsuarios daoUsuarios;
 
     public boolean agregarUsuario(String nombre, String apellido, String direccion, int telefono, String password, String email, String pais, String provincia, String ciudad) {
         try {
             Usuario user = new Usuario(nombre, apellido, email, password, direccion, telefono, pais, provincia, ciudad);
-            daoUsuarios.cargarUsuario(user);
+            getDaoUsuarios().cargarUsuario(user);
             return true;
         } catch (Exception e) {
             e.getStackTrace();
@@ -29,7 +30,7 @@ public class UserService {
 
     public List<Usuario> traerTodos() {
         try {
-            return daoUsuarios.traerTodos();
+            return getDaoUsuarios().traerTodos();
         } catch (Exception e) {
             e.getStackTrace();
             return null;
@@ -38,7 +39,7 @@ public class UserService {
 
     public Usuario traerPodId(int id) {
         try {
-            return daoUsuarios.traerUsuarioPorId(id);
+            return getDaoUsuarios().traerUsuarioPorId(id);
         } catch (Exception e) {
             e.getStackTrace();
             return null;
@@ -47,7 +48,7 @@ public class UserService {
 
     public Usuario traerPorNombre(String nombre) {
         try {
-            return daoUsuarios.traerUserPorNombre(nombre);
+            return getDaoUsuarios().traerUserPorNombre(nombre);
         } catch (Exception e) {
             e.getStackTrace();
             return null;
@@ -56,7 +57,7 @@ public class UserService {
 
     public Usuario login(String email, String password) {
         try {
-            return daoUsuarios.validarUsuario(email, password);
+            return getDaoUsuarios().validarUsuario(email, password);
         } catch (Exception e) {
             e.getStackTrace();
             return null;
@@ -66,10 +67,18 @@ public class UserService {
 
     public void eliminarUsuario(int id) {
         try {
-            daoUsuarios.eliminarUsuario(id);
+            getDaoUsuarios().eliminarUsuario(id);
         } catch (Exception e) {
             e.getStackTrace();
         }
 
+    }
+
+    public DaoUsuarios getDaoUsuarios() {
+        return daoUsuarios;
+    }
+
+    public void setDaoUsuarios(DaoUsuarios daoUsuarios) {
+        this.daoUsuarios = daoUsuarios;
     }
 }
