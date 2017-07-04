@@ -34,10 +34,12 @@ import java.util.ArrayList;
 
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+
 import org.junit.Assert.*;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
@@ -46,7 +48,7 @@ import org.springframework.web.context.WebApplicationContext;
  * Created by fefe on 19/6/2017.
  */
 @RunWith(PowerMockRunner.class)
-public class MensajeServiceTest extends TestCase{
+public class MensajeServiceTest extends TestCase {
 
     MensajeService service;
 
@@ -54,45 +56,135 @@ public class MensajeServiceTest extends TestCase{
 
     Mensaje mensaje;
 
+    Usuario user;
+
 
     @Before
-    public void setUp()
-    {
-        service=new MensajeService();
-        daoMensajes= Mockito.mock(DaoMensajes.class);
+    public void setUp() {
+        service = new MensajeService();
+        daoMensajes = Mockito.mock(DaoMensajes.class);
 
         service.setDaoMensajes(daoMensajes);
 
-        mensaje=new Mensaje();
+        user=new Usuario("hola", "hola", "hola", "hola", "hola", 1, "hola", "hola", "hola");
+
+        mensaje = new Mensaje();
         mensaje.setAsunto("prueba asunto");
         mensaje.setId(8000);
         mensaje.setBody("probando body");
-        mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-        mensaje.setDestinatario(null);
+        mensaje.setRemitente(user);
+        mensaje.setDestinatario(user);
 
         when(daoMensajes.traerMensajePorId(anyInt())).thenReturn(mensaje);
     }
 
     @Test
-    public void TestTraerMensajeId()
+    public void TestCargarMensaje()
     {
+        try{
+            assertEquals(true,service.agregarMensaje(8000,"prueba","probando",user,user));
+        }
+        catch (Exception e)
+        {
+            fail();
+        }
+    }
+
+    @Test
+    public void TestEliminarMensaje()
+    {
+        try{
+            service.eliminarMensaje(8000);
+        }
+        catch (Exception e)
+        {
+            fail();
+        }
+    }
+
+    @Test
+    public void TestCambiarEliminado()
+    {
+        try {
+            service.cambiarAEliminado(8000);
+        }
+        catch (Exception e)
+        {
+            fail();
+        }
+    }
+
+    @Test
+    public void TestTraerMensajeId() {
         when(daoMensajes.traerMensajePorId(8000)).thenReturn(mensaje);
         assertNotNull(service.traerPorId(8000));
     }
 
     @Test
-    public void TestTraerMensajeNullId()
-    {
-        when(daoMensajes.traerMensajePorId(8000)).thenReturn(null);
-        assertEquals(null,service.traerPorId(8000));
-    }
-
-    @Test
-    public void TestTraerMensajeExceptionId()
-    {
+    public void TestTraerMensajeExceptionId() {
         try {
             when(daoMensajes.traerMensajePorId(8000)).thenThrow(new Exception());
             service.traerPorId(8000);
+            fail();
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void TestTraerMensajesEliminadosOK() {
+        ArrayList<Mensaje> lista = new ArrayList<Mensaje>();
+        when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
+        assertEquals(lista, service.traerEliminados());
+    }
+
+
+    @Test
+    public void TestTraerMensajesEliminadosException() {
+        try {
+            when(daoMensajes.traerMensajesEliminados()).thenThrow(new Exception());
+            service.traerEliminados();
+            fail();
+        } catch (Exception e) {
+            assertTrue(true);
+        }
+    }
+
+
+    @Test
+    public void TestTraerMensajesEnviadosOK() {
+        ArrayList<Mensaje> lista = new ArrayList<Mensaje>();
+        when(daoMensajes.traerMensajesEnviados()).thenReturn(lista);
+        assertEquals(lista, service.traerEnviados());
+    }
+
+    @Test
+    public void TestTraerMensajesEnviadosException() {
+        try {
+            when(daoMensajes.traerMensajesEnviados()).thenThrow(new Exception());
+            service.traerEnviados();
+            fail();
+        }
+        catch (Exception e)
+        {
+            assertTrue(true);
+        }
+
+    }
+
+    @Test
+    public void TestTraerMensajesRecibidosOK() {
+        ArrayList<Mensaje> lista = new ArrayList<Mensaje>();
+        when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
+        assertEquals(lista, service.traerRecibidos());
+    }
+
+
+    @Test
+    public void TestTraerMensajesRecibidosException() {
+        try {
+            when(daoMensajes.traerMensajesEliminados()).thenThrow(new Exception());
+            service.traerRecibidos();
             fail();
         }
         catch (Exception e)
@@ -100,32 +192,6 @@ public class MensajeServiceTest extends TestCase{
             assertTrue(true);
         }
     }
-
-    @Test
-    public void TestTraerMensajesEliminadosOK()
-    {
-        ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
-        when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
-        assertEquals(lista,service.traerEliminados());
-    }
-
-
-    @Test
-    public void TestTraerMensajesEnviadosOK()
-    {
-        ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
-        when(daoMensajes.traerMensajesEnviados()).thenReturn(lista);
-        assertEquals(lista,service.traerEnviados());
-    }
-
-    @Test
-    public void TestTraerMensajesRecibidosOK()
-    {
-        ArrayList<Mensaje> lista=new ArrayList<Mensaje>();
-        when(daoMensajes.traerMensajesEliminados()).thenReturn(lista);
-        assertEquals(lista,service.traerRecibidos());
-    }
-
 
 
 }
