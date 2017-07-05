@@ -21,6 +21,7 @@ public class ControlSession {
     UserService userService;
 
     @Autowired
+    private
     SessionData sessionData;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -30,7 +31,7 @@ public class ControlSession {
         try {
             Usuario u = getUserService().login(email, password);
             if (null != u) {
-                String sessionId = sessionData.addSession(u);
+                String sessionId = getSessionData().addSession(u);
                 return new ResponseEntity<LoginResponse>(new LoginResponse(sessionId), HttpStatus.OK);
             }
             return new ResponseEntity(HttpStatus.UNAUTHORIZED);
@@ -43,9 +44,9 @@ public class ControlSession {
     @RequestMapping("/logout")
     public
     @ResponseBody
-    ResponseEntity getById(@RequestHeader("sessionid") String sessionId) {
+    ResponseEntity logout(@RequestHeader("sessionid") String sessionId) {
         try {
-            sessionData.removeSession(sessionId);
+            getSessionData().removeSession(sessionId);
             return new ResponseEntity(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -58,5 +59,13 @@ public class ControlSession {
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public SessionData getSessionData() {
+        return sessionData;
+    }
+
+    public void setSessionData(SessionData sessionData) {
+        this.sessionData = sessionData;
     }
 }
