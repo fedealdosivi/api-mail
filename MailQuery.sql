@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS DESTINATARIOXMENSAJE;
 DROP TABLE IF EXISTS MENSAJES;
 DROP TABLE IF EXISTS USUARIOS; 
 /*==============================================================*/
-/* Table: USUARIOS                                                */
+/* Table: USUARIOS                                               */
 /*==============================================================*/
 
 create table USUARIOS
@@ -25,7 +25,7 @@ create table USUARIOS
 );
 
 /*==============================================================*/
-/* Table: MENSAJES                                              */
+/* Table: MENSAJES//DESACTUALIZADO HAY QUE SACAR EL IDDESTINATARIO    */
 /*==============================================================*/
 
 create table MENSAJES
@@ -145,6 +145,80 @@ INSERT INTO USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,DIRECCION,TELEFONO,PAIS,PROV
 INSERT INTO USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,DIRECCION,TELEFONO,PAIS,PROVINCIA,CIUDAD) values ('DEFE','PALOMERO','prueba@prueba','123456','CALLEFALSA123',123456,'ANTARTIDA','AAA','AAA');
 INSERT INTO USUARIOS(NOMBRE,APELLIDO,EMAIL,PASSWORD,DIRECCION,TELEFONO,PAIS,PROVINCIA,CIUDAD) values ('JEJE','PALOMERO','HOLIS@HOLIS','123456','CALLEFALSA123',123456,'ANTARTIDA','AAA','AAA');
 
+INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (1,4,'pruebatabla','PRUEBA 1');
+
+/*EL USUARIO 1 LE ENVIA UN MENSAJE A LOS USUARIOS 4,3 Y 2)*/
+INSERT INTO DESTINATARIOXMENSAJE(IDMENSAJE,IDDESTINATARIO)values(1,4);
+INSERT INTO DESTINATARIOXMENSAJE(IDMENSAJE,IDDESTINATARIO)values(1,3);
+INSERT INTO DESTINATARIOXMENSAJE(IDMENSAJE,IDDESTINATARIO)values(1,2);
+
+SELECT * FROM MENSAJES;
+
+/*========NO ANDA===================TRAER ENVIADOS POR UN USUARIO IDREMITENTE==================*/
+
+Select m.IDMENSAJE, m.ASUNTO,m.BODY,uR.IDUSUARIO, uR.NOMBRE,uR.APELLIDO,uR.EMAIL,uR.PASSWORD,
+uR.DIRECCION,uR.TELEFONO,uR.PAIS,uR.PROVINCIA,uR.CIUDAD FROM MENSAJES as m 
+join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO WHERE m.IDREMITENTE=1 AND m.ELIMINADO=FALSE
+UNION
+join(Select uD.IDUSUARIO, uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,
+uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD FROM USUARIOS AS uD
+join destinatarioxmensaje destinatarioxmensaje.IDDESTINATARIO=uD.IDUSUARIO) USUARIOS
+on m.IDMENSAJE=destinatarioxmensaje.IDMENSAJE;
+
+/*===NO ANDA=================SOLO TRAE EL MENSAJE Y LOS USUARIOS A LOS QUE EL REMITENTE 1 MANDO MENSAJES===========================*/
+
+SELECT m.IDMENSAJE, m.ASUNTO,m.BODY FROM MENSAJES AS m LEFT JOIN
+(
+SELECT uD.IDUSUARIO, uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,
+uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD 
+FROM USUARIOS AS uD
+INNER JOIN destinatarioxmensaje as dxm 
+on 
+dxm.IDDESTINATARIO=uD.IDUSUARIO
+)
+on destinatarioxmensaje.IDMENSAJE=m.IDMENSAJE WHERE m.IDREMITENTE=1;
+
+/*==================TRAE EL MENSAJE, 1 REMITENTE Y UN DESTINATARIO===========================*/
+
+SELECT m.IDMENSAJE, m.ASUNTO,m.BODY,
+uR.IDUSUARIO,uR.NOMBRE,uR.APELLIDO,uR.EMAIL,uR.PASSWORD,uR.DIRECCION,uR.TELEFONO,uR.PAIS,uR.PROVINCIA,uR.CIUDAD,
+uD.IDUSUARIO,uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD
+FROM MENSAJES as m
+inner join destinatarioxmensaje as dxm ON m.IDMENSAJE=dxm.IDMENSAJE
+inner join USUARIOS as uD ON dxm.IDDESTINATARIO=uD.IDUSUARIO
+inner join USUARIOS as uR ON m.IDREMITENTE=uR.IDUSUARIO
+WHERE m.IDREMITENTE=1;
+
+/*==================DEBERIA TRAER ===========================*/
+
+SELECT m.IDMENSAJE, m.ASUNTO,m.BODY,
+uR.IDUSUARIO,uR.NOMBRE,uR.APELLIDO,uR.EMAIL,uR.PASSWORD,uR.DIRECCION,uR.TELEFONO,uR.PAIS,uR.PROVINCIA,uR.CIUDAD
+FROM MENSAJES as m 
+inner join USUARIOS as uR ON m.IDREMITENTE=uR.IDUSUARIO
+inner join
+(SELECT  uD.IDUSUARIO,uD.NOMBRE,uD.APELLIDO,uD.EMAIL,
+uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD
+from USUARIOS AS uD inner join destinatarioxmensaje dxm ON dxm.IDDESTINATARIO=uD.IDUSUARIO)
+ON m.IDMENSAJE=destinatarioxmensaje.IDMENSAJE
+WHERE m.IDREMITENTE=1;
+
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
+/*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
 
 INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (1,4,'prueba','PRUEBA 1');
 INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (2,3,'prueba','PRUEBA 2');
