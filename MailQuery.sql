@@ -32,7 +32,7 @@ create table MENSAJES
 (
    IDMENSAJE            integer AUTO_INCREMENT not null,
    IDREMITENTE          integer not null,
-   IDDESTINATARIO       integer not null,
+   IDDESTINATARIO       integer not null,/*CAMPO DE MAS*/
    ASUNTO               VARCHAR(40) not null,
    BODY                 VARCHAR(200) not null,
    ELIMINADO            boolean default false,
@@ -45,9 +45,11 @@ create table MENSAJES
 
 create table DESTINATARIOXMENSAJE
  (
+   IDDXM                integer AUTO_INCREMENT not null,
    IDMENSAJE            integer not null,
    IDDESTINATARIO       integer not null,
-   LEIDO                boolean default false
+   LEIDO                boolean default false,
+   primary key ( IDDXM)
  );
 
 alter table MENSAJES add constraint FK_MENSAJE_REMITENTE foreign key (IDREMITENTE)
@@ -153,6 +155,11 @@ INSERT INTO DESTINATARIOXMENSAJE(IDMENSAJE,IDDESTINATARIO)values(1,3);
 INSERT INTO DESTINATARIOXMENSAJE(IDMENSAJE,IDDESTINATARIO)values(1,2);
 
 SELECT * FROM MENSAJES;
+/*==========ANDA PERO FALTAN COSAS=======================*/
+
+SELECT * FROM USUARIOS
+JOIN destinatarioxmensaje AS DXM ON DXM.IDDESTINATARIO=usuarios.IDUSUARIO AND DXM.IDMENSAJE=1;
+
 
 /*========NO ANDA===================TRAER ENVIADOS POR UN USUARIO IDREMITENTE==================*/
 
@@ -162,7 +169,7 @@ join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO WHERE m.IDREMITENTE=1 AND m.
 UNION
 join(Select uD.IDUSUARIO, uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,
 uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD FROM USUARIOS AS uD
-join destinatarioxmensaje destinatarioxmensaje.IDDESTINATARIO=uD.IDUSUARIO) USUARIOS
+join destinatarioxmensaje on destinatarioxmensaje.IDDESTINATARIO=uD.IDUSUARIO) MENSAJES
 on m.IDMENSAJE=destinatarioxmensaje.IDMENSAJE;
 
 /*===NO ANDA=================SOLO TRAE EL MENSAJE Y LOS USUARIOS A LOS QUE EL REMITENTE 1 MANDO MENSAJES===========================*/
@@ -201,6 +208,20 @@ uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD
 from USUARIOS AS uD inner join destinatarioxmensaje dxm ON dxm.IDDESTINATARIO=uD.IDUSUARIO)
 ON m.IDMENSAJE=destinatarioxmensaje.IDMENSAJE
 WHERE m.IDREMITENTE=1;
+
+
+/*==================DEBERIA TRAER 2===========================*/
+
+SELECT m.IDMENSAJE, m.ASUNTO,m.BODY,
+uD.IDUSUARIO,uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD
+FROM destinatarioxmensaje as dm
+INNER JOIN mensajes as m
+ON dm.IDMENSAJE=m.IDMENSAJE
+INNER JOIN usuarios as uD
+ON dm.IDDESTINATARIO= uD.IDUSUARIO
+WHERE m.IDREMITENTE=1;
+
+
 
 /*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
 /*==============================EJECUTAR HASTA ACAAAAAAAAAA===========================================*/
