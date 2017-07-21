@@ -27,7 +27,7 @@ public class MensajeService {
         }
     }
 
-    public boolean agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario) {
+    public void agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario) {
         try {
             Mensaje mensaje = new Mensaje();
             mensaje.setId(id);
@@ -36,30 +36,25 @@ public class MensajeService {
             mensaje.setAsunto(asunto);
             mensaje.setDestinatario(destinatario);
             getDaoMensajes().cargarMensaje(mensaje);
-            return true;
+
         } catch (Exception e) {
             e.getStackTrace();
-            return false;
         }
     }
 
-    public boolean eliminarMensaje(int id) {
+    public void eliminarMensaje(int id) {
         try {
             getDaoMensajes().eliminarMensaje(id);
-            return true;
         } catch (Exception e) {
             e.getStackTrace();
-            return false;
         }
     }
 
-    public boolean cambiarAEliminado(int idMensaje) {
+    public void cambiarAEliminado(int idMensaje) {
         try {
             getDaoMensajes().cambiarEliminado(idMensaje);
-            return true;
         } catch (Exception e) {
             e.getStackTrace();
-            return false;
         }
     }
 

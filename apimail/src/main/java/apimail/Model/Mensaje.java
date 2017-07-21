@@ -1,5 +1,9 @@
 package apimail.Model;
 
+import org.joda.time.DateTime;
+
+import java.util.ArrayList;
+
 /**
  * Created by fefe on 7/6/2017.
  */
@@ -11,12 +15,16 @@ public class Mensaje {
     private Usuario remitente;
     private Usuario destinatario;
     private String body;
+    private DateTime dateTime;
+    private ArrayList<Usuario> destinatarios;
 
     public Mensaje() {
         setAsunto("");
         setRemitente(new Usuario());
         setDestinatario(new Usuario());
         setBody("");
+        destinatarios=new ArrayList<Usuario>();
+        dateTime=new DateTime();
     }
 
     public int getId() {
@@ -59,6 +67,37 @@ public class Mensaje {
         this.body = body;
     }
 
+    public DateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(DateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+
+    public ArrayList<Usuario> getDestinatarios() {
+        return destinatarios;
+    }
+
+    public void setDestinatarios(ArrayList<Usuario> destinatarios) {
+        this.destinatarios = destinatarios;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Mensaje{" +
+                "id=" + id +
+                ", asunto='" + asunto + '\'' +
+                ", remitente=" + remitente +
+                ", destinatario=" + destinatario +
+                ", body='" + body + '\'' +
+                ", dateTime=" + dateTime +
+                ", destinatarios=" + destinatarios +
+                '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,7 +110,9 @@ public class Mensaje {
         if (remitente != null ? !remitente.equals(mensaje.remitente) : mensaje.remitente != null) return false;
         if (destinatario != null ? !destinatario.equals(mensaje.destinatario) : mensaje.destinatario != null)
             return false;
-        return body != null ? body.equals(mensaje.body) : mensaje.body == null;
+        if (body != null ? !body.equals(mensaje.body) : mensaje.body != null) return false;
+        if (dateTime != null ? !dateTime.equals(mensaje.dateTime) : mensaje.dateTime != null) return false;
+        return destinatarios != null ? destinatarios.equals(mensaje.destinatarios) : mensaje.destinatarios == null;
     }
 
     @Override
@@ -81,18 +122,9 @@ public class Mensaje {
         result = 31 * result + (remitente != null ? remitente.hashCode() : 0);
         result = 31 * result + (destinatario != null ? destinatario.hashCode() : 0);
         result = 31 * result + (body != null ? body.hashCode() : 0);
+        result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
+        result = 31 * result + (destinatarios != null ? destinatarios.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Mensaje{" +
-                "id=" + id +
-                ", asunto='" + asunto + '\'' +
-                ", remitente=" + remitente +
-                ", destinatario=" + destinatario +
-                ", body='" + body + '\'' +
-                '}';
     }
 }
 
