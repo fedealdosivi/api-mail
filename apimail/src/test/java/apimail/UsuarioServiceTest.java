@@ -1,6 +1,7 @@
 package apimail;
 
 import apimail.Dao.DaoUsuarios;
+import apimail.Dao.UsuarioDao;
 import apimail.Model.Usuario;
 import apimail.Services.UserService;
 import junit.framework.TestCase;

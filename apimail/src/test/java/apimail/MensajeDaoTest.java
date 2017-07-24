@@ -29,7 +29,7 @@ import static org.powermock.api.mockito.PowerMockito.mock;
 public class MensajeDaoTest extends TestCase {
 
     DaoMensajes daoMensajes;
-    Conexion conn;
+    Connection conn;
     PreparedStatement ps;
     ResultSet rs;
     Mensaje mensaje;
@@ -44,9 +44,9 @@ public class MensajeDaoTest extends TestCase {
         mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
         mensaje.setDestinatario(null);
 
-        daoMensajes=new DaoMensajes();
-        conn=mock(Conexion.class);
-        daoMensajes.setConn(conn);
+        conn=mock(Connection.class);
+        daoMensajes=new DaoMensajes(conn);
+        //daoMensajes.setConn(conn);
         ps = mock(PreparedStatement.class);
         rs = mock(ResultSet.class);
     }
@@ -55,7 +55,7 @@ public class MensajeDaoTest extends TestCase {
     @Test
     public void testTraerPorIdOk() {
         try {
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.getInt("m.IDMENSAJE")).thenReturn(1);
             when(rs.getString("m.ASUNTO")).thenReturn("jaja");
@@ -83,7 +83,7 @@ public class MensajeDaoTest extends TestCase {
     @Test
     public void testTraerIdNull() {
         try {
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenReturn(null);
             Mensaje m = daoMensajes.traerMensajePorId(8000);
@@ -99,7 +99,7 @@ public class MensajeDaoTest extends TestCase {
     @Test
     public void testTraerPorIdException() {
         try {
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenThrow(new Exception());
             Mensaje mensaje= daoMensajes.traerMensajePorId(8000);
@@ -114,7 +114,7 @@ public class MensajeDaoTest extends TestCase {
     {
         try{
 
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenThrow(new Exception());
             ArrayList<Mensaje> lista= daoMensajes.traerMensajesRecibidos();
@@ -130,7 +130,7 @@ public class MensajeDaoTest extends TestCase {
     public void testTraerRecibidosNull()
     {
         try {
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenReturn(null);
             ArrayList<Mensaje> lista = daoMensajes.traerMensajesRecibidos();
@@ -146,7 +146,7 @@ public class MensajeDaoTest extends TestCase {
     public void testTraerEliminadosException()
     {
         try{
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenThrow(new Exception());
             ArrayList<Mensaje> lista= daoMensajes.traerMensajesEliminados();
@@ -162,7 +162,7 @@ public class MensajeDaoTest extends TestCase {
     public void testTraerEnviadosException()
     {
         try{
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenReturn(rs);
             when(rs.next()).thenThrow(new Exception());
             ArrayList<Mensaje> lista= daoMensajes.traerMensajesEnviados();
@@ -191,7 +191,7 @@ public class MensajeDaoTest extends TestCase {
     public void testEliminarMensajeException()
     {
         try{
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenThrow(new Exception());
             daoMensajes.eliminarMensaje(1);
             fail();
@@ -219,7 +219,7 @@ public class MensajeDaoTest extends TestCase {
     public void testCargarMensajeException()
     {
         try {
-            when(conn.getConn().prepareStatement(anyString())).thenReturn(ps);
+            when(conn.prepareStatement(anyString())).thenReturn(ps);
             when(ps.executeQuery()).thenThrow(new Exception());
             daoMensajes.cargarMensaje(mensaje);
             fail();
