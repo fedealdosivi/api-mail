@@ -25,7 +25,7 @@ public class MensajeRequest {
     @JsonProperty("datetime")
     private DateTime dateTime;
     @JsonProperty("destinatarios")
-    private ArrayList<Usuario> destinatarios;
+    private ArrayList<String> destinatarios;
 
 
     public int getId() {
@@ -76,11 +76,11 @@ public class MensajeRequest {
         this.dateTime = dateTime;
     }
 
-    public ArrayList<Usuario> getDestinatarios() {
+    public ArrayList<String> getDestinatarios() {
         return destinatarios;
     }
 
-    public void setDestinatarios(ArrayList<Usuario> destinatarios) {
+    public void setDestinatarios(ArrayList<String> destinatarios) {
         this.destinatarios = destinatarios;
     }
 }

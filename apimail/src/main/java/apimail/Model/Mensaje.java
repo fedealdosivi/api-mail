@@ -16,14 +16,14 @@ public class Mensaje {
     private Usuario destinatario;
     private String body;
     private DateTime dateTime;
-    private ArrayList<Usuario> destinatarios;
+    private ArrayList<String> destinatarios;
 
     public Mensaje() {
         setAsunto("");
         setRemitente(new Usuario());
         setDestinatario(new Usuario());
         setBody("");
-        destinatarios=new ArrayList<Usuario>();
+        destinatarios=new ArrayList<String>();
         dateTime=new DateTime();
     }
 
@@ -76,11 +76,11 @@ public class Mensaje {
     }
 
 
-    public ArrayList<Usuario> getDestinatarios() {
+    public ArrayList<String> getDestinatarios() {
         return destinatarios;
     }
 
-    public void setDestinatarios(ArrayList<Usuario> destinatarios) {
+    public void setDestinatarios(ArrayList<String> destinatarios) {
         this.destinatarios = destinatarios;
     }
 
