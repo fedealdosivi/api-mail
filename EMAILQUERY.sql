@@ -102,11 +102,165 @@ END
 $$
 delimiter ;
 
+
+/*=====================================================================*/
+/* TRIGGER: ELIMINA DE LA TABLA INTERMEDIA CUANDO SE ELIMINA UN USER   */
+/*=====================================================================*/
+
+delimiter $$
+ CREATE TRIGGER Tig_RECIPIENT
+ 
+ BEFORE DELETE
+    ON USERS FOR EACH ROW
+ 
+ BEGIN
+    
+ 	delete from RECIPIENTBYMESSAGE
+    
+ 	where RECIPIENTBYMESSAGE.IDRECIPIENT = old.IDUSER;
+
+ END
+ $$
+delimiter ;
+
 /*==============================================================*/
 /*PROCEDURES*/
 /*==============================================================*/
 
+/*==============================================================*/
+/*==============================================================*/
+/*USERS*/
+/*==============================================================*/
+/*==============================================================*/
+
+/*====================LOGIN============================*/
+DROP PROCEDURE IF EXISTS login;
+DELIMITER $$
+ 
+CREATE PROCEDURE login(IN EMAIL VARCHAR(40) , IN PASSWORD VARCHAR(20))
+BEGIN
+
+select * from USERS where USERS.EMAIL=EMAIL and USERS.PASSWORD=PASSWORD;
+
+END
+$$
+
+delimiter ;
+
+/*====================TRAERPORNOMBRE============================*/
+
+DROP PROCEDURE IF EXISTS getUserByName;
+DELIMITER $$
+ 
+CREATE PROCEDURE getUserByName(IN NAME VARCHAR(40))
+BEGIN
+
+select * from USERS where USERS.NAME LIKE NAME;
+
+END
+$$
+
+delimiter ;
+
+/*====================TRAERPORID============================*/
+
+DROP PROCEDURE IF EXISTS getUserById;
+DELIMITER $$
+ 
+CREATE PROCEDURE getUserById(IN id INT)
+BEGIN
+
+select * from USERS where USERS.IDUSER=id;
+
+END
+$$
+
+delimiter ;
+
+/*====================TRAERPORID============================*/
+
+DROP PROCEDURE IF EXISTS getUserById;
+DELIMITER $$
+ 
+CREATE PROCEDURE getUserById(IN id INT)
+BEGIN
+
+select * from USERS where USERS.IDUSER=id;
+
+END
+$$
+
+delimiter ;
+
+/*====================TRAERTODOS============================*/
+
+DROP PROCEDURE IF EXISTS getAllUsers;
+DELIMITER $$
+ 
+CREATE PROCEDURE getAllUsers()
+BEGIN
+
+select * from USERS;
+
+END
+$$
+
+delimiter ;
+
+/*====================EliminarUsuario============================*/
+
+DROP PROCEDURE IF EXISTS deleteUser;
+DELIMITER $$
+ 
+CREATE PROCEDURE deleteUser(IN id INT)
+BEGIN
+
+delete from USERS where USERS.IDUSER=id;
+
+END
+$$
+
+delimiter ;
+
+/*====================CargarUsuario============================*/
+
+DROP PROCEDURE IF EXISTS saveUser;
+DELIMITER $$
+ 
+CREATE PROCEDURE saveUser( 
+IN NAME              VARCHAR(40), 
+IN SURNAME           VARCHAR(40), 
+IN EMAIL             VARCHAR(40), 
+IN PASSWORD          VARCHAR(20), 
+IN ADRESS            VARCHAR(20), 
+IN CELLPHONE         integer, 
+IN COUNTRY           VARCHAR(20), 
+IN STATE             VARCHAR(20), 
+IN CITY              VARCHAR(20) 
+)
+
+BEGIN
+
+INSERT INTO USERS(NAME,SURNAME,EMAIL,PASSWORD,ADRESS,CELLPHONE,COUNTRY,STATE,CITY) 
+values (NAME,SURNAME,EMAIL,PASSWORD,ADRESS,CELLPHONE,COUNTRY,STATE,CITY);
+
+END
+$$
+
+delimiter ;
+
+
+
+/*==============================================================*/
+/*==============================================================*/
+/*==============================================================*/
+/*Mensaje*/
+/*==============================================================*/
+/*==============================================================*/
+/*==============================================================*/
+
 /*====================TRAER MENSAJE POR ID============================*/
+
 DROP PROCEDURE IF EXISTS getMessageById;
 DELIMITER $$
  
@@ -154,6 +308,7 @@ delimiter ;
 
 
 /*====================TRAER TODOS LOS MENSAJES ENVIADOS POR UN USUARIO============================*/
+
 DROP PROCEDURE IF EXISTS getSent;
 
 DELIMITER $$
@@ -198,6 +353,7 @@ $$
 delimiter ;
 
 /*====================TRAER TODOS LOS MENSAJES ELIMINADOS POR EL EMISOR============================*/
+
 DROP PROCEDURE IF EXISTS getTrash;
 
 DELIMITER $$
@@ -243,6 +399,7 @@ delimiter ;
 
 
 /*====================TRAER TODOS LOS MENSAJES RECIBIDOS POR UN USUARIO============================*/
+
 DROP PROCEDURE IF EXISTS getInbox;
 
 DELIMITER $$
@@ -289,15 +446,16 @@ $$
 delimiter ;
 
 /*=========================MANDAR UN MENSAJE A LA PAPELERA===================================*/
+
 DROP PROCEDURE IF EXISTS setTrash;
 
 DELIMITER $$
  
-CREATE PROCEDURE setTrash(IN idMessage INT)
+CREATE PROCEDURE setTrash(IN idM INT)
 
 BEGIN
 
-UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=idMessage;
+UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=idM;
 
 END
 $$
@@ -333,6 +491,15 @@ INSERT INTO RECIPIENTBYMESSAGE(IDMESSAGE,IDRECIPIENT)values(2,7);
 
 
 /*====================LLAMANDO PROCEDURES============================*/
+
+CALL login('admin@admin',123456);
+CALL getUserByName('PEPE');
+CALL getUserById(8);
+CALL getAllUsers();
+CALL deleteUser(11);
+CALL saveUser('LEANDRO','SOMOZA','leandro@somoza','123456','CALLEFALSA123',123456,'ANTARTIDA','AAA','AAA');
+
+
 CALL getSent(1);
 CALL getInbox(6);
 UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=2;
