@@ -51,8 +51,8 @@ public class MensajeConverterTest extends TestCase {
         mensaje.setAsunto("prueba asunto");
         mensaje.setId(1);
         mensaje.setBody("probando body");
-        mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-        mensaje.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //mensaje.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
 
         wrapper=converter.convert(mensaje);
     }

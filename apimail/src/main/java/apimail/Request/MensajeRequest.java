@@ -17,9 +17,7 @@ public class MensajeRequest {
     @JsonProperty("asunto")
     private String asunto;
     @JsonProperty("remitente")
-    private Usuario remitente;
-    @JsonProperty("destinatario")
-    private Usuario destinatario;
+    private String remitente;
     @JsonProperty("body")
     private String body;
     @JsonProperty("datetime")
@@ -44,20 +42,12 @@ public class MensajeRequest {
         this.asunto = asunto;
     }
 
-    public Usuario getRemitente() {
+    public String getRemitente() {
         return remitente;
     }
 
-    public void setRemitente(Usuario remitente) {
+    public void setRemitente(String remitente) {
         this.remitente = remitente;
-    }
-
-    public Usuario getDestinatario() {
-        return destinatario;
-    }
-
-    public void setDestinatario(Usuario destinatario) {
-        this.destinatario = destinatario;
     }
 
     public String getBody() {

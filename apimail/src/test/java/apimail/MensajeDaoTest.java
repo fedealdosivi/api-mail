@@ -41,8 +41,8 @@ public class MensajeDaoTest extends TestCase {
         mensaje.setAsunto("prueba asunto");
         mensaje.setId(1);
         mensaje.setBody("probando body");
-        mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-        mensaje.setDestinatario(null);
+        //mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //mensaje.setDestinatario(null);
 
         conn=mock(Connection.class);
         daoMensajes=new DaoMensajes(conn);

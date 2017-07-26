@@ -44,24 +44,24 @@ public class ControlMensajeTest extends TestCase {
         mensaje.setAsunto("prueba asunto");
         mensaje.setId(1);
         mensaje.setBody("probando body");
-        mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-        mensaje.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //mensaje.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
 
 
         wrapper=new MensajeResponse();
         wrapper.setAsunto("prueba asunto");
         wrapper.setId(1);
         wrapper.setBody("probando body");
-        wrapper.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-        wrapper.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //wrapper.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //wrapper.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
 
 
         mensajeRequest = new MensajeRequest();
         mensajeRequest.setAsunto("prueba asunto");
         mensajeRequest.setId(1);
         mensajeRequest.setBody("probando body");
-        mensajeRequest.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-        mensajeRequest.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //mensajeRequest.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        //mensajeRequest.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
 
         lista=new ArrayList<Mensaje>();
         lista.add(mensaje);

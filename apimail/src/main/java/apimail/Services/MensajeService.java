@@ -27,14 +27,14 @@ public class MensajeService {
         }
     }
 
-    public void agregarMensaje(int id, String asunto, String body, Usuario remitente, Usuario destinatario) {
+    public void agregarMensaje(int id, String asunto, String body, String remitente, ArrayList<String> destinatario) {
         try {
             Mensaje mensaje = new Mensaje();
             mensaje.setId(id);
             mensaje.setRemitente(remitente);
             mensaje.setBody(body);
             mensaje.setAsunto(asunto);
-            mensaje.setDestinatario(destinatario);
+            mensaje.setDestinatarios(destinatario);
             getDaoMensajes().cargarMensaje(mensaje);
 
         } catch (Exception e) {

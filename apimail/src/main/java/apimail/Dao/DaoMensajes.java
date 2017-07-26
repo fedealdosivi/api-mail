@@ -15,6 +15,8 @@ import apimail.Session.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
+
 /**
  * @author fefe
  */
@@ -33,14 +35,22 @@ public class DaoMensajes extends AbstractDao{
     public void cargarMensaje(Mensaje mensaje) {
         try {
 
-            String query = "INSERT INTO MENSAJES(IDREMITENTE,IDDESTINATARIO,ASUNTO,BODY) values (?,?,?,?)";
-            PreparedStatement st = this.connection.prepareStatement(query);
-            st.setInt(1, mensaje.getRemitente().getId());
-            //st.setInt(1, authentication.getUsuario().getId());
-            st.setInt(2, mensaje.getDestinatario().getId());
-            st.setString(3, mensaje.getAsunto());
-            st.setString(4, mensaje.getBody());
-            st.execute();
+            String sq = "INSERT INTO MESSAGES(IDSENDER,SUBJECT,BODY) VALUES(?,?,?)";
+            PreparedStatement st = this.connection.prepareStatement(sq,Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, authentication.getUsuario().getId());
+            st.setString(2, mensaje.getAsunto());
+            st.setString(3, mensaje.getBody());
+            st.executeUpdate();
+            ResultSet rs=st.getGeneratedKeys();
+
+            for(String e:mensaje.getDestinatarios()){
+
+                String query = "CALL saveRecipientByMessage(?,?)";
+                CallableStatement st2 = this.connection.prepareCall(query);
+                st2.setInt(1,rs.getInt(1));
+                st2.setString(2,e);
+                st2.executeUpdate();
+            }
 
         } catch (Exception e) {
             e.getStackTrace();
@@ -49,10 +59,10 @@ public class DaoMensajes extends AbstractDao{
 
     public void eliminarMensaje(int idMensaje) {
         try {
-            String sq = "delete from MENSAJES where IDMENSAJE=?";
-            PreparedStatement st = this.connection.prepareStatement(sq);
+            String sq = "deleteMessage(?)";
+            CallableStatement st = this.connection.prepareCall(sq);
             st.setInt(1, idMensaje);
-            st.execute();
+            st.executeUpdate();
         } catch (Exception e) {
             e.getStackTrace();
         }
@@ -62,15 +72,11 @@ public class DaoMensajes extends AbstractDao{
         Mensaje m = null;
 
         try {
-            String query = "Select m.IDMENSAJE, m.ASUNTO,m.BODY"
-                    + ",uD.IDUSUARIO, uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD"
-                    + ",uR.IDUSUARIO, uR.NOMBRE,uR.APELLIDO,uR.EMAIL,uR.PASSWORD,uR.DIRECCION,uR.TELEFONO,uR.PAIS,uR.PROVINCIA,uR.CIUDAD"
-                    + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
-                    + " WHERE m.IDMENSAJE=?";
-
-            PreparedStatement st = this.connection.prepareStatement(query);
+            String query = ("CALL getMessageById(?)");
+            CallableStatement st = this.connection.prepareCall(query);
             st.setInt(1, id);
-            ResultSet rs = st.executeQuery();
+            st.execute();
+            ResultSet rs = st.getResultSet();
 
             if (rs.next()) {
                 m = new Mensaje();
@@ -89,7 +95,7 @@ public class DaoMensajes extends AbstractDao{
                 remitente.setPais(rs.getString("uR.PAIS"));
                 remitente.setProvincia(rs.getString("uR.PROVINCIA"));
                 remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                m.setRemitente(remitente);
+                //m.setRemitente(remitente);
 
                 Usuario dest = new Usuario();
                 dest.setId(rs.getInt("uD.IDUSUARIO"));
@@ -102,7 +108,7 @@ public class DaoMensajes extends AbstractDao{
                 dest.setPais(rs.getString("uD.PAIS"));
                 dest.setProvincia(rs.getString("uD.PROVINCIA"));
                 dest.setCiudad(rs.getString("uD.CIUDAD"));
-                m.setDestinatario(dest);
+                //m.setDestinatario(dest);
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -143,7 +149,7 @@ public class DaoMensajes extends AbstractDao{
                 remitente.setPais(rs.getString("uR.PAIS"));
                 remitente.setProvincia(rs.getString("uR.PROVINCIA"));
                 remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                m.setRemitente(remitente);
+                //m.setRemitente(remitente);
 
                 Usuario dest = new Usuario();
                 dest.setId(rs.getInt("uD.IDUSUARIO"));
@@ -156,7 +162,7 @@ public class DaoMensajes extends AbstractDao{
                 dest.setPais(rs.getString("uD.PAIS"));
                 dest.setProvincia(rs.getString("uD.PROVINCIA"));
                 dest.setCiudad(rs.getString("uD.CIUDAD"));
-                m.setDestinatario(dest);
+                //m.setDestinatario(dest);
 
                 lista.add(m);
             }
@@ -200,7 +206,7 @@ public class DaoMensajes extends AbstractDao{
                 remitente.setPais(rs.getString("uR.PAIS"));
                 remitente.setProvincia(rs.getString("uR.PROVINCIA"));
                 remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                m.setRemitente(remitente);
+                //m.setRemitente(remitente);
 
                 Usuario dest = new Usuario();
                 dest.setId(rs.getInt("uD.IDUSUARIO"));
@@ -213,7 +219,7 @@ public class DaoMensajes extends AbstractDao{
                 dest.setPais(rs.getString("uD.PAIS"));
                 dest.setProvincia(rs.getString("uD.PROVINCIA"));
                 dest.setCiudad(rs.getString("uD.CIUDAD"));
-                m.setDestinatario(dest);
+                //m.setDestinatario(dest);
 
                 lista.add(m);
             }
@@ -256,7 +262,7 @@ public class DaoMensajes extends AbstractDao{
                 remitente.setPais(rs.getString("uR.PAIS"));
                 remitente.setProvincia(rs.getString("uR.PROVINCIA"));
                 remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                m.setRemitente(remitente);
+                //m.setRemitente(remitente);
 
                 Usuario dest = new Usuario();
                 dest.setId(rs.getInt("uD.IDUSUARIO"));
@@ -269,7 +275,7 @@ public class DaoMensajes extends AbstractDao{
                 dest.setPais(rs.getString("uD.PAIS"));
                 dest.setProvincia(rs.getString("uD.PROVINCIA"));
                 dest.setCiudad(rs.getString("uD.CIUDAD"));
-                m.setDestinatario(dest);
+                //m.setDestinatario(dest);
 
                 lista.add(m);
             }
@@ -282,8 +288,8 @@ public class DaoMensajes extends AbstractDao{
 
     public void cambiarEliminado(int idMensaje) {
         try {
-            String query = "update MENSAJES set ELIMINADO = TRUE WHERE IDMENSAJE = ?";
-            PreparedStatement st = this.connection.prepareStatement(query);
+            String query = "CALL setTrash(1)";
+            CallableStatement st = this.connection.prepareCall(query);
             st.setInt(1, idMensaje);
             st.executeQuery();
         } catch (Exception e) {

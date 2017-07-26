@@ -18,7 +18,7 @@ public class MensajeConverter {
         wrapper.setBody(mensaje.getBody());
         wrapper.setAsunto(mensaje.getAsunto());
         wrapper.setId(mensaje.getId());
-        wrapper.setDestinatario(mensaje.getDestinatario());
+        wrapper.setDestinatarios(mensaje.getDestinatarios());
         return wrapper;
     }
 }

@@ -23,8 +23,8 @@ public class MensajeResponseTest extends TestCase{
         mensaje.setAsunto("prueba asunto");
         mensaje.setId(1);
         mensaje.setBody("probando body");
-        mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-        mensaje.setDestinatario(null);
+        //mensaje.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        mensaje.setDestinatarios(null);
     }
 
 
@@ -58,7 +58,7 @@ public class MensajeResponseTest extends TestCase{
     @Test
     public void testDestinatarios()
     {
-        assertEquals("probando destinatarios",mensaje.getDestinatario(),null);
+        assertEquals("probando destinatarios",mensaje.getDestinatarios(),null);
     }
 
 }
