@@ -29,6 +29,7 @@ create table MESSAGES
    SUBJECT           VARCHAR(40) not null,
    BODY              VARCHAR(200) not null,
    DELETED           boolean default false,
+   TS                TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    primary key (IDMESSAGE)
 );
 
@@ -63,7 +64,7 @@ references MESSAGES (IDMESSAGE);
 delimiter $$
  CREATE TRIGGER Tig_RBYM
  
- AFTER DELETE
+ BEFORE DELETE
     ON MESSAGES FOR EACH ROW
  
  BEGIN
@@ -258,6 +259,38 @@ delimiter ;
 /*==============================================================*/
 /*==============================================================*/
 /*==============================================================*/
+
+/*====================GuardarMensajeDestinatario============================*/
+
+DROP PROCEDURE IF EXISTS saveRecipientByMessage;
+DELIMITER $$
+ 
+CREATE PROCEDURE saveRecipientByMessage(IN idM INT,IN email VARCHAR(40))
+BEGIN
+
+SELECT IDUSER INTO @id from USERS WHERE USERS.EMAIL=email;
+
+INSERT INTO RECIPIENTBYMESSAGE(IDMESSAGE,IDRECIPIENT)values(idM,@id);
+
+END
+$$
+
+delimiter ;
+
+/*====================Eliminar Mensaje============================*/
+
+DROP PROCEDURE IF EXISTS deleteMessage;
+DELIMITER $$
+ 
+CREATE PROCEDURE deleteMessage(IN idM INT)
+BEGIN
+
+DELETE FROM MESSAGES WHERE MESSAGES.IDMESSAGE=idM;
+
+END
+$$
+
+delimiter ;
 
 /*====================TRAER MENSAJE POR ID============================*/
 
@@ -455,7 +488,7 @@ CREATE PROCEDURE setTrash(IN idM INT)
 
 BEGIN
 
-UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=idM;
+UPDATE MESSAGES SET DELETED=TRUE WHERE MESSAGES.IDMESSAGE=idM;
 
 END
 $$
@@ -488,22 +521,26 @@ INSERT INTO RECIPIENTBYMESSAGE(IDMESSAGE,IDRECIPIENT)values(1,2);
 INSERT INTO RECIPIENTBYMESSAGE(IDMESSAGE,IDRECIPIENT)values(2,5);
 INSERT INTO RECIPIENTBYMESSAGE(IDMESSAGE,IDRECIPIENT)values(2,6);
 INSERT INTO RECIPIENTBYMESSAGE(IDMESSAGE,IDRECIPIENT)values(2,7);
+INSERT INTO RECIPIENTBYMESSAGE(IDMESSAGE,IDRECIPIENT)values(2,4);
 
 
 /*====================LLAMANDO PROCEDURES============================*/
 
 CALL login('admin@admin',123456);
 CALL getUserByName('PEPE');
-CALL getUserById(8);
+CALL getUserById(4);
 CALL getAllUsers();
 CALL deleteUser(11);
 CALL saveUser('LEANDRO','SOMOZA','leandro@somoza','123456','CALLEFALSA123',123456,'ANTARTIDA','AAA','AAA');
 
-
+CALL saveRecipientByMessage(2,'prueba@prueba');
+CALL deleteMessage(2);
 CALL getSent(1);
 CALL getInbox(6);
-UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=2;
+UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=1;
 UPDATE recipientbymessage SET SEEN=FALSE WHERE IDMESSAGE=2;
-CALL getMessageById(2);
+CALL getMessageById(1);
 CALL setTrash(1);
 CALL getTrash(1);
+
+select * from messages;
