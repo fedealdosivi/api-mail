@@ -25,6 +25,11 @@ public class Mensaje {
         dateTime=new DateTime();
     }
 
+    public void addDestinatario(String e)
+    {
+        destinatarios.add(e);
+    }
+
     public int getId() {
         return id;
     }

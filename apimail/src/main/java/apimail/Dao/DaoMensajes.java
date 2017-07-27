@@ -9,6 +9,7 @@ import apimail.Model.Mensaje;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import apimail.Model.Usuario;
 import apimail.Session.Authentication;
@@ -80,35 +81,16 @@ public class DaoMensajes extends AbstractDao{
 
             if (rs.next()) {
                 m = new Mensaje();
-                m.setId(rs.getInt("m.IDMENSAJE"));
-                m.setAsunto(rs.getString("m.ASUNTO"));
-                m.setBody(rs.getString("m.BODY"));
-
-                Usuario remitente = new Usuario();
-                remitente.setId(rs.getInt("uR.IDUSUARIO"));
-                remitente.setNombre(rs.getString("uR.NOMBRE"));
-                remitente.setApellido(rs.getString("uR.APELLIDO"));
-                remitente.setPassword(rs.getString("uR.PASSWORD"));
-                remitente.setEmail(rs.getString("uR.EMAIL"));
-                remitente.setDireccion(rs.getString("uR.DIRECCION"));
-                remitente.setTelefono(rs.getInt("uR.TELEFONO"));
-                remitente.setPais(rs.getString("uR.PAIS"));
-                remitente.setProvincia(rs.getString("uR.PROVINCIA"));
-                remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                //m.setRemitente(remitente);
-
-                Usuario dest = new Usuario();
-                dest.setId(rs.getInt("uD.IDUSUARIO"));
-                dest.setNombre(rs.getString("uD.NOMBRE"));
-                dest.setApellido(rs.getString("uD.APELLIDO"));
-                dest.setPassword(rs.getString("uD.PASSWORD"));
-                dest.setEmail(rs.getString("uD.EMAIL"));
-                dest.setDireccion(rs.getString("uD.DIRECCION"));
-                dest.setTelefono(rs.getInt("uD.TELEFONO"));
-                dest.setPais(rs.getString("uD.PAIS"));
-                dest.setProvincia(rs.getString("uD.PROVINCIA"));
-                dest.setCiudad(rs.getString("uD.CIUDAD"));
-                //m.setDestinatario(dest);
+                m.setId(rs.getInt("ME.IDMESSAGE"));
+                m.setAsunto(rs.getString("ME.SUBJECT"));
+                m.setBody(rs.getString("ME.BODY"));
+                m.setRemitente("SENDER.EMAIL");
+                String returnedItems=rs.getString("GROUP_CONCAT(RECIPIENT.EMAIL)");
+                String [] strings = returnedItems.split(",");
+                for (String e :strings
+                     ) {
+                    m.addDestinatario(e);
+                }
             }
         } catch (Exception e) {
             e.getStackTrace();
