@@ -3,7 +3,7 @@ package apimail.Response;
 
 import apimail.Model.Usuario;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
+import java.util.Date;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class MensajeResponse {
     @JsonProperty
     private String body;
     @JsonProperty("datetime")
-    private DateTime dateTime;
+    private Date dateTime;
     @JsonProperty("destinatarios")
     private ArrayList<String> destinatarios;
 
@@ -65,11 +65,11 @@ public class MensajeResponse {
         this.destinatarios = destinatarios;
     }
 
-    public DateTime getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(DateTime dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 }

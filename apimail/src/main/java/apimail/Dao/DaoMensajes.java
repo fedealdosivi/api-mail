@@ -9,14 +9,12 @@ import apimail.Model.Mensaje;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import apimail.Model.Usuario;
 import apimail.Session.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 /**
  * @author fefe
@@ -28,6 +26,7 @@ public class DaoMensajes extends AbstractDao{
     Authentication authentication;
 
 
+    @Autowired
     public DaoMensajes(Connection connection) {
         super(connection);
     }
@@ -79,18 +78,20 @@ public class DaoMensajes extends AbstractDao{
             st.execute();
             ResultSet rs = st.getResultSet();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 m = new Mensaje();
                 m.setId(rs.getInt("ME.IDMESSAGE"));
                 m.setAsunto(rs.getString("ME.SUBJECT"));
                 m.setBody(rs.getString("ME.BODY"));
-                m.setRemitente("SENDER.EMAIL");
+                m.setRemitente(rs.getString("SENDER.EMAIL"));
+                m.setDateTime(rs.getTimestamp("ME.TS"));
                 String returnedItems=rs.getString("GROUP_CONCAT(RECIPIENT.EMAIL)");
                 String [] strings = returnedItems.split(",");
                 for (String e :strings
                      ) {
                     m.addDestinatario(e);
                 }
+                System.out.println(m.toString());
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -102,55 +103,56 @@ public class DaoMensajes extends AbstractDao{
         ArrayList<Mensaje> lista = null;
 
         try {
-            String query = "Select m.IDMENSAJE, m.ASUNTO,m.BODY"
-                    + ",uD.IDUSUARIO, uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD"
-                    + ",uR.IDUSUARIO, uR.NOMBRE,uR.APELLIDO,uR.EMAIL,uR.PASSWORD,uR.DIRECCION,uR.TELEFONO,uR.PAIS,uR.PROVINCIA,uR.CIUDAD"
-                    + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
-                    + " WHERE m.IDREMITENTE=?";
-
-            PreparedStatement st = this.connection.prepareStatement(query);
+            String query = "CALL getSent(?)";
+            CallableStatement st = this.connection.prepareCall(query);
+            //st.setInt(1, 1);
             st.setInt(1, authentication.getUsuario().getId());
+            System.out.println("antes de ejectuar");
             ResultSet rs = st.executeQuery();
+            System.out.println("despues de ejecutar");
             lista = new ArrayList<Mensaje>();
+            Mensaje m = new Mensaje();
 
             while (rs.next()) {
 
-                Mensaje m = new Mensaje();
-                m.setId(rs.getInt("m.IDMENSAJE"));
-                m.setAsunto(rs.getString("m.ASUNTO"));
-                m.setBody(rs.getString("m.BODY"));
+                System.out.println("TRAJO UN RESULT SET");
 
-                Usuario remitente = new Usuario();
-                remitente.setId(rs.getInt("uR.IDUSUARIO"));
-                remitente.setNombre(rs.getString("uR.NOMBRE"));
-                remitente.setApellido(rs.getString("uR.APELLIDO"));
-                remitente.setPassword(rs.getString("uR.PASSWORD"));
-                remitente.setEmail(rs.getString("uR.EMAIL"));
-                remitente.setDireccion(rs.getString("uR.DIRECCION"));
-                remitente.setTelefono(rs.getInt("uR.TELEFONO"));
-                remitente.setPais(rs.getString("uR.PAIS"));
-                remitente.setProvincia(rs.getString("uR.PROVINCIA"));
-                remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                //m.setRemitente(remitente);
 
-                Usuario dest = new Usuario();
-                dest.setId(rs.getInt("uD.IDUSUARIO"));
-                dest.setNombre(rs.getString("uD.NOMBRE"));
-                dest.setApellido(rs.getString("uD.APELLIDO"));
-                dest.setPassword(rs.getString("uD.PASSWORD"));
-                dest.setEmail(rs.getString("uD.EMAIL"));
-                dest.setDireccion(rs.getString("uD.DIRECCION"));
-                dest.setTelefono(rs.getInt("uD.TELEFONO"));
-                dest.setPais(rs.getString("uD.PAIS"));
-                dest.setProvincia(rs.getString("uD.PROVINCIA"));
-                dest.setCiudad(rs.getString("uD.CIUDAD"));
-                //m.setDestinatario(dest);
+                int numero=rs.getInt("ME.IDMESSAGE");
+                if(numero== m.getId()) {
 
-                lista.add(m);
+                    for(Mensaje me : lista) {
+                        if(me.getId()==rs.getInt("ME.IDMESSAGE"))
+                        {
+                            me.addDestinatario(rs.getString("RECIPIENT"));
+                            System.out.println("AGREGO UN DESTINATARIO");
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("ENTROOOO");
+                        m = new Mensaje();
+                        m.setId(rs.getInt("ME.IDMESSAGE"));
+                        m.setAsunto(rs.getString("ME.SUBJECT"));
+                        m.setBody(rs.getString("ME.BODY"));
+                        m.setRemitente(rs.getString("SENDER"));
+                        //m.setDateTime(rs.getTimestamp("ME.TS"));
+                        m.addDestinatario(rs.getString("RECIPIENT"));
+                        lista.add(m);
+                }
+            }
+            if(lista!=null)
+            {
+                for (Mensaje men:lista
+                     ) {
+                    System.out.println(men.toString());
+                }
             }
 
         } catch (Exception e) {
             e.getStackTrace();
+            System.out.println("EXPLOTAAAAA TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             return null;
         }
         return lista;
@@ -159,51 +161,44 @@ public class DaoMensajes extends AbstractDao{
     public ArrayList<Mensaje> traerMensajesEliminados() {
         ArrayList<Mensaje> lista = null;
         try {
-            String query = "Select m.IDMENSAJE, m.ASUNTO,m.BODY"
-                    + ",uD.IDUSUARIO, uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD"
-                    + ",uR.IDUSUARIO, uR.NOMBRE,uR.APELLIDO,uR.EMAIL,uR.PASSWORD,uR.DIRECCION,uR.TELEFONO,uR.PAIS,uR.PROVINCIA,uR.CIUDAD"
-                    + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
-                    + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=TRUE";
+            String query = "CALL getTrash(?)";
 
             PreparedStatement st = this.connection.prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
+            System.out.println("antes de ejectuar");
             ResultSet rs = st.executeQuery();
+            System.out.println("despues de ejecutar");
             lista = new ArrayList<Mensaje>();
+            Mensaje m = new Mensaje();
 
             while (rs.next()) {
 
-                Mensaje m = new Mensaje();
-                m.setId(rs.getInt("m.IDMENSAJE"));
-                m.setAsunto(rs.getString("m.ASUNTO"));
-                m.setBody(rs.getString("m.BODY"));
+                System.out.println("TRAJO UN RESULT SET");
 
-                Usuario remitente = new Usuario();
-                remitente.setId(rs.getInt("uR.IDUSUARIO"));
-                remitente.setNombre(rs.getString("uR.NOMBRE"));
-                remitente.setApellido(rs.getString("uR.APELLIDO"));
-                remitente.setPassword(rs.getString("uR.PASSWORD"));
-                remitente.setEmail(rs.getString("uR.EMAIL"));
-                remitente.setDireccion(rs.getString("uR.DIRECCION"));
-                remitente.setTelefono(rs.getInt("uR.TELEFONO"));
-                remitente.setPais(rs.getString("uR.PAIS"));
-                remitente.setProvincia(rs.getString("uR.PROVINCIA"));
-                remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                //m.setRemitente(remitente);
 
-                Usuario dest = new Usuario();
-                dest.setId(rs.getInt("uD.IDUSUARIO"));
-                dest.setNombre(rs.getString("uD.NOMBRE"));
-                dest.setApellido(rs.getString("uD.APELLIDO"));
-                dest.setPassword(rs.getString("uD.PASSWORD"));
-                dest.setEmail(rs.getString("uD.EMAIL"));
-                dest.setDireccion(rs.getString("uD.DIRECCION"));
-                dest.setTelefono(rs.getInt("uD.TELEFONO"));
-                dest.setPais(rs.getString("uD.PAIS"));
-                dest.setProvincia(rs.getString("uD.PROVINCIA"));
-                dest.setCiudad(rs.getString("uD.CIUDAD"));
-                //m.setDestinatario(dest);
+                int numero=rs.getInt("ME.IDMESSAGE");
+                if(numero== m.getId()) {
 
-                lista.add(m);
+                    for(Mensaje me : lista) {
+                        if(me.getId()==rs.getInt("ME.IDMESSAGE"))
+                        {
+                            me.addDestinatario(rs.getString("RECIPIENT"));
+                            System.out.println("AGREGO UN DESTINATARIO");
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("ENTROOOO");
+                    m = new Mensaje();
+                    m.setId(rs.getInt("ME.IDMESSAGE"));
+                    m.setAsunto(rs.getString("ME.SUBJECT"));
+                    m.setBody(rs.getString("ME.BODY"));
+                    m.setRemitente(rs.getString("SENDER"));
+                    //m.setDateTime(rs.getTimestamp("ME.TS"));
+                    m.addDestinatario(rs.getString("RECIPIENT"));
+                    lista.add(m);
+                }
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -215,51 +210,44 @@ public class DaoMensajes extends AbstractDao{
         ArrayList<Mensaje> lista = null;
         try {
 
-            String query = "Select m.IDMENSAJE, m.ASUNTO,m.BODY"
-                    + ",uD.IDUSUARIO, uD.NOMBRE,uD.APELLIDO,uD.EMAIL,uD.PASSWORD,uD.DIRECCION,uD.TELEFONO,uD.PAIS,uD.PROVINCIA,uD.CIUDAD"
-                    + ",uR.IDUSUARIO, uR.NOMBRE,uR.APELLIDO,uR.EMAIL,uR.PASSWORD,uR.DIRECCION,uR.TELEFONO,uR.PAIS,uR.PROVINCIA,uR.CIUDAD"
-                    + " FROM MENSAJES as m join USUARIOS as uD on m.IDDESTINATARIO = uD.IDUSUARIO join USUARIOS as uR on m.IDREMITENTE = uR.IDUSUARIO"
-                    + " WHERE m.IDDESTINATARIO=? AND m.ELIMINADO=FALSE";
+            String query = "CALL getInbox(?)";
 
             PreparedStatement st = this.connection.prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
+            System.out.println("antes de ejectuar");
             ResultSet rs = st.executeQuery();
+            System.out.println("despues de ejecutar");
             lista = new ArrayList<Mensaje>();
+            Mensaje m = new Mensaje();
 
             while (rs.next()) {
 
-                Mensaje m = new Mensaje();
-                m.setId(rs.getInt("m.IDMENSAJE"));
-                m.setAsunto(rs.getString("m.ASUNTO"));
-                m.setBody(rs.getString("m.BODY"));
+                System.out.println("TRAJO UN RESULT SET");
 
-                Usuario remitente = new Usuario();
-                remitente.setId(rs.getInt("uR.IDUSUARIO"));
-                remitente.setNombre(rs.getString("uR.NOMBRE"));
-                remitente.setApellido(rs.getString("uR.APELLIDO"));
-                remitente.setPassword(rs.getString("uR.PASSWORD"));
-                remitente.setEmail(rs.getString("uR.EMAIL"));
-                remitente.setDireccion(rs.getString("uR.DIRECCION"));
-                remitente.setTelefono(rs.getInt("uR.TELEFONO"));
-                remitente.setPais(rs.getString("uR.PAIS"));
-                remitente.setProvincia(rs.getString("uR.PROVINCIA"));
-                remitente.setCiudad(rs.getString("uR.CIUDAD"));
-                //m.setRemitente(remitente);
 
-                Usuario dest = new Usuario();
-                dest.setId(rs.getInt("uD.IDUSUARIO"));
-                dest.setNombre(rs.getString("uD.NOMBRE"));
-                dest.setApellido(rs.getString("uD.APELLIDO"));
-                dest.setPassword(rs.getString("uD.PASSWORD"));
-                dest.setEmail(rs.getString("uD.EMAIL"));
-                dest.setDireccion(rs.getString("uD.DIRECCION"));
-                dest.setTelefono(rs.getInt("uD.TELEFONO"));
-                dest.setPais(rs.getString("uD.PAIS"));
-                dest.setProvincia(rs.getString("uD.PROVINCIA"));
-                dest.setCiudad(rs.getString("uD.CIUDAD"));
-                //m.setDestinatario(dest);
+                int numero=rs.getInt("ME.IDMESSAGE");
+                if(numero== m.getId()) {
 
-                lista.add(m);
+                    for(Mensaje me : lista) {
+                        if(me.getId()==rs.getInt("ME.IDMESSAGE"))
+                        {
+                            me.addDestinatario(rs.getString("RECIPIENT"));
+                            System.out.println("AGREGO UN DESTINATARIO");
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("ENTROOOO");
+                    m = new Mensaje();
+                    m.setId(rs.getInt("ME.IDMESSAGE"));
+                    m.setAsunto(rs.getString("ME.SUBJECT"));
+                    m.setBody(rs.getString("ME.BODY"));
+                    m.setRemitente(rs.getString("SENDER"));
+                    //m.setDateTime(rs.getTimestamp("ME.TS"));
+                    m.addDestinatario(rs.getString("RECIPIENT"));
+                    lista.add(m);
+                }
             }
         } catch (Exception e) {
             e.getStackTrace();

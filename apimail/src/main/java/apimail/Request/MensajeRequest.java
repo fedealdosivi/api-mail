@@ -12,27 +12,12 @@ import org.joda.time.DateTime;
  */
 public class MensajeRequest {
 
-    @JsonProperty("id")
-    private int id;
     @JsonProperty("asunto")
     private String asunto;
-    @JsonProperty("remitente")
-    private String remitente;
     @JsonProperty("body")
     private String body;
-    @JsonProperty("datetime")
-    private DateTime dateTime;
     @JsonProperty("destinatarios")
     private ArrayList<String> destinatarios;
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getAsunto() {
         return asunto;
@@ -42,28 +27,12 @@ public class MensajeRequest {
         this.asunto = asunto;
     }
 
-    public String getRemitente() {
-        return remitente;
-    }
-
-    public void setRemitente(String remitente) {
-        this.remitente = remitente;
-    }
-
     public String getBody() {
         return body;
     }
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public DateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(DateTime dateTime) {
-        this.dateTime = dateTime;
     }
 
     public ArrayList<String> getDestinatarios() {

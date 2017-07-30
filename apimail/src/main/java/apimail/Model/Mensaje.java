@@ -1,7 +1,6 @@
 package apimail.Model;
 
-import org.joda.time.DateTime;
-
+import java.util.Date;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +12,7 @@ public class Mensaje {
     private int id;
     private String asunto;
     private String body;
-    private DateTime dateTime;
+    private Date dateTime;
     private String remitente;
     private ArrayList<String> destinatarios;
 
@@ -22,7 +21,7 @@ public class Mensaje {
         setBody("");
         setRemitente("");
         destinatarios=new ArrayList<String>();
-        dateTime=new DateTime();
+        dateTime= null;
     }
 
     public void addDestinatario(String e)
@@ -54,11 +53,11 @@ public class Mensaje {
         this.body = body;
     }
 
-    public DateTime getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(DateTime dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 

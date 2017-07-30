@@ -58,7 +58,6 @@ public class ControlMensajeTest extends TestCase {
 
         mensajeRequest = new MensajeRequest();
         mensajeRequest.setAsunto("prueba asunto");
-        mensajeRequest.setId(1);
         mensajeRequest.setBody("probando body");
         //mensajeRequest.setRemitente(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
         //mensajeRequest.setDestinatario(new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));

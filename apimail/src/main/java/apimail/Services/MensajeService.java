@@ -27,11 +27,9 @@ public class MensajeService {
         }
     }
 
-    public void agregarMensaje(int id, String asunto, String body, String remitente, ArrayList<String> destinatario) {
+    public void agregarMensaje(String asunto, String body, ArrayList<String> destinatario) {
         try {
             Mensaje mensaje = new Mensaje();
-            mensaje.setId(id);
-            mensaje.setRemitente(remitente);
             mensaje.setBody(body);
             mensaje.setAsunto(asunto);
             mensaje.setDestinatarios(destinatario);

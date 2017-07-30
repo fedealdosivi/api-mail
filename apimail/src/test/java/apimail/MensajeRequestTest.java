@@ -20,7 +20,6 @@ public class MensajeRequestTest {
     {
         mensaje=new MensajeRequest();
         mensaje.setAsunto("prueba asunto");
-        mensaje.setId(1);
         mensaje.setBody("probando body");
         //mensaje.setRemitente();
         mensaje.setDestinatarios(null);
@@ -35,13 +34,6 @@ public class MensajeRequestTest {
 
 
     @Test
-    public void testId()
-    {
-        assertEquals("probando id",mensaje.getId(),1);
-    }
-
-
-    @Test
     public void testBody()
     {
         assertEquals("probando body",mensaje.getBody(),"probando body");
@@ -51,7 +43,7 @@ public class MensajeRequestTest {
     @Test
     public void testRemitente()
     {
-        assertEquals("probando remitente",mensaje.getRemitente(),new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
+        assertEquals("probando remitente",new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
     }
 
     @Test
