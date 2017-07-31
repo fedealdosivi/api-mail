@@ -43,7 +43,6 @@ public class ControlUsuarioTest extends TestCase {
     public void setUp() {
         usuario = new Usuario("fede", "fede", "fede", "fede", "fede", 123456, "fede", "fede", "fede");
         userRequest = new UsuarioRequest();
-        userRequest.setId(0);
         userRequest.setTelefono(0);
         userRequest.setNombre("fede");
         userRequest.setApellido("fede");

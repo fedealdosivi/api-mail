@@ -95,7 +95,7 @@ public class ControlUsuarios {
         }
     }
 
-    @RequestMapping(value="/traerPorNombre",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/search",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity traerUserPorNombre(@RequestHeader("nombre") String nombre)
     {
         try{

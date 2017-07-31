@@ -13,6 +13,7 @@ public class Mensaje {
     private String asunto;
     private String body;
     private Date dateTime;
+    private String nombreRemitente;
     private String remitente;
     private ArrayList<String> destinatarios;
 
@@ -20,6 +21,7 @@ public class Mensaje {
         setAsunto("");
         setBody("");
         setRemitente("");
+        setNombreRemitente("");
         destinatarios=new ArrayList<String>();
         dateTime= null;
     }
@@ -79,6 +81,14 @@ public class Mensaje {
         this.remitente = remitente;
     }
 
+    public String getNombreRemitente() {
+        return nombreRemitente;
+    }
+
+    public void setNombreRemitente(String nombreRemitente) {
+        this.nombreRemitente = nombreRemitente;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,6 +100,8 @@ public class Mensaje {
         if (asunto != null ? !asunto.equals(mensaje.asunto) : mensaje.asunto != null) return false;
         if (body != null ? !body.equals(mensaje.body) : mensaje.body != null) return false;
         if (dateTime != null ? !dateTime.equals(mensaje.dateTime) : mensaje.dateTime != null) return false;
+        if (nombreRemitente != null ? !nombreRemitente.equals(mensaje.nombreRemitente) : mensaje.nombreRemitente != null)
+            return false;
         if (remitente != null ? !remitente.equals(mensaje.remitente) : mensaje.remitente != null) return false;
         return destinatarios != null ? destinatarios.equals(mensaje.destinatarios) : mensaje.destinatarios == null;
     }
@@ -100,6 +112,7 @@ public class Mensaje {
         result = 31 * result + (asunto != null ? asunto.hashCode() : 0);
         result = 31 * result + (body != null ? body.hashCode() : 0);
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
+        result = 31 * result + (nombreRemitente != null ? nombreRemitente.hashCode() : 0);
         result = 31 * result + (remitente != null ? remitente.hashCode() : 0);
         result = 31 * result + (destinatarios != null ? destinatarios.hashCode() : 0);
         return result;
@@ -112,6 +125,7 @@ public class Mensaje {
                 ", asunto='" + asunto + '\'' +
                 ", body='" + body + '\'' +
                 ", dateTime=" + dateTime +
+                ", nombreRemitente='" + nombreRemitente + '\'' +
                 ", remitente='" + remitente + '\'' +
                 ", destinatarios=" + destinatarios +
                 '}';

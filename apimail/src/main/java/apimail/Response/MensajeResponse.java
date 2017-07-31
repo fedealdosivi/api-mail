@@ -19,8 +19,10 @@ public class MensajeResponse {
     @JsonProperty
     private String remitente;
     @JsonProperty
+    private String nombreRemitente;
+    @JsonProperty
     private String body;
-    @JsonProperty("datetime")
+    @JsonProperty
     private Date dateTime;
     @JsonProperty("destinatarios")
     private ArrayList<String> destinatarios;
@@ -71,5 +73,13 @@ public class MensajeResponse {
 
     public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public String getNombreRemitente() {
+        return nombreRemitente;
+    }
+
+    public void setNombreRemitente(String nombreRemitente) {
+        this.nombreRemitente = nombreRemitente;
     }
 }

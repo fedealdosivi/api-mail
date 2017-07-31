@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UsuarioRequest {
 
-    @JsonProperty("id")
-    private int id;
     @JsonProperty("nombre")
     private String nombre;
     @JsonProperty("apellido")
@@ -27,14 +25,6 @@ public class UsuarioRequest {
     private String provincia;
     @JsonProperty("ciudad")
     private String ciudad;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;

@@ -99,6 +99,7 @@ public class DaoMensajes extends AbstractDao {
                     m.setBody(rs.getString("ME.BODY"));
                     m.setRemitente(rs.getString("SENDER"));
                     m.setDateTime(rs.getTimestamp("ME.TS"));
+                    m.setNombreRemitente(rs.getString("NAME"));
                     m.addDestinatario(rs.getString("RECIPIENT"));
                 } else {
                     System.out.println("AGREGO UN DEST PORQUE NO ES NULL");
@@ -148,6 +149,7 @@ public class DaoMensajes extends AbstractDao {
                     m.setBody(rs.getString("ME.BODY"));
                     m.setRemitente(rs.getString("SENDER"));
                     m.setDateTime(rs.getTimestamp("ME.TS"));
+                    m.setNombreRemitente(rs.getString("NAME"));
                     m.addDestinatario(rs.getString("RECIPIENT"));
                     lista.add(m);
                 }
@@ -201,6 +203,7 @@ public class DaoMensajes extends AbstractDao {
                     m.setAsunto(rs.getString("ME.SUBJECT"));
                     m.setBody(rs.getString("ME.BODY"));
                     m.setRemitente(rs.getString("SENDER"));
+                    m.setNombreRemitente(rs.getString("NAME"));
                     m.setDateTime(rs.getTimestamp("ME.TS"));
                     m.addDestinatario(rs.getString("RECIPIENT"));
                     lista.add(m);
@@ -248,6 +251,7 @@ public class DaoMensajes extends AbstractDao {
                     m.setBody(rs.getString("ME.BODY"));
                     m.setRemitente(rs.getString("SENDER"));
                     m.setDateTime(rs.getTimestamp("ME.TS"));
+                    m.setNombreRemitente(rs.getString("NAME"));
                     m.addDestinatario(rs.getString("RECIPIENT"));
                     lista.add(m);
                 }

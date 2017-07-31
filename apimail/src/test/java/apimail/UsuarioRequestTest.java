@@ -20,7 +20,6 @@ public class UsuarioRequestTest {
     {
         usuario1=new UsuarioRequest();
         usuario1.setDireccion("JBjusto");
-        usuario1.setId(1);
         usuario1.setCiudad("Mar del Plata");
         usuario1.setPais("Argentina");
         usuario1.setProvincia("Buenos Aires");
@@ -35,13 +34,6 @@ public class UsuarioRequestTest {
     @Test
     public void testDireccion() {
         assertEquals("probando direccion" , usuario1.getDireccion(), "JBjusto" );
-    }
-
-
-    @Test
-    public void testId()
-    {
-        assertEquals("probando id",usuario1.getId(),1);
     }
 
 

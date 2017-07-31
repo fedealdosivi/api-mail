@@ -2,11 +2,12 @@ package apimail.Services;
 
 import apimail.Dao.DaoMensajes;
 import apimail.Model.Mensaje;
-import apimail.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -88,7 +89,14 @@ public class MensajeService {
 
     public ArrayList<Mensaje> traerRecibidos() {
         try {
-            return getDaoMensajes().traerMensajesRecibidos();
+            ArrayList<Mensaje> lista=getDaoMensajes().traerMensajesRecibidos();
+            Collections.sort(lista, new Comparator<Mensaje>() {
+                public int compare(Mensaje m1, Mensaje m2) {
+                     return m1.getDateTime().compareTo(m2.getDateTime());
+                }
+            });
+            return lista;
+            //return getDaoMensajes().traerMensajesRecibidos();
         } catch (Exception e) {
             e.getStackTrace();
             return null;

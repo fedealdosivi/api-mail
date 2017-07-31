@@ -19,6 +19,7 @@ public class MensajeConverter {
         wrapper.setAsunto(mensaje.getAsunto());
         wrapper.setId(mensaje.getId());
         wrapper.setDestinatarios(mensaje.getDestinatarios());
+        wrapper.setNombreRemitente(mensaje.getNombreRemitente());
         wrapper.setDateTime(mensaje.getDateTime());
         return wrapper;
     }

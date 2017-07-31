@@ -69,7 +69,7 @@ public class ControlMensajes {
     public ResponseEntity removeMensajes(@RequestBody IdRequest idRequest){
         try{
             getMensajeService().eliminarMuchos(idRequest.getLista());
-            return new ResponseEntity(HttpStatus.CREATED);
+            return new ResponseEntity(HttpStatus.ACCEPTED);
         }catch(Exception e){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
