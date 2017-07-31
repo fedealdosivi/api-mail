@@ -9,8 +9,8 @@ import apimail.Model.Mensaje;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
-import apimail.Model.Usuario;
 import apimail.Session.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -266,6 +266,22 @@ public class DaoMensajes extends AbstractDao {
             st.setInt(1, idMensaje);
             st.execute();
         } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
+
+    public void cambiarEliminadoMuchos(List<Integer> lista)
+    {
+        try{
+            String query = "CALL setTrash(?)";
+            CallableStatement st = this.connection.prepareCall(query);
+            for (int id:lista
+                 ) {
+                st.setInt(1, id);
+                st.executeUpdate();
+            }
+        }catch(Exception e)
+        {
             e.getStackTrace();
         }
     }

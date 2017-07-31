@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fefe on 8/6/2017.
@@ -52,6 +53,17 @@ public class MensajeService {
         try {
             getDaoMensajes().cambiarEliminado(idMensaje);
         } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
+
+    public void eliminarMuchos(List<Integer> lista)
+    {
+        try{
+            getDaoMensajes().cambiarEliminadoMuchos(lista);
+        }
+        catch (Exception e)
+        {
             e.getStackTrace();
         }
     }

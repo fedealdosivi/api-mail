@@ -6,6 +6,7 @@
 package apimail.Control;
 
 import apimail.Converter.MensajeConverter;
+import apimail.Request.IdRequest;
 import apimail.Request.MensajeRequest;
 import apimail.Response.MensajeResponse;
 import apimail.Services.MensajeService;
@@ -58,6 +59,16 @@ public class ControlMensajes {
     public ResponseEntity addMensaje(@RequestBody MensajeRequest mensajeRequest){
         try{
             getMensajeService().agregarMensaje(mensajeRequest.getAsunto(),mensajeRequest.getBody(),mensajeRequest.getDestinatarios());
+            return new ResponseEntity(HttpStatus.CREATED);
+        }catch(Exception e){
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity removeMensajes(@RequestBody IdRequest idRequest){
+        try{
+            getMensajeService().eliminarMuchos(idRequest.getLista());
             return new ResponseEntity(HttpStatus.CREATED);
         }catch(Exception e){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

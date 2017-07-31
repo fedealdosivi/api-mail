@@ -306,8 +306,9 @@ SELECT
    ME.BODY,
    ME.SUBJECT,
    ME.IDMESSAGE,
-   SENDER.EMAIL,
-   RECIPIENT.EMAIL
+   ME.TS,
+   SENDER.EMAIL AS SENDER,
+   RECIPIENT.EMAIL AS RECIPIENT
 FROM MESSAGES AS ME
 JOIN USERS AS SENDER ON SENDER.IDUSER=ME.IDSENDER
 JOIN RECIPIENTBYMESSAGE AS RBM ON RBM.IDMESSAGE=ME.IDMESSAGE
@@ -335,6 +336,7 @@ SELECT
    ME.BODY,
    ME.SUBJECT,
    ME.IDMESSAGE,
+   ME.TS,
    SENDER.EMAIL AS SENDER,
    RECIPIENT.EMAIL AS RECIPIENT
 FROM MESSAGES AS ME
@@ -360,12 +362,12 @@ CREATE PROCEDURE getTrash(IN idSender INT)
 BEGIN
 
 SELECT
-   ME.IDSENDER,
    ME.BODY,
    ME.SUBJECT,
    ME.IDMESSAGE,
-   SENDER.EMAIL,
-   RECIPIENT.EMAIL
+   ME.TS,
+   SENDER.EMAIL AS SENDER,
+   RECIPIENT.EMAIL AS RECIPIENT
 FROM MESSAGES AS ME
 JOIN USERS AS SENDER ON SENDER.IDUSER=ME.IDSENDER
 JOIN RECIPIENTBYMESSAGE AS RBM ON RBM.IDMESSAGE=ME.IDMESSAGE
@@ -390,12 +392,19 @@ BEGIN
 
 DROP TEMPORARY TABLE IF EXISTS tableId;
 CREATE TEMPORARY TABLE tableId AS  
-    SELECT IDMESSAGE FROM recipientbymessage WHERE recipientbymessage.IDRECIPIENT = idRecipient;
+    SELECT IDMESSAGE FROM recipientbymessage AS RBM
+    WHERE RBM.IDRECIPIENT = idRecipient AND RBM.SEEN=FALSE;
+
+UPDATE recipientbymessage AS RBM 
+JOIN tableId as T ON T.IDMESSAGE=RBM.IDMESSAGE
+SET RBM.SEEN=TRUE
+WHERE RBM.IDRECIPIENT=idRecipient;
 
 SELECT
    ME.BODY,
    ME.SUBJECT,
    ME.IDMESSAGE,
+   ME.TS,
    SENDER.EMAIL AS SENDER,
    RECIPIENT.EMAIL AS RECIPIENT
 FROM MESSAGES AS ME
@@ -410,7 +419,7 @@ $$
 
 /*hacer una temporary table y joinear*/
 delimiter ;
-CALL getInbox(5);
+CALL getInbox(1);
 
 /*====================TRAER TODOS LOS MENSAJES RECIBIDOS POR UN USUARIO============================*/
 
@@ -443,21 +452,6 @@ $$
 
 /*hacer una temporary table y joinear*/
 delimiter ;
-CALL getInbox2(5);
-
-SELECT
-   ME.BODY,
-   ME.SUBJECT,
-   ME.IDMESSAGE,
-   SENDER.EMAIL AS SENDER,
-   RECIPIENT.EMAIL AS RECIPIENT
-FROM tableId AS T
-JOIN MESSAGES AS ME ON T.IDMESSAGE=ME.IDMESSAGE
-JOIN USERS AS SENDER ON SENDER.IDUSER=ME.IDSENDER
-JOIN RECIPIENTBYMESSAGE AS RBM ON RBM.IDMESSAGE=ME.IDMESSAGE
-JOIN USERS AS RECIPIENT ON RECIPIENT.IDUSER=RBM.IDRECIPIENT
-WHERE RBM.SEEN=FALSE AND ME.DELETED=FALSE order by ME.TS;
-
 
 /*=========================MANDAR UN MENSAJE A LA PAPELERA===================================*/
 
@@ -477,7 +471,8 @@ $$
 delimiter ;
 
 
-/*=========================INSERTS===================================*/
+/*=========================SELECCIONAR IDS===================================*/
+
 DROP PROCEDURE IF EXISTS leerid;
 
 DELIMITER $$
@@ -517,6 +512,11 @@ $$
 
 delimiter ;
 
+/*=========================inserts===================================*/
+/*=========================inserts===================================*/
+/*=========================inserts===================================*/
+/*=========================inserts===================================*/
+/*=========================inserts===================================*/
 
 INSERT INTO USERS(NAME,SURNAME,EMAIL,PASSWORD,ADRESS,CELLPHONE,COUNTRY,STATE,CITY) values ('FEDE','PALOMERO','admin@admin','123456','CALLEFALSA123',123456,'ANTARTIDA','AAA','AAA');
 INSERT INTO USERS(NAME,SURNAME,EMAIL,PASSWORD,ADRESS,CELLPHONE,COUNTRY,STATE,CITY) values ('USER','USER','user@user','123456','CALLEFALSA123',123456,'ANTARTIDA','AAA','AAA');
@@ -553,13 +553,13 @@ CALL getAllUsers();
 CALL deleteUser(11);
 CALL saveUser('LEANDRO','SOMOZA','leandro@somoza','123456','CALLEFALSA123',123456,'ANTARTIDA','AAA','AAA');
 
-CALL saveRecipientByMessage(2,'prueba@prueba');
-CALL deleteMessage(2);
-CALL getSent(4);
-CALL getInbox(5);
-UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=2;
+CALL saveRecipientByMessage(2,'admin@admin');
+CALL deleteMessage(7);
+CALL getSent(1);
+CALL getInbox(1);
+UPDATE MESSAGES SET DELETED=FALSE WHERE IDMESSAGE=1;
 UPDATE recipientbymessage SET SEEN=FALSE WHERE IDMESSAGE=2;
-CALL getMessageById(1);
+CALL getMessageById(3);
 CALL setTrash(2);
 CALL getTrash(1);
 
