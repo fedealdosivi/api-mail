@@ -4,6 +4,7 @@ import apimail.Control.ControlMensajes;
 import apimail.Converter.MensajeConverter;
 import apimail.Model.Mensaje;
 import apimail.Model.Usuario;
+import apimail.Request.IdRequest;
 import apimail.Request.MensajeRequest;
 import apimail.Response.MensajeResponse;
 import apimail.Services.MensajeService;
@@ -16,6 +17,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.when;
@@ -143,6 +145,16 @@ public class ControlMensajeTest extends TestCase {
     public void eliminarMensajeTest()
     {
         assertEquals(HttpStatus.ACCEPTED,controladora.removeMensaje(1).getStatusCode());
+    }
+
+    @Test
+    public void eliminarMensajesTest()
+    {
+        List<Integer> lista =new ArrayList<Integer>();
+        lista.add(1);
+        IdRequest request =new IdRequest();
+        request.setLista(lista);
+        assertEquals(HttpStatus.ACCEPTED,controladora.removeMensajes(request).getStatusCode());
     }
 
 

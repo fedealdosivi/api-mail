@@ -48,22 +48,14 @@ public class DaoMensajes extends AbstractDao {
             if (rs.next()) {
 
                 int id=rs.getInt(1);
-                System.out.println("ENTRO AL RESUL KEY");
                 for (String e : mensaje.getDestinatarios()) {
-                    System.out.println("ENTRO AL DEST");
                     String query = "CALL saveRecipientByMessage(?,?)";
                     CallableStatement st2 = this.connection.prepareCall(query);
                     st2.setInt(1,id);
                     st2.setString(2, e);
                     st2.execute();
-                    System.out.println("EJECUTO");
                 }
             }
-            else
-            {
-                throw new Exception("no hay results key");
-            }
-
 
         } catch (Exception e) {
             e.getStackTrace();
@@ -92,7 +84,6 @@ public class DaoMensajes extends AbstractDao {
 
             while (rs.next()) {
                 if (m == null) {
-                    System.out.println("ENTRO PORQUE ES NULL");
                     m = new Mensaje();
                     m.setId(rs.getInt("ME.IDMESSAGE"));
                     m.setAsunto(rs.getString("ME.SUBJECT"));
@@ -102,14 +93,12 @@ public class DaoMensajes extends AbstractDao {
                     m.setNombreRemitente(rs.getString("NAME"));
                     m.addDestinatario(rs.getString("RECIPIENT"));
                 } else {
-                    System.out.println("AGREGO UN DEST PORQUE NO ES NULL");
                     m.addDestinatario(rs.getString("RECIPIENT"));
                 }
 
             }
         } catch (Exception e) {
             e.getStackTrace();
-            System.out.println("EXPLOTO TODOOOOO");
         }
         return m;
     }
@@ -121,15 +110,11 @@ public class DaoMensajes extends AbstractDao {
             String query = "CALL getSent(?)";
             CallableStatement st = this.connection.prepareCall(query);
             st.setInt(1, authentication.getUsuario().getId());
-            System.out.println("antes de ejectuar");
             ResultSet rs = st.executeQuery();
-            System.out.println("despues de ejecutar");
             lista = new ArrayList<Mensaje>();
             Mensaje m = new Mensaje();
 
             while (rs.next()) {
-
-                System.out.println("TRAJO UN RESULT SET");
 
 
                 int numero = rs.getInt("ME.IDMESSAGE");
@@ -138,11 +123,9 @@ public class DaoMensajes extends AbstractDao {
                     for (Mensaje me : lista) {
                         if (me.getId() == rs.getInt("ME.IDMESSAGE")) {
                             me.addDestinatario(rs.getString("RECIPIENT"));
-                            System.out.println("AGREGO UN DESTINATARIO");
                         }
                     }
                 } else {
-                    System.out.println("ENTROOOO");
                     m = new Mensaje();
                     m.setId(rs.getInt("ME.IDMESSAGE"));
                     m.setAsunto(rs.getString("ME.SUBJECT"));
@@ -163,7 +146,6 @@ public class DaoMensajes extends AbstractDao {
 
         } catch (Exception e) {
             e.getStackTrace();
-            System.out.println("EXPLOTAAAAA TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             return null;
         }
         return lista;
@@ -176,15 +158,11 @@ public class DaoMensajes extends AbstractDao {
 
             PreparedStatement st = this.connection.prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
-            System.out.println("antes de ejectuar");
             ResultSet rs = st.executeQuery();
-            System.out.println("despues de ejecutar");
             lista = new ArrayList<Mensaje>();
             Mensaje m = new Mensaje();
 
             while (rs.next()) {
-
-                System.out.println("TRAJO UN RESULT SET");
 
 
                 int numero = rs.getInt("ME.IDMESSAGE");
@@ -193,11 +171,9 @@ public class DaoMensajes extends AbstractDao {
                     for (Mensaje me : lista) {
                         if (me.getId() == rs.getInt("ME.IDMESSAGE")) {
                             me.addDestinatario(rs.getString("RECIPIENT"));
-                            System.out.println("AGREGO UN DESTINATARIO");
                         }
                     }
                 } else {
-                    System.out.println("ENTROOOO");
                     m = new Mensaje();
                     m.setId(rs.getInt("ME.IDMESSAGE"));
                     m.setAsunto(rs.getString("ME.SUBJECT"));
@@ -223,16 +199,11 @@ public class DaoMensajes extends AbstractDao {
 
             PreparedStatement st = this.connection.prepareStatement(query);
             st.setInt(1, authentication.getUsuario().getId());
-            System.out.println("antes de ejectuar");
             ResultSet rs = st.executeQuery();
-            System.out.println("despues de ejecutar");
             lista = new ArrayList<Mensaje>();
             Mensaje m = new Mensaje();
 
             while (rs.next()) {
-
-                System.out.println("TRAJO UN RESULT SET");
-
 
                 int numero = rs.getInt("ME.IDMESSAGE");
                 if (numero == m.getId()) {
@@ -240,11 +211,9 @@ public class DaoMensajes extends AbstractDao {
                     for (Mensaje me : lista) {
                         if (me.getId() == rs.getInt("ME.IDMESSAGE")) {
                             me.addDestinatario(rs.getString("RECIPIENT"));
-                            System.out.println("AGREGO UN DESTINATARIO");
                         }
                     }
                 } else {
-                    System.out.println("ENTROOOO");
                     m = new Mensaje();
                     m.setId(rs.getInt("ME.IDMESSAGE"));
                     m.setAsunto(rs.getString("ME.SUBJECT"));
@@ -288,6 +257,14 @@ public class DaoMensajes extends AbstractDao {
         {
             e.getStackTrace();
         }
+    }
+
+    public Authentication getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(Authentication authentication) {
+        this.authentication = authentication;
     }
 
 }

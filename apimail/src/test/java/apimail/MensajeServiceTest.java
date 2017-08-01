@@ -31,12 +31,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import javax.validation.constraints.AssertTrue;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -44,11 +43,14 @@ import org.junit.Assert.*;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.mock;
+
 /**
  * Created by fefe on 19/6/2017.
  */
-@RunWith(PowerMockRunner.class)
-public class MensajeServiceTest extends TestCase {
+
+public class MensajeServiceTest{
 
     MensajeService service;
 
@@ -61,8 +63,9 @@ public class MensajeServiceTest extends TestCase {
 
     @Before
     public void setUp() {
+
         service = new MensajeService();
-        daoMensajes = Mockito.mock(DaoMensajes.class);
+        daoMensajes = mock(DaoMensajes.class);
 
         service.setDaoMensajes(daoMensajes);
 
@@ -72,8 +75,6 @@ public class MensajeServiceTest extends TestCase {
         mensaje.setAsunto("prueba asunto");
         mensaje.setId(8000);
         mensaje.setBody("probando body");
-        //mensaje.setRemitente(user);
-        //mensaje.setDestinatario(user);
 
         when(daoMensajes.traerMensajePorId(anyInt())).thenReturn(mensaje);
     }
@@ -82,7 +83,9 @@ public class MensajeServiceTest extends TestCase {
     public void TestCargarMensaje()
     {
         try{
-            //service.agregarMensaje(8000,"prueba","probando",user,user);
+            ArrayList<String> lista=new ArrayList<String>();
+            lista.add("hola@hola");
+            service.agregarMensaje("prueba","probando",lista);
             assertTrue(true);
         }
         catch (Exception e)
@@ -109,6 +112,21 @@ public class MensajeServiceTest extends TestCase {
     {
         try {
             service.cambiarAEliminado(8000);
+            assertTrue(true);
+        }
+        catch (Exception e)
+        {
+            fail();
+        }
+    }
+
+    @Test
+    public void TestCambiarEliminadoMuchos()
+    {
+        try {
+            List<Integer> lista=new ArrayList<Integer>();
+            lista.add(1);
+            service.eliminarMuchos(lista);
             assertTrue(true);
         }
         catch (Exception e)
@@ -149,7 +167,7 @@ public class MensajeServiceTest extends TestCase {
             service.traerEliminados();
             fail();
         } catch (Exception e) {
-            assertTrue(true);
+            assertEquals(new ArrayList<Mensaje>(), service.traerEliminados());
         }
     }
 

@@ -2,30 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c96e72b9-e038-43ff-b120-0ab927621a27" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Control/ControlMensajes.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Control/ControlMensajes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Control/ControlUsuarios.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Control/ControlUsuarios.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Converter/MensajeConverter.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Converter/MensajeConverter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/apimail/AutenticationTes.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/apimail/idRquestTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Dao/DaoMensajes.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Dao/DaoMensajes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Model/Mensaje.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Model/Mensaje.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Request/UsuarioRequest.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Request/UsuarioRequest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Response/MensajeResponse.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Response/MensajeResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/apimail/Services/MensajeService.class" afterPath="$PROJECT_DIR$/target/classes/apimail/Services/MensajeService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/ControlUsuarioTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/ControlUsuarioTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/UsuarioRequestTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/UsuarioRequestTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/UsuarioServiceTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/UsuarioServiceTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../EMAILQUERY.sql" afterPath="$PROJECT_DIR$/../EMAILQUERY.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/ControlMensajeTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/ControlMensajeTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/MensajeDaoTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/MensajeDaoTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/MensajeRequestTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/MensajeRequestTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/MensajeResponseTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/MensajeResponseTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/MensajeServiceTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/MensajeServiceTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/apimail/UsuarioDaoTest.class" afterPath="$PROJECT_DIR$/target/test-classes/apimail/UsuarioDaoTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Converter/MensajeConverter.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Converter/MensajeConverter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Request/UsuarioRequest.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Request/UsuarioRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Response/MensajeResponse.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Response/MensajeResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java" afterPath="$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/ControlUsuarioTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/ControlUsuarioTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/UsuarioRequestTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/UsuarioRequestTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/UsuarioServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/UsuarioServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/ControlMensajeTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/ControlMensajeTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/MensajeDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/MensajeDaoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/MensajeRequestTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/MensajeRequestTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/MensajeResponseTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/MensajeResponseTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/apimail/UsuarioDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/apimail/UsuarioDaoTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,14 +30,95 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/apimail$MensajeRequestTest.coverage" NAME="MensajeRequestTest Coverage Results" MODIFIED="1498351232229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeResponseTest_testDateestinatarios.coverage" NAME="MensajeResponseTest.testDateestinatarios Coverage Results" MODIFIED="1501556875535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$idRquestTest_testLista.coverage" NAME="idRquestTest.testLista Coverage Results" MODIFIED="1501547643675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testTraerTrash.coverage" NAME="MensajeDaoTest.testTraerTrash Coverage Results" MODIFIED="1501555563643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioServiceTest_testLoginException.coverage" NAME="UsuarioServiceTest.testLoginException Coverage Results" MODIFIED="1499273849134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testUsuarioIdNull.coverage" NAME="UsuarioDaoTest.testUsuarioIdNull Coverage Results" MODIFIED="1501543273803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$ControlUsuarioTest_testTraerPorNombreError.coverage" NAME="ControlUsuarioTest.testTraerPorNombreError Coverage Results" MODIFIED="1501555921869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeTest.coverage" NAME="MensajeTest Coverage Results" MODIFIED="1498344141735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testTraerTodosOK.coverage" NAME="UsuarioDaoTest.testTraerTodosOK Coverage Results" MODIFIED="1501546159351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testEliminarMensajeException.coverage" NAME="MensajeDaoTest.testEliminarMensajeException Coverage Results" MODIFIED="1499192578266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest_TestTraerMensajesEliminadosException.coverage" NAME="MensajeServiceTest.TestTraerMensajesEliminadosException Coverage Results" MODIFIED="1501549975965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeConverterTest.coverage" NAME="MensajeConverterTest Coverage Results" MODIFIED="1498347327039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest_TestTraerMensajesEliminadosOK.coverage" NAME="MensajeServiceTest.TestTraerMensajesEliminadosOK Coverage Results" MODIFIED="1499369351561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testEliminar.coverage" NAME="UsuarioDaoTest.testEliminar Coverage Results" MODIFIED="1501545531026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testTraerRecibidosOK.coverage" NAME="MensajeDaoTest.testTraerRecibidosOK Coverage Results" MODIFIED="1501555616390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest.coverage" NAME="MensajeServiceTest Coverage Results" MODIFIED="1501558203878" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$ControlMensajeTest_eliminarMensajesTest.coverage" NAME="ControlMensajeTest.eliminarMensajesTest Coverage Results" MODIFIED="1501556324742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testCargar.coverage" NAME="UsuarioDaoTest.testCargar Coverage Results" MODIFIED="1501544558988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$ControlUsuarioTest.coverage" NAME="ControlUsuarioTest Coverage Results" MODIFIED="1498665977307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$ControlMensajeTest.coverage" NAME="ControlMensajeTest Coverage Results" MODIFIED="1498935266583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testCargarException.coverage" NAME="UsuarioDaoTest.testCargarException Coverage Results" MODIFIED="1501545931182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testTraerTodosException.coverage" NAME="UsuarioDaoTest.testTraerTodosException Coverage Results" MODIFIED="1501546264073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testUsuarioIdException.coverage" NAME="UsuarioDaoTest.testUsuarioIdException Coverage Results" MODIFIED="1501545297298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testCargarMensaje.coverage" NAME="MensajeDaoTest.testCargarMensaje Coverage Results" MODIFIED="1501552438273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testCargarMensajeException.coverage" NAME="MensajeDaoTest.testCargarMensajeException Coverage Results" MODIFIED="1499193090883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$ControlSessionTest_loginTest.coverage" NAME="ControlSessionTest.loginTest Coverage Results" MODIFIED="1499275162364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testTraerEnviadosOK.coverage" NAME="MensajeDaoTest.testTraerEnviadosOK Coverage Results" MODIFIED="1501555523491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$ControlSessionTest_loginTestError.coverage" NAME="ControlSessionTest.loginTestError Coverage Results" MODIFIED="1499275395681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/apimail$ControlSessionTest_logoutTest.coverage" NAME="ControlSessionTest.logoutTest Coverage Results" MODIFIED="1499274472251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$All_in_apimail.coverage" NAME="All in apimail Coverage Results" MODIFIED="1501440795205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/apimail$All_in_apimail.coverage" NAME="All in apimail Coverage Results" MODIFIED="1501549641379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/apimail$MensajeResponseTest.coverage" NAME="MensajeResponseTest Coverage Results" MODIFIED="1498351332268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeRequestTest.coverage" NAME="MensajeRequestTest Coverage Results" MODIFIED="1498351232229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$Main.coverage" NAME="Main Coverage Results" MODIFIED="1498672951372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -53,7 +127,7 @@
     <SUITE FILE_PATH="coverage/apimail$SessionTestIT.coverage" NAME="SessionTestIT Coverage Results" MODIFIED="1498346185073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testTraerPorIdOk.coverage" NAME="MensajeDaoTest.testTraerPorIdOk Coverage Results" MODIFIED="1499193445285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testTraerPorIdOk.coverage" NAME="MensajeDaoTest.testTraerPorIdOk Coverage Results" MODIFIED="1501548244981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$MensajeConverterTest_testhola.coverage" NAME="MensajeConverterTest.testhola Coverage Results" MODIFIED="1498082947663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -62,34 +136,40 @@
     <SUITE FILE_PATH="coverage/apimail$MensajeTest_testRemitente.coverage" NAME="MensajeTest.testRemitente Coverage Results" MODIFIED="1501441123755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testEliminarException.coverage" NAME="UsuarioDaoTest.testEliminarException Coverage Results" MODIFIED="1501545241251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest_TestCargarMensaje.coverage" NAME="MensajeServiceTest.TestCargarMensaje Coverage Results" MODIFIED="1501557334063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testTraerIdNull.coverage" NAME="UsuarioDaoTest.testTraerIdNull Coverage Results" MODIFIED="1498083901658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$UsuarioTest.coverage" NAME="UsuarioTest Coverage Results" MODIFIED="1498344120901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$UsuarioServiceTest_testLoginException.coverage" NAME="UsuarioServiceTest.testLoginException Coverage Results" MODIFIED="1499273849134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testCambiarMuchosEliminados.coverage" NAME="MensajeDaoTest.testCambiarMuchosEliminados Coverage Results" MODIFIED="1501552737306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest_TestCambiarEliminadoMuchos.coverage" NAME="MensajeServiceTest.TestCambiarEliminadoMuchos Coverage Results" MODIFIED="1501557441549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testTraerTodosNull.coverage" NAME="UsuarioDaoTest.testTraerTodosNull Coverage Results" MODIFIED="1501545857758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$ControlSessionTest.coverage" NAME="ControlSessionTest Coverage Results" MODIFIED="1498669356364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeTest.coverage" NAME="MensajeTest Coverage Results" MODIFIED="1498344141735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testCambiarEliminado.coverage" NAME="MensajeDaoTest.testCambiarEliminado Coverage Results" MODIFIED="1501551523555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testUsuarioIdOK.coverage" NAME="UsuarioDaoTest.testUsuarioIdOK Coverage Results" MODIFIED="1501543607197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest.coverage" NAME="UsuarioDaoTest Coverage Results" MODIFIED="1498534558430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testEliminarMensaje.coverage" NAME="MensajeDaoTest.testEliminarMensaje Coverage Results" MODIFIED="1499192390305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testEliminarMensajeException.coverage" NAME="MensajeDaoTest.testEliminarMensajeException Coverage Results" MODIFIED="1499192578266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeConverterTest.coverage" NAME="MensajeConverterTest Coverage Results" MODIFIED="1498347327039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest_TestTraerMensajesEliminadosOK.coverage" NAME="MensajeServiceTest.TestTraerMensajesEliminadosOK Coverage Results" MODIFIED="1499369351561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$MensajeConverterTest_testConvert.coverage" NAME="MensajeConverterTest.testConvert Coverage Results" MODIFIED="1498083319774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -107,25 +187,28 @@
     <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest_TestEliminarMensaje.coverage" NAME="MensajeServiceTest.TestEliminarMensaje Coverage Results" MODIFIED="1499369331972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest.coverage" NAME="MensajeServiceTest Coverage Results" MODIFIED="1499197469211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/apimail$UsuarioConverterTest.coverage" NAME="UsuarioConverterTest Coverage Results" MODIFIED="1498347838076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$ControlUsuarioTest.coverage" NAME="ControlUsuarioTest Coverage Results" MODIFIED="1498665977307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/apimail$AutenticationTes.coverage" NAME="AutenticationTes Coverage Results" MODIFIED="1501544165375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$ControlMensajeTest.coverage" NAME="ControlMensajeTest Coverage Results" MODIFIED="1498935266583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testValidarOK.coverage" NAME="UsuarioDaoTest.testValidarOK Coverage Results" MODIFIED="1501544930051" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testValidarNull.coverage" NAME="UsuarioDaoTest.testValidarNull Coverage Results" MODIFIED="1501544772195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$UsuarioRequestTest.coverage" NAME="UsuarioRequestTest Coverage Results" MODIFIED="1498350582947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/apimail$UsuarioDaoTest_testValidarException.coverage" NAME="UsuarioDaoTest.testValidarException Coverage Results" MODIFIED="1501545384265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>apimail.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/apimail$UsuarioControlIT.coverage" NAME="UsuarioControlIT Coverage Results" MODIFIED="1498349078471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testCargarMensaje.coverage" NAME="MensajeDaoTest.testCargarMensaje Coverage Results" MODIFIED="1499192809287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testCambiarEliminadoException.coverage" NAME="MensajeDaoTest.testCambiarEliminadoException Coverage Results" MODIFIED="1501551617021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$MensajeServiceTest_TestTraerMensajeId.coverage" NAME="MensajeServiceTest.TestTraerMensajeId Coverage Results" MODIFIED="1499194095108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -134,16 +217,7 @@
     <SUITE FILE_PATH="coverage/apimail$UsuarioServiceTest.coverage" NAME="UsuarioServiceTest Coverage Results" MODIFIED="1498507110707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest.coverage" NAME="MensajeDaoTest Coverage Results" MODIFIED="1499190382180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest_testCargarMensajeException.coverage" NAME="MensajeDaoTest.testCargarMensajeException Coverage Results" MODIFIED="1499193090883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$ControlSessionTest_loginTest.coverage" NAME="ControlSessionTest.loginTest Coverage Results" MODIFIED="1499275162364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>apimail.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/apimail$ControlSessionTest_loginTestError.coverage" NAME="ControlSessionTest.loginTestError Coverage Results" MODIFIED="1499275395681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/apimail$MensajeDaoTest.coverage" NAME="MensajeDaoTest Coverage Results" MODIFIED="1501555211976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>apimail.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/apimail$ControlSessionTest_testGetSession.coverage" NAME="ControlSessionTest.testGetSession Coverage Results" MODIFIED="1499275440357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -159,23 +233,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ControlMensajes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java">
+      <file leaf-file-name="MensajeService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="192">
+              <caret line="91" column="12" lean-forward="false" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MensajeService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java">
+      <file leaf-file-name="MensajeServiceTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="91" column="12" lean-forward="false" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
+            <state relative-caret-position="-1874">
+              <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2463#2471#0" expanded="true" />
+                <element signature="e#3263#3272#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -202,8 +278,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/apimail/AuthFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/apimail/App.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/prueba.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/UsuarioTest.java" />
@@ -220,8 +294,6 @@
         <option value="$PROJECT_DIR$/src/test/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/SessionTestIT.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/AuthfilterTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/UsuarioDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Control/ControlSession.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/ControlSessionTest.java" />
@@ -232,13 +304,8 @@
         <option value="$PROJECT_DIR$/src/main/java/apimail/Services/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeConverterTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeDaoTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeResponseTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/ControlMensajeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Request/MensajeRequest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeRequestTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Session/MainPruebas.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Request/IdRequest.java" />
@@ -248,11 +315,20 @@
         <option value="$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Model/Mensaje.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Response/MensajeResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
-        <option value="$PROJECT_DIR$/src/test/java/apimail/ControlUsuarioTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/apimail/UsuarioRequestTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Converter/MensajeConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeRequestTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/AutenticationTes.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/UsuarioDaoTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/idRquestTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeDaoTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/ControlUsuarioTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/ControlMensajeTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeResponseTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/AuthfilterTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java" />
       </list>
     </option>
   </component>
@@ -299,6 +375,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -645,9 +723,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -655,15 +731,98 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration default="false" name="All in apimail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <configuration default="false" name="MensajeResponseTest.testDateestinatarios" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="apimail.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <module name="apimail" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
+      <option name="PACKAGE_NAME" value="apimail" />
+      <option name="MAIN_CLASS_NAME" value="apimail.MensajeResponseTest" />
+      <option name="METHOD_NAME" value="testDateestinatarios" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MensajeServiceTest.TestCargarMensaje" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="apimail.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="apimail" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="apimail" />
+      <option name="MAIN_CLASS_NAME" value="apimail.MensajeServiceTest" />
+      <option name="METHOD_NAME" value="TestCargarMensaje" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MensajeServiceTest.TestCambiarEliminadoMuchos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="apimail.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="apimail" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="apimail" />
+      <option name="MAIN_CLASS_NAME" value="apimail.MensajeServiceTest" />
+      <option name="METHOD_NAME" value="TestCambiarEliminadoMuchos" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MensajeServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="apimail.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="apimail" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="apimail" />
+      <option name="MAIN_CLASS_NAME" value="apimail.MensajeServiceTest" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -694,84 +853,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="apimail" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="MensajeServiceTest.TestEliminarMensaje" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="apimail.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="apimail" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="apimail" />
-      <option name="MAIN_CLASS_NAME" value="apimail.MensajeServiceTest" />
-      <option name="METHOD_NAME" value="TestEliminarMensaje" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MensajeServiceTest.TestTraerMensajesEliminadosOK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="apimail.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="apimail" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="apimail" />
-      <option name="MAIN_CLASS_NAME" value="apimail.MensajeServiceTest" />
-      <option name="METHOD_NAME" value="TestTraerMensajesEliminadosOK" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MensajeTest.testRemitente" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="apimail.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="apimail" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="apimail" />
-      <option name="MAIN_CLASS_NAME" value="apimail.MensajeTest" />
-      <option name="METHOD_NAME" value="testRemitente" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -979,19 +1060,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.All in apimail" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestEliminarMensaje" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestTraerMensajesEliminadosOK" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.MensajeTest.testRemitente" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.MensajeResponseTest.testDateestinatarios" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestCargarMensaje" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestCambiarEliminadoMuchos" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MensajeTest.testRemitente" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.All in apimail" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestTraerMensajesEliminadosOK" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestEliminarMensaje" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestCambiarEliminadoMuchos" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.MensajeServiceTest.TestCargarMensaje" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.MensajeResponseTest.testDateestinatarios" />
       </list>
     </recent_temporary>
   </component>
@@ -1017,35 +1098,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_apimail - 2017.07.30 at 15h 54m 58s.xml">
-      <configuration name="All in apimail" configurationId="JUnit" />
+    <history-entry file="ControlMensajeTest_eliminarMensajesTest - 2017.07.31 at 23h 58m 50s.xml">
+      <configuration name="ControlMensajeTest.eliminarMensajesTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ControlSessionTest_loginTestError - 2017.07.05 at 14h 20m 54s.xml">
-      <configuration name="ControlSessionTest.loginTestError" configurationId="JUnit" />
+    <history-entry file="ControlUsuarioTest_testTraerPorNombreError - 2017.07.31 at 23h 50m 46s.xml">
+      <configuration name="ControlUsuarioTest.testTraerPorNombreError" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ControlSessionTest_loginTestError - 2017.07.05 at 14h 23m 22s.xml">
-      <configuration name="ControlSessionTest.loginTestError" configurationId="JUnit" />
+    <history-entry file="ControlUsuarioTest_testTraerPorNombreError - 2017.07.31 at 23h 52m 08s.xml">
+      <configuration name="ControlUsuarioTest.testTraerPorNombreError" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ControlSessionTest_logoutTest - 2017.07.05 at 14h 07m 57s.xml">
-      <configuration name="ControlSessionTest.logoutTest" configurationId="JUnit" />
+    <history-entry file="MensajeDaoTest_testTraerRecibidosOK - 2017.07.31 at 23h 47m 04s.xml">
+      <configuration name="MensajeDaoTest.testTraerRecibidosOK" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ControlSessionTest_testGetSession - 2017.07.05 at 14h 24m 05s.xml">
-      <configuration name="ControlSessionTest.testGetSession" configurationId="JUnit" />
+    <history-entry file="MensajeDaoTest_testTraerTrash - 2017.07.31 at 23h 46m 11s.xml">
+      <configuration name="MensajeDaoTest.testTraerTrash" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MensajeServiceTest_TestEliminarMensaje - 2017.07.06 at 16h 28m 57s.xml">
-      <configuration name="MensajeServiceTest.TestEliminarMensaje" configurationId="JUnit" />
+    <history-entry file="MensajeResponseTest_testDateestinatarios - 2017.08.01 at 00h 07m 59s.xml">
+      <configuration name="MensajeResponseTest.testDateestinatarios" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MensajeServiceTest_TestTraerMensajesEliminadosOK - 2017.07.06 at 16h 29m 17s.xml">
-      <configuration name="MensajeServiceTest.TestTraerMensajesEliminadosOK" configurationId="JUnit" />
+    <history-entry file="MensajeServiceTest - 2017.08.01 at 00h 28m 54s.xml">
+      <configuration name="MensajeServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MensajeTest_testRemitente - 2017.07.30 at 15h 58m 49s.xml">
-      <configuration name="MensajeTest.testRemitente" configurationId="JUnit" />
+    <history-entry file="MensajeServiceTest - 2017.08.01 at 00h 30m 09s.xml">
+      <configuration name="MensajeServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MensajeTest_testRemitente - 2017.07.30 at 16h 14m 43s.xml">
-      <configuration name="MensajeTest.testRemitente" configurationId="JUnit" />
+    <history-entry file="MensajeServiceTest_TestCambiarEliminadoMuchos - 2017.08.01 at 00h 17m 26s.xml">
+      <configuration name="MensajeServiceTest.TestCambiarEliminadoMuchos" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="UsuarioServiceTest_testLoginException - 2017.07.05 at 13h 57m 35s.xml">
-      <configuration name="UsuarioServiceTest.testLoginException" configurationId="JUnit" />
+    <history-entry file="MensajeServiceTest_TestCargarMensaje - 2017.08.01 at 00h 15m 39s.xml">
+      <configuration name="MensajeServiceTest.TestCargarMensaje" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1064,18 +1145,20 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29316548" sideWeight="0.7955247" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291367" sideWeight="0.20447531" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34892085" sideWeight="0.50308645" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294753" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291367" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.76079136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.76079136" sideWeight="0.49691358" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4560185" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291367" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.54012346" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5455247" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1086,9 +1169,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6115108" sideWeight="0.7955247" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47453704" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1132,7 +1213,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1141,14 +1222,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/prueba.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Response/UsuarioResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="29" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/apimail/ServiceDaoMensajesConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1160,27 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/Authentication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
-          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="64" column="12" lean-forward="false" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1209,13 +1261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="30" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/UsuarioControlIT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1254,13 +1299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/AuthfilterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Response/LoginResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1275,13 +1313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlSession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/UsuarioDao.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
@@ -1290,52 +1321,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/UsuarioDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="84" column="14" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeConverterTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="879">
           <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="43" column="10" lean-forward="false" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeResponseTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/ControlMensajeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1045">
-          <caret line="59" column="50" lean-forward="false" selection-start-line="59" selection-start-column="50" selection-end-line="59" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeRequestTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="46" column="5" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1347,24 +1336,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/MainPruebas.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/AuthFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="39" column="38" lean-forward="false" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/AbstractDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="54" column="50" lean-forward="true" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1382,17 +1358,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Request/IdRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/apimail/UsuarioServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-821">
           <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1400,13 +1370,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1421,27 +1385,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Response/MensajeResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/ControlUsuarioTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="44" column="43" lean-forward="false" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
+          <folding>
+            <element signature="e#1581#1582#0" expanded="false" />
+            <element signature="e#1619#1620#0" expanded="false" />
+            <element signature="e#1681#1682#0" expanded="false" />
+            <element signature="e#1735#1736#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1452,13 +1401,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2139">
-          <caret line="101" column="63" lean-forward="false" selection-start-line="101" selection-start-column="63" selection-end-line="101" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Converter/MensajeConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1466,20 +1408,221 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/AutenticationTes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="813">
+          <caret line="39" column="47" lean-forward="false" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#668#669#0" expanded="false" />
+            <element signature="e#720#721#0" expanded="false" />
+            <element signature="e#767#768#0" expanded="false" />
+            <element signature="e#822#823#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/Conexion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoUsuarios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2794">
+          <caret line="145" column="34" lean-forward="false" selection-start-line="145" selection-start-column="34" selection-end-line="145" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeRequestTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/idRquestTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#447#448#0" expanded="false" />
+            <element signature="e#502#503#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Request/IdRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/Authentication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Session/SessionData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="701">
+          <caret line="64" column="12" lean-forward="false" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Dao/DaoMensajes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3278">
+          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/UsuarioControlIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlSession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/ControlUsuarioTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1759">
+          <caret line="121" column="47" lean-forward="true" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlUsuarios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="101" column="36" lean-forward="false" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/ControlMensajeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="156" column="94" lean-forward="true" selection-start-line="156" selection-start-column="94" selection-end-line="156" selection-end-column="94" />
+          <folding>
+            <element signature="e#4565#4574#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Control/ControlMensajes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
+        <state relative-caret-position="-462">
           <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Response/MensajeResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-362">
+          <caret line="21" column="30" lean-forward="false" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeResponseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="74" column="67" lean-forward="false" selection-start-line="74" selection-start-column="67" selection-end-line="74" selection-end-column="67" />
+          <folding>
+            <element signature="e#1416#1417#0" expanded="true" />
+            <element signature="e#1502#1503#0" expanded="true" />
+            <element signature="e#1558#1559#0" expanded="true" />
+            <element signature="e#1639#1640#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/AuthfilterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/apimail/AuthFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="35" column="44" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#8609#8618#0" expanded="true" />
+            <element signature="e#8973#8982#0" expanded="true" />
+            <marker date="1501555608725" expanded="true" signature="1612:1660" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/UsuarioDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5918">
+          <caret line="289" column="5" lean-forward="true" selection-start-line="289" selection-start-column="5" selection-end-line="289" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/apimail/Services/MensajeService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
+        <state relative-caret-position="192">
           <caret line="91" column="12" lean-forward="false" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/apimail/MensajeServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1874">
+          <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2463#2471#0" expanded="true" />
+            <element signature="e#3263#3272#0" expanded="true" />
           </folding>
         </state>
       </provider>

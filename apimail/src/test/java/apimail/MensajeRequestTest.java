@@ -21,7 +21,6 @@ public class MensajeRequestTest {
         mensaje=new MensajeRequest();
         mensaje.setAsunto("prueba asunto");
         mensaje.setBody("probando body");
-        //mensaje.setRemitente();
         mensaje.setDestinatarios(null);
     }
 
@@ -39,12 +38,6 @@ public class MensajeRequestTest {
         assertEquals("probando body",mensaje.getBody(),"probando body");
     }
 
-
-    @Test
-    public void testRemitente()
-    {
-        assertEquals("probando remitente",new Usuario("hola","hola","hola","hola","hola",1,"hola","hola","hola"));
-    }
 
     @Test
     public void testDestinatarios()
