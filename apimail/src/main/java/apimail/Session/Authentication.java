@@ -1,8 +1,9 @@
 package apimail.Session;
 
 import apimail.Model.Usuario;
-import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 /**
  * Created by fefe on 14/6/2017.
@@ -11,9 +12,9 @@ import org.springframework.stereotype.Service;
 public class Authentication {
 
     private Usuario usuario;
-    private DateTime lastAction;
+    private LocalDateTime lastAction;
 
-    public DateTime getLastAction() {
+    public LocalDateTime getLastAction() {
         try {
             return lastAction;
         } catch (Exception e) {
@@ -22,7 +23,7 @@ public class Authentication {
         }
     }
 
-    public void setLastAction(DateTime lastAction) {
+    public void setLastAction(LocalDateTime lastAction) {
         try {
             this.lastAction = lastAction;
         } catch (Exception e) {

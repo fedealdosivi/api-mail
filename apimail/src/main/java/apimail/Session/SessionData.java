@@ -3,14 +3,12 @@ package apimail.Session;
 import apimail.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
@@ -21,7 +19,7 @@ import java.util.UUID;
  */
 @Service
 public class SessionData {
-    final static Logger logger = Logger.getLogger(SessionData.class);
+    final static Logger logger = LoggerFactory.getLogger(SessionData.class);
     HashMap<String, Authentication> sessionData;
 
     @Value("${session.expiration}")
@@ -42,7 +40,7 @@ public class SessionData {
         try {
             String sessionId = UUID.randomUUID().toString();
             aData.setUsuario(usuario);
-            aData.setLastAction(new DateTime());
+            aData.setLastAction(LocalDateTime.now());
             this.sessionData.put(sessionId, aData);
             return sessionId;
         } catch (Exception e) {
@@ -81,7 +79,7 @@ public class SessionData {
             Set<String> sessionsId = this.sessionData.keySet();
             for (String sessionId : sessionsId) {
                 aData = this.sessionData.get(sessionId);
-                if (aData.getLastAction().plusSeconds(expirationTime).isBefore(System.currentTimeMillis())) {
+                if (aData.getLastAction().plusSeconds(expirationTime).isBefore(LocalDateTime.now())) {
                     System.out.println("Deleting sessionId = " + sessionId);
                     this.sessionData.remove(sessionId);
                 }

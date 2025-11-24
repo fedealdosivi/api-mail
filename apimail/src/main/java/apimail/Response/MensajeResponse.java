@@ -4,8 +4,7 @@ package apimail.Response;
 import apimail.Model.Usuario;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
-
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fefe on 8/6/2017.
@@ -25,7 +24,7 @@ public class MensajeResponse {
     @JsonProperty
     private Date dateTime;
     @JsonProperty("destinatarios")
-    private ArrayList<String> destinatarios;
+    private List<String> destinatarios;
 
     public int getId() {
         return id;
@@ -59,11 +58,11 @@ public class MensajeResponse {
         this.body = body;
     }
 
-    public ArrayList<String> getDestinatarios() {
+    public List<String> getDestinatarios() {
         return destinatarios;
     }
 
-    public void setDestinatarios(ArrayList<String> destinatarios) {
+    public void setDestinatarios(List<String> destinatarios) {
         this.destinatarios = destinatarios;
     }
 

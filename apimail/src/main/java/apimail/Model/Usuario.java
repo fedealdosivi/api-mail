@@ -1,16 +1,31 @@
 
 package apimail.Model;
 
+import jakarta.persistence.*;
+
 /**
  * @author fefe
  */
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private String apellido;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
     private String direccion;
     private int telefono;
     private String pais;

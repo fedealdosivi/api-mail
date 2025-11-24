@@ -1,29 +1,47 @@
 package apimail.Model;
 
+import jakarta.persistence.*;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by fefe on 7/6/2017.
  */
+@Entity
+@Table(name = "mensajes")
 public class Mensaje {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
     private String asunto;
+
+    @Column(columnDefinition = "TEXT")
     private String body;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
+
     private String nombreRemitente;
+
+    @Column(nullable = false)
     private String remitente;
-    private ArrayList<String> destinatarios;
+
+    @ElementCollection
+    @CollectionTable(name = "mensaje_destinatarios", joinColumns = @JoinColumn(name = "mensaje_id"))
+    @Column(name = "destinatario")
+    private List<String> destinatarios;
 
     public Mensaje() {
         setAsunto("");
         setBody("");
         setRemitente("");
         setNombreRemitente("");
-        destinatarios=new ArrayList<String>();
-        dateTime= null;
+        destinatarios = new ArrayList<>();
+        dateTime = null;
     }
 
     public void addDestinatario(String e)
@@ -64,11 +82,11 @@ public class Mensaje {
     }
 
 
-    public ArrayList<String> getDestinatarios() {
+    public List<String> getDestinatarios() {
         return destinatarios;
     }
 
-    public void setDestinatarios(ArrayList<String> destinatarios) {
+    public void setDestinatarios(List<String> destinatarios) {
         this.destinatarios = destinatarios;
     }
 
